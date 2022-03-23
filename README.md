@@ -1,16 +1,24 @@
-# futurama_quiz
+# Futurama_Quiz
 
 A new Flutter project.
 
-## Getting Started
+## To do
 
-This project is a starting point for a Flutter application.
+Test [API](https://sampleapis.com/api-list/futurama)
 
-A few resources to get you started if this is your first Flutter project:
+### Basic Functionality
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+"the information" [from json](https://api.sampleapis.com/futurama/info)
+is presented to the user + two navigation options: “Characters” and “Quiz”.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Look and feel
+
+[Get inspiration from](https://thrive.uk.com/)
+Get access to app.
+
+[Quiz](https://codepen.io/jermbo/pen/LYVwbZG)
+
+### Later
+
+Consider mocking.
+
