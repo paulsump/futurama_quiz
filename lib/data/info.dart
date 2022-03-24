@@ -15,7 +15,6 @@ class Info {
   final List<_Creator> creators;
   final int id;
 
-  // Info(this.synopsis, this.yearsAired, this.creators, this.id);
 
   Info.fromJson(Map<String, dynamic> json)
       //TODO CHeck if containsKey()

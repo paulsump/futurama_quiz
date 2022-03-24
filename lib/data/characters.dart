@@ -6,7 +6,6 @@ const noWarn = out;
 Future<List<Character>> fetchCharacters(Fetcher fetcher) async {
   final list = await fetcher.getList('characters');
 
-  // out(list[0]['sayings']);
   return list.map((character) => Character.fromJson(character)).toList();
 }
 
@@ -22,21 +21,21 @@ class Character {
         occupation = json['occupation'],
         _sayings = _Sayings(json['sayings']);
 
-  String get name => _name.fullName;
-
-  String get image => _images.image;
-
   final String gender;
   final String species;
 
   final String homePlanet;
   final String occupation;
 
-  List<String> get shortSayings => _sayings.shortSayings.toList();
-
   final _Name _name;
   final _Images _images;
   final _Sayings _sayings;
+
+  String get name => _name.fullName;
+
+  String get image => _images.image;
+
+  List<String> get shortSayings => _sayings.shortSayings.toList();
 }
 
 class _Sayings {
@@ -47,7 +46,6 @@ class _Sayings {
       final shortSaying = saying as String;
 
       if (shortSaying.length < 27) {
-        out(shortSaying);
         yield shortSaying;
       }
     }
