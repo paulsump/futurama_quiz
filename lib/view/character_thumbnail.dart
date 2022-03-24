@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/character.dart';
+import 'package:futurama_quiz/view/hue.dart';
 
 class CharacterThumbnail extends StatelessWidget {
   final Character character;
@@ -14,7 +15,14 @@ class CharacterThumbnail extends StatelessWidget {
     return Column(
       children: [
         Expanded(child: Image.network(character.image)),
-        Text(character.name),
+        Text(
+          character.name,
+          style: const TextStyle(
+            // fontWeight: FontWeight.bold,
+            // fontSize: screenAdjust(0.06, context),
+            color: Hue.text,
+          ),
+        ),
       ],
     );
   }
