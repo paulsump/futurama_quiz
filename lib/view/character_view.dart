@@ -14,7 +14,7 @@ class CharacterView extends StatelessWidget {
       future: character,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Text(snapshot.data!.hack());
+          return Text(snapshot.data!.name);
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
         }

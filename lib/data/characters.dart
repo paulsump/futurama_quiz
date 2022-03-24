@@ -32,8 +32,7 @@ class Character {
   final String homePlanet;
   final String occupation;
 
-  List<String> get sayings => _sayings.sayings;
-String hack() => _sayings.hack();
+  List<String> get shortSayings => _sayings.shortSayings.toList();
 
   final _Name _name;
   final _Images _images;
@@ -43,23 +42,15 @@ String hack() => _sayings.hack();
 class _Sayings {
   _Sayings(this._sayings);
 
-  String hack() {
+  Iterable<String> get shortSayings sync* {
     for (dynamic saying in _sayings) {
-      out(saying);
-      // .map<String>((saying) => saying ?? saying as String)
-      // .toList();
-    }
-    return 'hack';
-  }
+      final shortSaying = saying as String;
 
-  //TODO fix / decide what i want e.g. random saying
-  List<String> get sayings {
-    for (dynamic saying in _sayings) {
-      out(saying);
-      // .map<String>((saying) => saying ?? saying as String)
-      // .toList();
+      if (shortSaying.length < 27) {
+        out(shortSaying);
+        yield shortSaying;
+      }
     }
-    return [];
   }
 
   final List<dynamic> _sayings;
