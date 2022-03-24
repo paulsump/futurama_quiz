@@ -18,27 +18,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(title: const Text('Futurama')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: const <Widget>[
             // InfoView(),
-            CharacterListView(),
-            // FutureBuilder<List<Question>>(
-            //   future: dataNotifier.questions,
-            //   builder: (context, snapshot) {
-            //     if (snapshot.hasData) {
-            //       return QuestionView(question: snapshot.data![0]);
-            //     } else if (snapshot.hasError) {
-            //       return Text('${snapshot.error}');
-            //     }
-            //
-            //     return const CircularProgressIndicator();
-            //   },
-            // ),
+            // CharacterListView(),
+            QuestionView(),
           ],
         ),
       ),

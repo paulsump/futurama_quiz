@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/data/question.dart';
+import 'package:futurama_quiz/data/data_notifier.dart';
 
 class QuestionView extends StatelessWidget {
-  final Question question;
-
-  const QuestionView({Key? key, required this.question}) : super(key: key);
+  const QuestionView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Text(question.question);
+    final dataNotifier = getDataNotifier(context, listen: true);
+
+    return dataNotifier.haveQuestions
+        ? Text(dataNotifier.questions[0].question)
+        : Container();
   }
 }
