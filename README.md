@@ -1,6 +1,6 @@
 # Futurama_Quiz
 
-A new Flutter project.
+Demonstration of basic UI coming from basic API fetching.
 
 ## To do
 
