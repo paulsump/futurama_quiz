@@ -1,11 +1,3 @@
-import 'package:futurama_quiz/data/fetcher.dart';
-
-Future<List<Question>> fetchQuestions(Fetcher fetcher) async {
-  final list = await fetcher.getList('questions');
-
-  return list.map((character) => Question.fromJson(character)).toList();
-}
-
 class Question {
   Question.fromJson(Map<String, dynamic> json)
       //TODO containsKey

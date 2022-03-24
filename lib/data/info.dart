@@ -1,7 +1,5 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
-
-
 class Info {
   Info.fromJson(Map<String, dynamic> json)
       //TODO CHeck if containsKey()

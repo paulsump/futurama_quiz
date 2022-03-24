@@ -1,13 +1,6 @@
-import 'package:futurama_quiz/data/fetcher.dart';
 import 'package:futurama_quiz/out.dart';
 
 const noWarn = out;
-
-Future<List<Character>> fetchCharacters(Fetcher fetcher) async {
-  final list = await fetcher.getList('characters');
-
-  return list.map((character) => Character.fromJson(character)).toList();
-}
 
 class Character {
   Character.fromJson(Map<String, dynamic> json)

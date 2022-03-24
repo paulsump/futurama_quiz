@@ -10,7 +10,7 @@ class InfoView extends StatelessWidget {
   Widget build(BuildContext context) {
     final dataNotifier = getDataNotifier(context, listen: true);
 
-    return dataNotifier.infoReady
+    return dataNotifier.haveInfo
         ? Text(dataNotifier.info.synopsis)
         : Container();
   }
