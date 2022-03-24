@@ -13,18 +13,16 @@ class CharacterListView extends StatelessWidget {
     final dataNotifier = getDataNotifier(context, listen: true);
 
     return dataNotifier.haveCharacters
-        ? Expanded(
-            child: ListView(
-              children: [
-                for (final character in dataNotifier.characters)
-                  SizedBox(
-                    height: screenAdjust(0.4, context),
-                    child: TextButton(
-                        onPressed: () {},
-                        child: CharacterThumbnail(character: character)),
-                  ),
-              ],
-            ),
+        ? ListView(
+            children: [
+              for (final character in dataNotifier.characters)
+                SizedBox(
+                  height: screenAdjust(0.4, context),
+                  child: TextButton(
+                      onPressed: () {},
+                      child: CharacterThumbnail(character: character)),
+                ),
+            ],
           )
         : Container();
   }

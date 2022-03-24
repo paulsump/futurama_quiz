@@ -7,6 +7,7 @@ import 'package:futurama_quiz/data/data_notifier.dart';
 import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/view/character_list_view.dart';
 import 'package:futurama_quiz/view/home_page.dart';
+import 'package:futurama_quiz/view/hue.dart';
 import 'package:provider/provider.dart';
 
 /// prevent 'organise imports' from removing imports
@@ -28,9 +29,7 @@ class _App extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: _buildThemeData(context),
         home: LayoutBuilder(
           builder: (
             BuildContext context,
@@ -56,6 +55,27 @@ class _App extends StatelessWidget {
           // 'Quiz': (context) => QuizView(),
         },
       ),
+    );
+  }
+
+  ThemeData _buildThemeData(BuildContext context) {
+    return ThemeData(
+      canvasColor: Hue.menu,
+      textTheme: Theme.of(context).textTheme.apply(bodyColor: Hue.text),
+      // for icon buttons only atm
+      iconTheme: Theme.of(context).iconTheme.copyWith(
+            color: Hue.enabledIcon,
+          ),
+      tooltipTheme: TooltipThemeData(
+        /// TODO Responsive to screen size - removed magic numbers
+        verticalOffset: 55,
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(color: Hue.tip),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+        primary: Hue.button,
+      )),
     );
   }
 }
