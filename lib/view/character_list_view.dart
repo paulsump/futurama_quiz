@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/characters.dart';
+import 'package:futurama_quiz/view/character_view.dart';
 
 class CharacterListView extends StatelessWidget {
   final Future<List<Character>> characters;
@@ -15,7 +16,8 @@ class CharacterListView extends StatelessWidget {
       future: characters,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Text(snapshot.data![0].shortSayings[0]);
+          //TODO ListView etc
+          return CharacterView(character: snapshot.data![0]);
         } else if (snapshot.hasError) {
           return Text('${snapshot.error}');
         }

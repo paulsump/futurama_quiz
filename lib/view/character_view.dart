@@ -4,23 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/characters.dart';
 
 class CharacterView extends StatelessWidget {
-  final Future<Character> character;
+  final Character character;
 
   const CharacterView({Key? key, required this.character}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Character>(
-      future: character,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return Text(snapshot.data!.name);
-        } else if (snapshot.hasError) {
-          return Text('${snapshot.error}');
-        }
-
-        return const CircularProgressIndicator();
-      },
-    );
+    return Image.network(character.image);
   }
 }
