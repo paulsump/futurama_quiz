@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/character.dart';
 import 'package:futurama_quiz/data/fetcher.dart';
 import 'package:futurama_quiz/data/info.dart';
+import 'package:futurama_quiz/data/question.dart';
 import 'package:futurama_quiz/view/character_list_view.dart';
 import 'package:http/http.dart' as http;
 
@@ -22,14 +23,16 @@ class _HomePageState extends State<HomePage> {
   late Future<Info> info;
   late Future<List<Character>> characters;
 
+  late Future<List<Question>> questions;
+
   @override
   void initState() {
     final fetcher = Fetcher(client);
 
     info = fetchInfo(fetcher);
     characters = fetchCharacters(fetcher);
-    // out(characters[0].sayings);
 
+    questions = fetchQuestions(fetcher);
     super.initState();
   }
 
