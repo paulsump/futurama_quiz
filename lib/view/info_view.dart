@@ -1,3 +1,5 @@
+// © 2022, Paul Sumpner <sumpner@hotmail.com>
+
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/info.dart';
 

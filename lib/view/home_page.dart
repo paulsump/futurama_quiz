@@ -15,11 +15,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-Future<Info> _getInfo(Fetcher fetcher) async {
-  final map = await fetcher.getMap('info');
-  return Info.fromJson(map);
-}
-
 class _HomePageState extends State<HomePage> {
   late Future<Info> info;
 
@@ -28,7 +23,7 @@ class _HomePageState extends State<HomePage> {
     final client = http.Client();
 
     final fetcher = Fetcher(client);
-    info = _getInfo(fetcher);
+    info = fetchInfo(fetcher);
 
     client.close();
 
