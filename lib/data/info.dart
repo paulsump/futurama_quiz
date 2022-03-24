@@ -12,24 +12,25 @@ Future<Info> fetchInfo(Fetcher fetcher) async {
 class Info {
   final String synopsis;
   final String yearsAired;
-  final List<Creator> creators;
+  final List<_Creator> creators;
   final int id;
 
-  Info(this.synopsis, this.yearsAired, this.creators, this.id);
+  // Info(this.synopsis, this.yearsAired, this.creators, this.id);
 
   Info.fromJson(Map<String, dynamic> json)
       //TODO CHeck if containsKey()
       : synopsis = json['synopsis'],
         yearsAired = json['yearsAired'],
         creators = json['creators']
-            .map<Creator>((creator) => Creator(creator['name'], creator['url']))
+            .map<_Creator>(
+                (creator) => _Creator(creator['name'], creator['url']))
             .toList(),
         id = json['id'];
 }
 
-class Creator {
+class _Creator {
   final String name;
   final String url;
 
-  Creator(this.name, this.url);
+  _Creator(this.name, this.url);
 }

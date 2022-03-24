@@ -1,6 +1,7 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
+import 'package:futurama_quiz/data/characters.dart';
 import 'package:futurama_quiz/data/fetcher.dart';
 import 'package:futurama_quiz/data/info.dart';
 import 'package:futurama_quiz/view/info_view.dart';
@@ -16,18 +17,26 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final client = http.Client();
+
   late Future<Info> info;
+  late Future<List<Character>> characters;
 
   @override
   void initState() {
-    final client = http.Client();
-
     final fetcher = Fetcher(client);
-    info = fetchInfo(fetcher);
 
-    client.close();
+    info = fetchInfo(fetcher);
+    characters = fetchCharacters(fetcher);
+    // out(characters[0].sayings);
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    client.close();
+    super.dispose();
   }
 
   @override

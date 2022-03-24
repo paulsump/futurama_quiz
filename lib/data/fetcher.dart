@@ -12,7 +12,7 @@ class Fetcher {
 
   Fetcher(this.client);
 
-  Future<List<Map<String, dynamic>>> getList(String url) async {
+  Future<List<dynamic>> getList(String url) async {
     final json = await _getJson(url);
 
     return jsonDecode(json);
