@@ -5,6 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/data_notifier.dart';
 import 'package:futurama_quiz/out.dart';
+import 'package:futurama_quiz/view/character_list_view.dart';
 import 'package:futurama_quiz/view/home_page.dart';
 import 'package:provider/provider.dart';
 
@@ -49,6 +50,11 @@ class _App extends StatelessWidget {
             }
           },
         ),
+        routes: {
+          'Home': (context) => const HomePage(),
+          'Characters': (context) => const CharacterListView(),
+          // 'Quiz': (context) => QuizView(),
+        },
       ),
     );
   }
