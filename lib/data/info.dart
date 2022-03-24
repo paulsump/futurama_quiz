@@ -16,9 +16,11 @@ class Info {
   Info(this.synopsis, this.yearsAired, this.creators, this.id);
 
   Info.fromJson(Map<String, dynamic> json)
-      : synopsis = json['ssynopsis'],
+      //TODO CHeck if containsKey()
+      : synopsis = json['synopsis'],
         yearsAired = json['yearsAired'],
         creators = json['creators']
-            .map((creator) => Creator(creator['name'], creator['url'])),
+            .map<Creator>((creator) => Creator(creator['name'], creator['url']))
+            .toList(),
         id = json['id'];
 }

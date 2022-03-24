@@ -1,7 +1,7 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/home_page.dart';
+import 'package:futurama_quiz/view/home_page.dart';
 
 void main() {
   runApp(const MyApp());
