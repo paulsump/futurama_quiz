@@ -1,7 +1,7 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/data/characters.dart';
+import 'package:futurama_quiz/data/character.dart';
 
 class CharacterView extends StatelessWidget {
   final Character character;
