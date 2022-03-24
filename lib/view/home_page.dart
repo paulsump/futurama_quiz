@@ -1,7 +1,6 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/data/data_notifier.dart';
 import 'package:futurama_quiz/data/question.dart';
 import 'package:futurama_quiz/view/character_list_view.dart';
 import 'package:futurama_quiz/view/info_view.dart';
@@ -19,7 +18,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final dataNotifier = getDataNotifier(context, listen: true);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Futurama')),
@@ -27,8 +25,8 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            InfoView(),
-            // CharacterListView(characters: characters),
+            // InfoView(),
+            CharacterListView(),
             // FutureBuilder<List<Question>>(
             //   future: dataNotifier.questions,
             //   builder: (context, snapshot) {
