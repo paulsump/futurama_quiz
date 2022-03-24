@@ -18,8 +18,11 @@ class CharacterListView extends StatelessWidget {
               children: [
                 for (final character in dataNotifier.characters)
                   SizedBox(
-                      height: screenAdjust(0.4, context),
-                      child: CharacterThumbnail(character: character)),
+                    height: screenAdjust(0.4, context),
+                    child: TextButton(
+                        onPressed: () {},
+                        child: CharacterThumbnail(character: character)),
+                  ),
               ],
             ),
           )
