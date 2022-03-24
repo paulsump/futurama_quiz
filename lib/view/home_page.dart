@@ -5,7 +5,7 @@ import 'package:futurama_quiz/data/character.dart';
 import 'package:futurama_quiz/data/fetcher.dart';
 import 'package:futurama_quiz/data/info.dart';
 import 'package:futurama_quiz/data/question.dart';
-import 'package:futurama_quiz/view/character_list_view.dart';
+import 'package:futurama_quiz/view/question_view.dart';
 import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
@@ -53,7 +53,19 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             // InfoView(info: info),
-            CharacterListView(characters: characters),
+            // CharacterListView(characters: characters),
+            FutureBuilder<List<Question>>(
+              future: questions,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return QuestionView(question: snapshot.data![0]);
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+
+                return const CircularProgressIndicator();
+              },
+            ),
           ],
         ),
       ),

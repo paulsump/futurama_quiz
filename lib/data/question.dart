@@ -12,7 +12,7 @@ class Question {
       : id = json['id'],
         question = json['question'],
         possibleAnswers = json['possibleAnswers']
-            .map<String>((dyn) => dyn.toString())
+            .map<String>((answer) => answer.toString())
             .toList(),
         correctAnswer = json['correctAnswer'].toString();
 
