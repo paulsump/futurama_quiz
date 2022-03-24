@@ -1,5 +1,7 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/data_notifier.dart';
 import 'package:futurama_quiz/out.dart';
@@ -12,10 +14,10 @@ const noWarn = out;
 
 void main() => runApp(createApp());
 
-Widget createApp() => const MyApp();
+Widget createApp() => const _App();
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class _App extends StatelessWidget {
+  const _App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,25 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomePage(title: 'Flutter Demo Home Page'),
+        home: LayoutBuilder(
+          builder: (
+            BuildContext context,
+            BoxConstraints constraints,
+          ) {
+            if (constraints.maxHeight == 0) {
+              return Container();
+            } else {
+              final dataNotifier = getDataNotifier(context, listen: false);
+
+              // Initialize once only
+              if (dataNotifier.isInitialized) {
+                unawaited(dataNotifier.initialize(context));
+              }
+
+              return const HomePage();
+            }
+          },
+        ),
       ),
     );
   }
