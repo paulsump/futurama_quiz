@@ -41,7 +41,7 @@ class _App extends StatelessWidget {
               final dataNotifier = getDataNotifier(context, listen: false);
 
               // Initialize once only
-              if (dataNotifier.isInitialized) {
+              if (!dataNotifier.initializeHasBeenCalled) {
                 unawaited(dataNotifier.initialize(context));
               }
 
