@@ -13,7 +13,7 @@ class DataNotifier extends ChangeNotifier {
   bool initializeHasBeenCalled = false;
 
   final client = http.Client();
-  late Future<Info> info;
+  late Info info;
 
   late Future<List<Character>> characters;
   late Future<List<Question>> questions;
@@ -28,10 +28,14 @@ class DataNotifier extends ChangeNotifier {
     initializeHasBeenCalled = true;
 
     final fetcher = Fetcher(client);
+    final infoList = await fetcher.getList('info');
 
-    info = fetchInfo(fetcher);
+    assert(infoList.length == 1);
+    info = Info.fromJson(infoList[0]);
+    infoReady = true;
+    notifyListeners();
+
     characters = fetchCharacters(fetcher);
-
     questions = fetchQuestions(fetcher);
   }
 

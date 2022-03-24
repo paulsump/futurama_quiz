@@ -3,7 +3,11 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/data_notifier.dart';
 import 'package:futurama_quiz/data/question.dart';
+import 'package:futurama_quiz/view/character_list_view.dart';
+import 'package:futurama_quiz/view/info_view.dart';
 import 'package:futurama_quiz/view/question_view.dart';
+
+const noWarn = [InfoView, Question, CharacterListView, QuestionView];
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,27 +22,25 @@ class _HomePageState extends State<HomePage> {
     final dataNotifier = getDataNotifier(context, listen: true);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Futurama'),
-      ),
+      appBar: AppBar(title: const Text('Futurama')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            // InfoView(info: info),
+            InfoView(),
             // CharacterListView(characters: characters),
-            FutureBuilder<List<Question>>(
-              future: dataNotifier.questions,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return QuestionView(question: snapshot.data![0]);
-                } else if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                }
-
-                return const CircularProgressIndicator();
-              },
-            ),
+            // FutureBuilder<List<Question>>(
+            //   future: dataNotifier.questions,
+            //   builder: (context, snapshot) {
+            //     if (snapshot.hasData) {
+            //       return QuestionView(question: snapshot.data![0]);
+            //     } else if (snapshot.hasError) {
+            //       return Text('${snapshot.error}');
+            //     }
+            //
+            //     return const CircularProgressIndicator();
+            //   },
+            // ),
           ],
         ),
       ),
