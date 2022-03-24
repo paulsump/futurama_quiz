@@ -33,6 +33,7 @@ class Character {
   final String occupation;
 
   List<String> get sayings => _sayings.sayings;
+String hack() => _sayings.hack();
 
   final _Name _name;
   final _Images _images;
@@ -41,6 +42,15 @@ class Character {
 
 class _Sayings {
   _Sayings(this._sayings);
+
+  String hack() {
+    for (dynamic saying in _sayings) {
+      out(saying);
+      // .map<String>((saying) => saying ?? saying as String)
+      // .toList();
+    }
+    return 'hack';
+  }
 
   //TODO fix / decide what i want e.g. random saying
   List<String> get sayings {

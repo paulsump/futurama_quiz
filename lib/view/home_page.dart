@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/characters.dart';
 import 'package:futurama_quiz/data/fetcher.dart';
 import 'package:futurama_quiz/data/info.dart';
-import 'package:futurama_quiz/view/info_view.dart';
+import 'package:futurama_quiz/view/character_list_view.dart';
 import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
@@ -49,7 +49,8 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            InfoView(info: info),
+            // InfoView(info: info),
+            CharacterListView(characters: characters),
           ],
         ),
       ),
