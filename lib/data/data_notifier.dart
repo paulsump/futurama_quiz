@@ -21,6 +21,8 @@ class DataNotifier extends ChangeNotifier {
   late List<Question> questions;
   bool haveQuestions = false;
 
+  Character? currentCharacter;
+
   /// The main starting point for the app data.
   /// Called only once.
   Future<void> initialize(BuildContext context) async {
@@ -53,5 +55,9 @@ class DataNotifier extends ChangeNotifier {
     notifyListeners();
 
     client.close();
+  }
+
+  void setCurrentCharacter(Character character) {
+    currentCharacter = character;
   }
 }

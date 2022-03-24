@@ -19,7 +19,10 @@ class CharacterListView extends StatelessWidget {
                 SizedBox(
                   height: screenAdjust(0.4, context),
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        dataNotifier.setCurrentCharacter(character);
+                        Navigator.of(context).pushNamed('CharacterBiography');
+                      },
                       child: CharacterThumbnail(character: character)),
                 ),
             ],

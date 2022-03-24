@@ -17,11 +17,7 @@ class CharacterThumbnail extends StatelessWidget {
         Expanded(child: Image.network(character.image)),
         Text(
           character.name,
-          style: const TextStyle(
-            // fontWeight: FontWeight.bold,
-            // fontSize: screenAdjust(0.06, context),
-            color: Hue.text,
-          ),
+          style: const TextStyle(color: Hue.text),
         ),
       ],
     );

@@ -19,9 +19,20 @@ class HomePage extends StatelessWidget {
         color: Hue.background,
         child: SafeArea(
           left: false,
-          child: Stack(children: const [
-            // InfoView(),
-            CharacterListView(),
+          child: Column(children: [
+            // TODO maybe pic of Fry here 'cause info talks about him?
+            // if so, this could be loaded from assets
+            const InfoView(),
+            TextButton(
+              child: const Text(
+                'Characters',
+                style: TextStyle(color: Hue.text),
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamed('Characters');
+              },
+            ),
+            // CharacterListView(),
             // QuestionView(),
           ]),
         ),
