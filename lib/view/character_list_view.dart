@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/data_notifier.dart';
-import 'package:futurama_quiz/view/character_view.dart';
+import 'package:futurama_quiz/view/character_thumbnail.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
 class CharacterListView extends StatelessWidget {
@@ -19,7 +19,7 @@ class CharacterListView extends StatelessWidget {
                 for (final character in dataNotifier.characters)
                   SizedBox(
                       height: screenAdjust(0.4, context),
-                      child: CharacterView(character: character)),
+                      child: CharacterThumbnail(character: character)),
               ],
             ),
           )

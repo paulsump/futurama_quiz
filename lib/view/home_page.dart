@@ -25,8 +25,8 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[
             // InfoView(),
-            // CharacterListView(),
-            QuestionView(),
+            CharacterListView(),
+            // QuestionView(),
           ],
         ),
       ),
