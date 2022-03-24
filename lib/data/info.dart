@@ -5,7 +5,7 @@ class Info {
       //TODO CHeck if containsKey()
       : synopsis = json['synopsis'],
         yearsAired = json['yearsAired'],
-        creators = json['creators']
+        _creators = json['creators']
             .map<_Creator>(
                 (creator) => _Creator(creator['name'], creator['url']))
             .toList(),
@@ -13,8 +13,16 @@ class Info {
 
   final String synopsis;
   final String yearsAired;
-  final List<_Creator> creators;
+
+  Iterable<String> get creatorNames sync* {
+    for (final creator in _creators) {
+      yield creator.name;
+    }
+  }
+
   final int id;
+
+  final List<_Creator> _creators;
 }
 
 class _Creator {

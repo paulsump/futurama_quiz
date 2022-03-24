@@ -11,7 +11,14 @@ class InfoView extends StatelessWidget {
     final dataNotifier = getDataNotifier(context, listen: true);
 
     return dataNotifier.haveInfo
-        ? Text(dataNotifier.info.synopsis)
+        //TODO add the other info fields
+        ? Column(
+            children: [
+              Text(dataNotifier.info.synopsis),
+              Text(dataNotifier.info.yearsAired),
+              for (final name in dataNotifier.info.creatorNames) Text(name),
+            ],
+          )
         : Container();
   }
 }

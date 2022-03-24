@@ -11,6 +11,7 @@ class CharacterBiography extends StatelessWidget {
     final character = dataNotifier.currentCharacter;
     return Column(children: [
       Text(character!.name),
+      //TODO add the other character fields
       TextButton(
         child: const Text('Ok'),
         onPressed: () {
