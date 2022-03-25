@@ -29,4 +29,10 @@ class QuizNotifier extends ChangeNotifier {
 class Score {
   int correct = 0;
   int incorrect = 0;
+
+  // TODO Restart quiz
+  void reset() {
+    correct = 0;
+    incorrect = 0;
+  }
 }

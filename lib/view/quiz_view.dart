@@ -39,18 +39,21 @@ class _QuestionViewState extends State<QuestionView> {
     final quizNotifier = getQuizNotifier(context, listen: false);
     final apiNotifier = getApiNotifier(context, listen: true);
 
-    quizNotifier
-        .setCurrentQuestion(apiNotifier.questions[currentQuestionIndex]);
+    final questions = apiNotifier.questions;
+    quizNotifier.setCurrentQuestion(questions[currentQuestionIndex]);
     final question = quizNotifier.currentQuestion!;
 
     return apiNotifier.haveQuestions
         ? Column(
             children: [
+              // TODO replace paddings with something that works in landscape orientation
               Padding(
                 padding: EdgeInsets.all(screenAdjust(0.13, context)),
                 child: Text(_getQuestionNumberString(context)),
               ),
-              Text(question.question),
+              Padding(
+                  padding: EdgeInsets.all(screenAdjust(0.13, context)),
+                  child: Text(question.question)),
               Padding(
                 padding: EdgeInsets.all(screenAdjust(0.13, context)),
                 child: Column(
@@ -77,6 +80,9 @@ class _QuestionViewState extends State<QuestionView> {
                     _answer = null;
 
                     currentQuestionIndex += 1;
+                    // if (currentQuestionIndex == questions.length){
+                    Navigator.of(context).pushNamed('Results');
+                    // }
                     setState(() {});
                   },
                 ),

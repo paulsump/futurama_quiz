@@ -10,6 +10,7 @@ import 'package:futurama_quiz/view/characters.dart';
 import 'package:futurama_quiz/view/home_page.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/quiz_view.dart';
+import 'package:futurama_quiz/view/results_view.dart';
 import 'package:provider/provider.dart';
 
 /// prevent 'organise imports' from removing imports
@@ -57,6 +58,7 @@ class _App extends StatelessWidget {
           'Characters': (context) => const CharacterListView(),
           'CharacterBiography': (context) => const CharacterBiography(),
           'Quiz': (context) => const QuizView(),
+          'Results': (context) => const ResultsView(),
         },
       ),
     );
