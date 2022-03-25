@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/data_notifier.dart';
+import 'package:futurama_quiz/state/state_notifier.dart';
 import 'package:futurama_quiz/view/big_back_button.dart';
 import 'package:futurama_quiz/view/cage.dart';
 
@@ -24,10 +25,11 @@ class QuestionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final stateNotifier = getStateNotifier(context, listen: false);
     final dataNotifier = getDataNotifier(context, listen: true);
 
-    dataNotifier.setCurrentQuestion(dataNotifier.questions[0]);
-    final question = dataNotifier.currentQuestion!;
+    stateNotifier.setCurrentQuestion(dataNotifier.questions[0]);
+    final question = stateNotifier.currentQuestion!;
 
     return dataNotifier.haveQuestions
         ? Column(
@@ -52,8 +54,12 @@ class Score {
 class _Score extends StatelessWidget {
   const _Score({Key? key}) : super(key: key);
 
-  String getQuestionNumberString(DataNotifier dataNotifier) =>
-      '${dataNotifier.currentQuestion!.id} / ${dataNotifier.questions.length}';
+  String getQuestionNumberString(BuildContext context) {
+    final stateNotifier = getStateNotifier(context, listen: false);
+
+    final dataNotifier = getDataNotifier(context, listen: true);
+    return '${stateNotifier.currentQuestion!.id} / ${dataNotifier.questions.length}';
+  }
 
   @override
   Widget build(BuildContext context) {
