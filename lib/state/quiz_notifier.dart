@@ -9,6 +9,8 @@ QuizNotifier getQuizNotifier(BuildContext context, {required bool listen}) =>
 class QuizNotifier extends ChangeNotifier {
   Question? currentQuestion;
 
+  var score = Score();
+
   void setCurrentQuestion(Question question) {
     currentQuestion = question;
   }

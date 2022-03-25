@@ -44,9 +44,9 @@ class QuestionView extends StatelessWidget {
   }
 }
 
-//TODO DIsplay this at the top right? on a stack?
-class _Score extends StatelessWidget {
-  const _Score({Key? key}) : super(key: key);
+//TODO DIsplay this at the top
+class _QuestionNumber extends StatelessWidget {
+  const _QuestionNumber({Key? key}) : super(key: key);
 
   String getQuestionNumberString(BuildContext context) {
     final quizNotifier = getQuizNotifier(context, listen: false);
@@ -57,7 +57,19 @@ class _Score extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final apiNotifier = getApiNotifier(context, listen: true);
-    return Text('');
+    return Text(getQuestionNumberString(context));
+  }
+}
+
+//TODO DIsplay this at the top right
+class _Score extends StatelessWidget {
+  const _Score({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final quizNotifier = getQuizNotifier(context, listen: true);
+
+    final score = quizNotifier.score;
+    return Text('${score.correct} right, ${score.incorrect} wrong}');
   }
 }
