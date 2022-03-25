@@ -5,7 +5,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/data_notifier.dart';
 import 'package:futurama_quiz/out.dart';
-import 'package:futurama_quiz/state/state_notifier.dart';
+import 'package:futurama_quiz/state/quiz_notifier.dart';
 import 'package:futurama_quiz/view/characters.dart';
 import 'package:futurama_quiz/view/home_page.dart';
 import 'package:futurama_quiz/view/hue.dart';
@@ -28,7 +28,7 @@ class _App extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => DataNotifier()),
-        ChangeNotifierProvider(create: (_) => StateNotifier()),
+        ChangeNotifierProvider(create: (_) => QuizNotifier()),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

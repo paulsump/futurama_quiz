@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/character.dart';
 import 'package:futurama_quiz/data/data_notifier.dart';
-import 'package:futurama_quiz/state/state_notifier.dart';
 import 'package:futurama_quiz/view/big_back_button.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/hue.dart';
@@ -27,10 +26,9 @@ class CharacterListView extends StatelessWidget {
                         height: screenAdjust(0.4, context),
                         child: TextButton(
                             onPressed: () {
-                              getStateNotifier(context, listen: false)
-                                  .setCurrentCharacter(character);
-                              Navigator.of(context)
-                                  .pushNamed('CharacterBiography');
+                              Navigator.of(context).pushNamed(
+                                  'CharacterBiography',
+                                  arguments: character);
                             },
                             child: _CharacterThumbnail(character: character)),
                       ),
@@ -49,8 +47,9 @@ class CharacterBiography extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final character =
-    getStateNotifier(context, listen: false).currentCharacter!;
+    // Extract the arguments from the current ModalRoute
+    // settings and cast them to Character.
+    final character = ModalRoute.of(context)!.settings.arguments as Character;
     return Cage(
       child: Stack(children: [
         Column(children: [
