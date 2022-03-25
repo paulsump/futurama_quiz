@@ -39,20 +39,22 @@ class CharacterListView extends StatelessWidget {
   }
 }
 
-class CharacterBiography extends StatelessWidget {
-  const CharacterBiography({Key? key}) : super(key: key);
+class Biography extends StatelessWidget {
+  const Biography({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Extract the arguments from the current ModalRoute
-    // settings and cast them to Character.
     final character = ModalRoute.of(context)!.settings.arguments as Character;
     return Cage(
       child: Stack(children: [
         Column(children: [
           Expanded(child: Image.network(character.image)),
           Text(character.name),
-          // TODO add the other character fields
+          Text(character.gender),
+          Text(character.species),
+          Text(character.homePlanet),
+          Text(character.occupation),
+          for (final saying in character.sayings) Text(saying)
         ]),
         const BigBackButton(),
       ]),

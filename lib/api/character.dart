@@ -28,17 +28,29 @@ class Character {
 
   String get image => _images.image;
 
-  List<String> get shortSayings => _sayings.shortSayings.toList();
+  List<String> get sayings => _sayings.sayings;
 }
 
 class _Sayings {
   _Sayings(this._sayings);
 
-  Iterable<String> get shortSayings sync* {
-    for (dynamic saying in _sayings) {
-      final shortSaying = saying as String;
+  bool get hasShortSayings => shortSayings.isNotEmpty;
 
-      if (shortSaying.length < 27) {
+  List<String> get sayings {
+    if (hasShortSayings) {
+      return shortSayings;
+    } else {
+      return _sayings.map<String>((s) => s.toString()).toList();
+    }
+  }
+
+  List<String> get shortSayings => _shortSayings.toList();
+
+  Iterable<String> get _shortSayings sync* {
+    for (dynamic saying in _sayings) {
+      final shortSaying = saying.toString();
+
+      if (shortSaying.length < 30) {
         yield shortSaying;
       }
     }
