@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/character.dart';
 import 'package:futurama_quiz/data/data_notifier.dart';
+import 'package:futurama_quiz/view/big_back_button.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
@@ -28,12 +29,7 @@ class CharacterListView extends StatelessWidget {
                         },
                         child: _CharacterThumbnail(character: character)),
                   ),
-                TextButton(
-                  child: const Text('Ok'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                const BigBackButton(),
               ],
             ),
           )
@@ -54,12 +50,7 @@ class CharacterBiography extends StatelessWidget {
         Expanded(child: Image.network(character.image)),
         Text(character.name),
         // TODO add the other character fields
-        TextButton(
-          child: const Text('Ok'),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        const BigBackButton(),
       ]),
     );
   }

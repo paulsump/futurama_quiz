@@ -12,27 +12,29 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Cage(
       child: Column(children: [
+        Row(children: [
+          TextButton(
+            child: const Text(
+              'Characters',
+              style: TextStyle(color: Hue.text),
+            ),
+            onPressed: () {
+              Navigator.of(context).pushNamed('Characters');
+            },
+          ),
+          TextButton(
+            child: const Text(
+              'Quiz',
+              style: TextStyle(color: Hue.text),
+            ),
+            onPressed: () {
+              Navigator.of(context).pushNamed('Quiz');
+            },
+          ),
+        ]),
         // TODO maybe pic of Fry here 'cause info talks about him?
         // if so, this could be loaded from assets
         const _InfoView(),
-        TextButton(
-          child: const Text(
-            'Characters',
-            style: TextStyle(color: Hue.text),
-          ),
-          onPressed: () {
-            Navigator.of(context).pushNamed('Characters');
-          },
-        ),
-        TextButton(
-          child: const Text(
-            'Quiz',
-            style: TextStyle(color: Hue.text),
-          ),
-          onPressed: () {
-            Navigator.of(context).pushNamed('Quiz');
-          },
-        ),
       ]),
     );
   }

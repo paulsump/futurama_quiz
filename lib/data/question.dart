@@ -13,3 +13,4 @@ class Question {
   final List<String> possibleAnswers;
   final String correctAnswer;
 }
+
