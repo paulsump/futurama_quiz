@@ -39,18 +39,24 @@ class _Sayings {
   List<String> get sayings {
     if (hasShortSayings) {
       return shortSayings;
-    } else {
-      return _sayings.map<String>((s) => s.toString()).toList();
     }
+
+    final medium = getShortSayings(40).toList();
+
+    if (medium.isNotEmpty) {
+      return medium;
+    }
+
+    return _sayings.map<String>((s) => s.toString()).toList();
   }
 
-  List<String> get shortSayings => _shortSayings.toList();
+  List<String> get shortSayings => getShortSayings(30).toList();
 
-  Iterable<String> get _shortSayings sync* {
+  Iterable<String> getShortSayings(int length) sync* {
     for (dynamic saying in _sayings) {
       final shortSaying = saying.toString();
 
-      if (shortSaying.length < 30) {
+      if (shortSaying.length < length) {
         yield shortSaying;
       }
     }
