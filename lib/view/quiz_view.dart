@@ -25,7 +25,7 @@ class QuestionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final quizNotifier = getStateNotifier(context, listen: false);
+    final quizNotifier = getQuizNotifier(context, listen: false);
     final apiNotifier = getApiNotifier(context, listen: true);
 
     quizNotifier.setCurrentQuestion(apiNotifier.questions[0]);
@@ -44,18 +44,12 @@ class QuestionView extends StatelessWidget {
   }
 }
 
-// can simple logic go here?
-class Score {
-  int correct = 0;
-  int incorrect = 0;
-}
-
 //TODO DIsplay this at the top right? on a stack?
 class _Score extends StatelessWidget {
   const _Score({Key? key}) : super(key: key);
 
   String getQuestionNumberString(BuildContext context) {
-    final quizNotifier = getStateNotifier(context, listen: false);
+    final quizNotifier = getQuizNotifier(context, listen: false);
 
     final apiNotifier = getApiNotifier(context, listen: true);
     return '${quizNotifier.currentQuestion!.id} / ${apiNotifier.questions.length}';
