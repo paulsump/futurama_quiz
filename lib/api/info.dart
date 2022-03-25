@@ -10,7 +10,8 @@ class Info {
                 (creator) => _Creator(creator['name'], creator['url']))
             .toList(),
         id = json['id'] {
-    // TODO PIC for each paragraph
+    // TODO PIC for each paragraph?
+    // Probably not in case the api data changed.
     synopsis = _synopsis.replaceFirst('2999. ', '2999.\n\n');
     synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');
     synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');

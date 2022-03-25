@@ -20,7 +20,7 @@ class Hue {
   static final Color wireBottomRight = _getTweenBLtoBRColor(_t);
   static const Color wireBottomLeft = bottomLeft;
 
-  static const Color enabledIcon = bottomRight;
+  static const Color enabledIcon = text;
   static const Color text = Color(0xff095A49);
 
   static const Color background = Color(0xff70E3A2);

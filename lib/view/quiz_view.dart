@@ -3,6 +3,7 @@ import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/state/quiz_notifier.dart';
 import 'package:futurama_quiz/view/big_back_button.dart';
 import 'package:futurama_quiz/view/cage.dart';
+import 'package:futurama_quiz/view/screen_adjust.dart';
 
 class QuizView extends StatelessWidget {
   const QuizView({Key? key}) : super(key: key);
@@ -20,9 +21,18 @@ class QuizView extends StatelessWidget {
   }
 }
 
-class QuestionView extends StatelessWidget {
+enum Answer { one, two, three, four, five, six, seven, eight, nine, ten }
+
+var _answer = Answer.one;
+
+class QuestionView extends StatefulWidget {
   const QuestionView({Key? key}) : super(key: key);
 
+  @override
+  State<QuestionView> createState() => _QuestionViewState();
+}
+
+class _QuestionViewState extends State<QuestionView> {
   @override
   Widget build(BuildContext context) {
     final quizNotifier = getQuizNotifier(context, listen: false);
@@ -34,9 +44,29 @@ class QuestionView extends StatelessWidget {
     return apiNotifier.haveQuestions
         ? Column(
             children: [
-              Text(question.id.toString()),
+              Padding(
+                padding: EdgeInsets.all(screenAdjust(0.13, context)),
+                child: const _QuestionNumber(),
+              ),
               Text(question.question),
-              for (final answer in question.possibleAnswers) Text(answer),
+              Padding(
+                padding: EdgeInsets.all(screenAdjust(0.13, context)),
+                child: Column(
+                  children: <Widget>[
+                    for (int i = 0; i < question.possibleAnswers.length; ++i)
+                      ListTile(
+                        title: Text(question.possibleAnswers[i]),
+                        leading: Radio<Answer>(
+                            value: Answer.values[i],
+                            groupValue: _answer,
+                            onChanged: (Answer? value) {
+                              _answer = value!;
+                              setState(() {});
+                            }),
+                      )
+                  ],
+                ),
+              ),
               Text(question.correctAnswer),
             ],
           )
