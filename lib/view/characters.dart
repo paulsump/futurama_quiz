@@ -28,6 +28,12 @@ class CharacterListView extends StatelessWidget {
                         },
                         child: _CharacterThumbnail(character: character)),
                   ),
+                TextButton(
+                  child: const Text('Ok'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
               ],
             ),
           )

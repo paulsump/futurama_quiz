@@ -24,6 +24,15 @@ class HomePage extends StatelessWidget {
             Navigator.of(context).pushNamed('Characters');
           },
         ),
+        TextButton(
+          child: const Text(
+            'Quiz',
+            style: TextStyle(color: Hue.text),
+          ),
+          onPressed: () {
+            Navigator.of(context).pushNamed('Quiz');
+          },
+        ),
       ]),
     );
   }

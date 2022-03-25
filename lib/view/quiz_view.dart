@@ -8,7 +8,18 @@ class QuizView extends StatelessWidget {
   //TODO MANage QuestionView etc
   @override
   Widget build(BuildContext context) {
-    return Cage(child: Container());
+    return Cage(
+        child: Column(
+      children: [
+        const QuestionView(),
+        TextButton(
+          child: const Text('Ok'),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ],
+    ));
   }
 }
 
@@ -20,7 +31,7 @@ class QuestionView extends StatelessWidget {
     final dataNotifier = getDataNotifier(context, listen: true);
 
     return dataNotifier.haveQuestions
-        ? Cage(child: Text(dataNotifier.questions[0].question))
+        ? Text(dataNotifier.questions[0].question)
         : Container();
   }
 }
