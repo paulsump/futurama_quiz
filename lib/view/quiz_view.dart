@@ -30,8 +30,18 @@ class QuestionView extends StatelessWidget {
   Widget build(BuildContext context) {
     final dataNotifier = getDataNotifier(context, listen: true);
 
+    dataNotifier.setCurrentQuestion(dataNotifier.questions[0]);
+    final question = dataNotifier.currentQuestion!;
+
     return dataNotifier.haveQuestions
-        ? Text(dataNotifier.questions[0].question)
+        ? Column(
+            children: [
+              Text(question.id.toString()),
+              Text(question.question),
+              for (final answer in question.possibleAnswers) Text(answer),
+              Text(question.correctAnswer),
+            ],
+          )
         : Container();
   }
 }

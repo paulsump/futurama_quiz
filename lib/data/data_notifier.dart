@@ -22,6 +22,7 @@ class DataNotifier extends ChangeNotifier {
   bool haveQuestions = false;
 
   Character? currentCharacter;
+  Question? currentQuestion;
 
   /// The main starting point for the app data.
   /// Called only once.
@@ -59,5 +60,9 @@ class DataNotifier extends ChangeNotifier {
 
   void setCurrentCharacter(Character character) {
     currentCharacter = character;
+  }
+
+  void setCurrentQuestion(Question question) {
+    currentQuestion = question;
   }
 }
