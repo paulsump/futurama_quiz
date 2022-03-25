@@ -33,12 +33,15 @@ class QuestionView extends StatefulWidget {
 }
 
 class _QuestionViewState extends State<QuestionView> {
+  int currentQuestionIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     final quizNotifier = getQuizNotifier(context, listen: false);
     final apiNotifier = getApiNotifier(context, listen: true);
 
-    quizNotifier.setCurrentQuestion(apiNotifier.questions[0]);
+    quizNotifier
+        .setCurrentQuestion(apiNotifier.questions[currentQuestionIndex]);
     final question = quizNotifier.currentQuestion!;
 
     return apiNotifier.haveQuestions
@@ -50,13 +53,13 @@ class _QuestionViewState extends State<QuestionView> {
               ),
               Text(question.question),
               Padding(
-                padding: EdgeInsets.all(screenAdjust(0.13, context)),
-                child: Column(
-                  children: <Widget>[
-                    for (int i = 0; i < question.possibleAnswers.length; ++i)
-                      ListTile(
-                        title: Text(question.possibleAnswers[i]),
-                        leading: Radio<Answer>(
+          padding: EdgeInsets.all(screenAdjust(0.13, context)),
+          child: Column(
+            children: <Widget>[
+              for (int i = 0; i < question.possibleAnswers.length; ++i)
+                ListTile(
+                  title: Text(question.possibleAnswers[i]),
+                  leading: Radio<Answer>(
                             value: Answer.values[i],
                             groupValue: _answer,
                             onChanged: (Answer? value) {
@@ -67,14 +70,21 @@ class _QuestionViewState extends State<QuestionView> {
                   ],
                 ),
               ),
-              Text(question.correctAnswer),
+              TextButton(
+                child: const Text('Final Answer'),
+                onPressed: () {
+                  quizNotifier.submitFinalAnswer(_answer.index);
+
+                  currentQuestionIndex += 1;
+                  setState(() {});
+                },
+              ),
             ],
-          )
+    )
         : Container();
   }
 }
 
-//TODO DIsplay this at the top
 class _QuestionNumber extends StatelessWidget {
   const _QuestionNumber({Key? key}) : super(key: key);
 

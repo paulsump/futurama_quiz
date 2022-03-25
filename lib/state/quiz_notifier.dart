@@ -14,6 +14,16 @@ class QuizNotifier extends ChangeNotifier {
   void setCurrentQuestion(Question question) {
     currentQuestion = question;
   }
+
+  void submitFinalAnswer(int answerIndex) {
+    final question = currentQuestion!;
+
+    if (question.correctAnswer == question.possibleAnswers[answerIndex]) {
+      score.correct += 1;
+    } else {
+      score.incorrect += 1;
+    }
+  }
 }
 
 class Score {
