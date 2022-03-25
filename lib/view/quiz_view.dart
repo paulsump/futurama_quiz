@@ -48,16 +48,19 @@ class _QuestionViewState extends State<QuestionView> {
 
     return Stack(
       children: [
-        // TODO replace paddings with something that works in landscape orientation
         Transform.translate(
-          offset: const Offset(1, 1) * (screenAdjust(0.13, context)),
-          child: Text(_getQuestionNumberString(context)),
+          offset: const Offset(1, 1) * screenAdjust(0.13, context),
+          child: Text(
+              '${quizNotifier.currentQuestion!.id} / ${apiNotifier.questions.length}'),
         ),
         Transform.translate(
-            offset: const Offset(1, 2) * (screenAdjust(0.13, context)),
-            child: Text(question.question)),
+          offset: const Offset(1, 2) * screenAdjust(0.13, context),
+          child: SizedBox(
+              width: screenAdjust(isPortrait(context) ? 0.73 : 2.3, context),
+              child: Text(question.question)),
+        ),
         Transform.translate(
-          offset: const Offset(1, 3) * (screenAdjust(0.13, context)),
+          offset: const Offset(1, 3) * screenAdjust(0.13, context),
           child: Column(
             children: <Widget>[
               for (int i = 0; i < question.possibleAnswers.length; ++i)
@@ -73,7 +76,7 @@ class _QuestionViewState extends State<QuestionView> {
                 ),
               if (_answer != null)
                 Transform.translate(
-                  offset: const Offset(-2, 1) * (screenAdjust(0.13, context)),
+                  offset: const Offset(-2, 1) * screenAdjust(0.13, context),
                   child: TextButton(
                     child: const Text('Final Answer'),
                     onPressed: () {
@@ -92,17 +95,10 @@ class _QuestionViewState extends State<QuestionView> {
           ),
         ),
         Transform.translate(
-          offset: const Offset(5, 0) * (screenAdjust(0.13, context)),
+          offset: const Offset(5, 0) * screenAdjust(0.13, context),
           child: Text('${score.correct} right, ${score.incorrect} wrong.'),
         ),
       ],
     );
-  }
-
-  String _getQuestionNumberString(BuildContext context) {
-    final quizNotifier = getQuizNotifier(context, listen: true);
-
-    final apiNotifier = getApiNotifier(context, listen: true);
-    return '${quizNotifier.currentQuestion!.id} / ${apiNotifier.questions.length}';
   }
 }
