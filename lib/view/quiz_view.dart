@@ -10,7 +10,7 @@ class QuizView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Cage(
-        child: Column(
+        child: Stack(
       children: const [
         QuestionView(),
         BigBackButton(),

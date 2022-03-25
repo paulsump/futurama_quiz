@@ -17,18 +17,23 @@ class CharacterListView extends StatelessWidget {
 
     return dataNotifier.haveCharacters
         ? Cage(
-            child: ListView(
+            child: Stack(
               children: [
-                for (final character in dataNotifier.characters)
-                  SizedBox(
-                    height: screenAdjust(0.4, context),
-                    child: TextButton(
-                        onPressed: () {
-                          dataNotifier.setCurrentCharacter(character);
-                          Navigator.of(context).pushNamed('CharacterBiography');
-                        },
-                        child: _CharacterThumbnail(character: character)),
-                  ),
+                ListView(
+                  children: [
+                    for (final character in dataNotifier.characters)
+                      SizedBox(
+                        height: screenAdjust(0.4, context),
+                        child: TextButton(
+                            onPressed: () {
+                              dataNotifier.setCurrentCharacter(character);
+                              Navigator.of(context)
+                                  .pushNamed('CharacterBiography');
+                            },
+                            child: _CharacterThumbnail(character: character)),
+                      ),
+                  ],
+                ),
                 const BigBackButton(),
               ],
             ),
@@ -46,10 +51,12 @@ class CharacterBiography extends StatelessWidget {
 
     final character = dataNotifier.currentCharacter!;
     return Cage(
-      child: Column(children: [
-        Expanded(child: Image.network(character.image)),
-        Text(character.name),
-        // TODO add the other character fields
+      child: Stack(children: [
+        Column(children: [
+          Expanded(child: Image.network(character.image)),
+          Text(character.name),
+          // TODO add the other character fields
+        ]),
         const BigBackButton(),
       ]),
     );
