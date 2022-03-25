@@ -50,10 +50,12 @@ class Biography extends StatelessWidget {
         Column(children: [
           Expanded(child: Image.network(character.image)),
           Text(character.name),
+          SizedBox(height: screenAdjust(0.04, context)),
           Text(character.gender),
           Text(character.species),
-          Text(character.homePlanet),
+          if (character.homePlanet.isNotEmpty) Text(character.homePlanet),
           Text(character.occupation),
+          SizedBox(height: screenAdjust(0.04, context)),
           for (final saying in character.sayings) Text(saying)
         ]),
         const BigBackButton(),

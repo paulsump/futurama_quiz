@@ -9,8 +9,7 @@ class Character {
         _images = _Images.fromJson(json['images']),
         gender = json['gender'],
         species = json['species'],
-        homePlanet =
-            json.containsKey('homePlanet') ? json['homePlanet'] : 'Unknown',
+        homePlanet = json.containsKey('homePlanet') ? json['homePlanet'] : '',
         occupation = json['occupation'],
         _sayings = _Sayings(json['sayings']);
 
@@ -33,6 +32,8 @@ class Character {
 
 class _Sayings {
   _Sayings(this._sayings);
+
+  final List<dynamic> _sayings;
 
   bool get hasShortSayings => shortSayings.isNotEmpty;
 
@@ -57,12 +58,10 @@ class _Sayings {
       final shortSaying = saying.toString();
 
       if (shortSaying.length < length) {
-        yield shortSaying;
+        yield '"$shortSaying"';
       }
     }
   }
-
-  final List<dynamic> _sayings;
 }
 
 class _Name {
