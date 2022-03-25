@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/data/question.dart';
+import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/character_list_view.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/info_view.dart';
@@ -14,29 +15,23 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: Hue.background,
-        child: SafeArea(
-          left: false,
-          child: Column(children: [
-            // TODO maybe pic of Fry here 'cause info talks about him?
-            // if so, this could be loaded from assets
-            const InfoView(),
-            TextButton(
-              child: const Text(
-                'Characters',
-                style: TextStyle(color: Hue.text),
-              ),
-              onPressed: () {
-                Navigator.of(context).pushNamed('Characters');
-              },
-            ),
-            // CharacterListView(),
-            // QuestionView(),
-          ]),
+    return Cage(
+      child: Column(children: [
+        // TODO maybe pic of Fry here 'cause info talks about him?
+        // if so, this could be loaded from assets
+        const InfoView(),
+        TextButton(
+          child: const Text(
+            'Characters',
+            style: TextStyle(color: Hue.text),
+          ),
+          onPressed: () {
+            Navigator.of(context).pushNamed('Characters');
+          },
         ),
-      ),
+        // CharacterListView(),
+        // QuestionView(),
+      ]),
     );
   }
 }
