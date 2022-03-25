@@ -11,30 +11,36 @@ class InfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final apiNotifier = getApiNotifier(context, listen: true);
+
     return Cage(
       child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              TextButton(
-                child: const Text(
-                  'Characters',
-                  style: TextStyle(color: Hue.text),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed('Characters');
-                },
-              ),
-              TextButton(
-                child: const Text(
-                  'Quiz',
-                  style: TextStyle(color: Hue.text),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed('Quiz');
-                },
-              ),
+              apiNotifier.haveCharacters
+                  ? TextButton(
+                      child: const Text(
+                        'Characters',
+                        style: TextStyle(color: Hue.text),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('Characters');
+                      },
+                    )
+                  : Container(),
+              apiNotifier.haveQuestions
+                  ? TextButton(
+                      child: const Text(
+                        'Quiz',
+                        style: TextStyle(color: Hue.text),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('Quiz');
+                      },
+                    )
+                  : Container(),
             ],
           ),
           Expanded(

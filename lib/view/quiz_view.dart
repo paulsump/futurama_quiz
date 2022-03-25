@@ -43,52 +43,50 @@ class _QuestionViewState extends State<QuestionView> {
     quizNotifier.setCurrentQuestion(questions[currentQuestionIndex]);
     final question = quizNotifier.currentQuestion!;
 
-    return apiNotifier.haveQuestions
-        ? Column(
-            children: [
-              // TODO replace paddings with something that works in landscape orientation
-              Padding(
-                padding: EdgeInsets.all(screenAdjust(0.13, context)),
-                child: Text(_getQuestionNumberString(context)),
-              ),
-              Padding(
-                  padding: EdgeInsets.all(screenAdjust(0.13, context)),
-                  child: Text(question.question)),
-              Padding(
-                padding: EdgeInsets.all(screenAdjust(0.13, context)),
-                child: Column(
-                  children: <Widget>[
-                    for (int i = 0; i < question.possibleAnswers.length; ++i)
-                      ListTile(
-                        title: Text(question.possibleAnswers[i]),
-                        leading: Radio<Answer>(
-                            value: Answer.values[i],
-                            groupValue: _answer,
-                            onChanged: (Answer? value) {
-                              _answer = value!;
-                              setState(() {});
-                            }),
-                      )
-                  ],
-                ),
-              ),
-              if (_answer != null)
-                TextButton(
-                  child: const Text('Final Answer'),
-                  onPressed: () {
-                    quizNotifier.submitFinalAnswer(_answer!.index);
-                    _answer = null;
-
-                    currentQuestionIndex += 1;
-                    if (currentQuestionIndex == questions.length) {
-                      Navigator.of(context).pushNamed('Results');
-                    }
-                    setState(() {});
-                  },
-                ),
+    return Column(
+      children: [
+        // TODO replace paddings with something that works in landscape orientation
+        Padding(
+          padding: EdgeInsets.all(screenAdjust(0.13, context)),
+          child: Text(_getQuestionNumberString(context)),
+        ),
+        Padding(
+            padding: EdgeInsets.all(screenAdjust(0.13, context)),
+            child: Text(question.question)),
+        Padding(
+          padding: EdgeInsets.all(screenAdjust(0.13, context)),
+          child: Column(
+            children: <Widget>[
+              for (int i = 0; i < question.possibleAnswers.length; ++i)
+                ListTile(
+                  title: Text(question.possibleAnswers[i]),
+                  leading: Radio<Answer>(
+                      value: Answer.values[i],
+                      groupValue: _answer,
+                      onChanged: (Answer? value) {
+                        _answer = value!;
+                        setState(() {});
+                      }),
+                )
             ],
-          )
-        : Container();
+          ),
+        ),
+        if (_answer != null)
+          TextButton(
+            child: const Text('Final Answer'),
+            onPressed: () {
+              quizNotifier.submitFinalAnswer(_answer!.index);
+              _answer = null;
+
+              currentQuestionIndex += 1;
+              if (currentQuestionIndex == questions.length) {
+                Navigator.of(context).pushNamed('Results');
+              }
+              setState(() {});
+            },
+          ),
+      ],
+    );
   }
 
   String _getQuestionNumberString(BuildContext context) {

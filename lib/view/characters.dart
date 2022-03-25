@@ -15,30 +15,27 @@ class CharacterListView extends StatelessWidget {
   Widget build(BuildContext context) {
     final apiNotifier = getApiNotifier(context, listen: true);
 
-    return apiNotifier.haveCharacters
-        ? Cage(
-            child: Stack(
-              children: [
-                ListView(
-                  children: [
-                    for (final character in apiNotifier.characters)
-                      SizedBox(
-                        height: screenAdjust(0.4, context),
-                        child: TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pushNamed(
-                                  'CharacterBiography',
-                                  arguments: character);
-                            },
-                            child: _CharacterThumbnail(character: character)),
-                      ),
-                  ],
+    return Cage(
+      child: Stack(
+        children: [
+          ListView(
+            children: [
+              for (final character in apiNotifier.characters)
+                SizedBox(
+                  height: screenAdjust(0.4, context),
+                  child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('CharacterBiography',
+                            arguments: character);
+                      },
+                      child: _CharacterThumbnail(character: character)),
                 ),
-                const BigBackButton(),
-              ],
-            ),
-          )
-        : Container();
+            ],
+          ),
+          const BigBackButton(),
+        ],
+      ),
+    );
   }
 }
 
