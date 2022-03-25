@@ -3,15 +3,25 @@
 class Info {
   Info.fromJson(Map<String, dynamic> json)
       //TODO CHeck if containsKey()
-      : synopsis = json['synopsis'],
+      : _synopsis = json['synopsis'],
         yearsAired = json['yearsAired'],
         _creators = json['creators']
             .map<_Creator>(
                 (creator) => _Creator(creator['name'], creator['url']))
             .toList(),
-        id = json['id'];
+        id = json['id'] {
+    // TODO PIC for each paragraph
+    synopsis = _synopsis.replaceFirst('2999. ', '2999.\n\n');
+    synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');
+    synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');
+    synopsis = synopsis.replaceFirst('forgetful. ', 'forgetful.\n\n');
+    synopsis = synopsis.replaceFirst('hip. ', 'hip.\n\n');
+    synopsis = synopsis.replaceFirst('look. ', 'look.\n\n');
+    synopsis = synopsis.replaceFirst('humans. ', 'humans.\n\n');
+  }
 
-  final String synopsis;
+  final String _synopsis;
+  late String synopsis;
   final String yearsAired;
 
   Iterable<String> get creatorNames sync* {
