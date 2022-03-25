@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/data/character.dart';
-import 'package:futurama_quiz/data/fetcher.dart';
-import 'package:futurama_quiz/data/info.dart';
-import 'package:futurama_quiz/data/question.dart';
+import 'package:futurama_quiz/api/character.dart';
+import 'package:futurama_quiz/api/fetcher.dart';
+import 'package:futurama_quiz/api/info.dart';
+import 'package:futurama_quiz/api/question.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
-DataNotifier getDataNotifier(BuildContext context, {required bool listen}) =>
-    Provider.of<DataNotifier>(context, listen: listen);
+ApiNotifier getApiNotifier(BuildContext context, {required bool listen}) =>
+    Provider.of<ApiNotifier>(context, listen: listen);
 
-class DataNotifier extends ChangeNotifier {
+/// Everything that's fetched from the api (with http)
+class ApiNotifier extends ChangeNotifier {
   bool initializeHasBeenCalled = false;
 
   late Info info;

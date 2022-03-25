@@ -1,8 +1,8 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/data/character.dart';
-import 'package:futurama_quiz/data/data_notifier.dart';
+import 'package:futurama_quiz/api/api_notifier.dart';
+import 'package:futurama_quiz/api/character.dart';
 import 'package:futurama_quiz/view/big_back_button.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/hue.dart';
@@ -13,15 +13,15 @@ class CharacterListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dataNotifier = getDataNotifier(context, listen: true);
+    final apiNotifier = getApiNotifier(context, listen: true);
 
-    return dataNotifier.haveCharacters
+    return apiNotifier.haveCharacters
         ? Cage(
             child: Stack(
               children: [
                 ListView(
                   children: [
-                    for (final character in dataNotifier.characters)
+                    for (final character in apiNotifier.characters)
                       SizedBox(
                         height: screenAdjust(0.4, context),
                         child: TextButton(

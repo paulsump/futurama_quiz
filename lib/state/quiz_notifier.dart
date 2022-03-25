@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/data/question.dart';
+import 'package:futurama_quiz/api/question.dart';
 import 'package:provider/provider.dart';
 
 QuizNotifier getStateNotifier(BuildContext context, {required bool listen}) =>

@@ -3,7 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/data/data_notifier.dart';
+import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/state/quiz_notifier.dart';
 import 'package:futurama_quiz/view/characters.dart';
@@ -27,7 +27,7 @@ class _App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => DataNotifier()),
+        ChangeNotifierProvider(create: (_) => ApiNotifier()),
         ChangeNotifierProvider(create: (_) => QuizNotifier()),
       ],
       child: MaterialApp(
@@ -41,11 +41,11 @@ class _App extends StatelessWidget {
             if (constraints.maxHeight == 0) {
               return Container();
             } else {
-              final dataNotifier = getDataNotifier(context, listen: false);
+              final apiNotifier = getApiNotifier(context, listen: false);
 
               // Initialize once only
-              if (!dataNotifier.initializeHasBeenCalled) {
-                unawaited(dataNotifier.initialize(context));
+              if (!apiNotifier.initializeHasBeenCalled) {
+                unawaited(apiNotifier.initialize(context));
               }
 
               return const HomePage();

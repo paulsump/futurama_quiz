@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/data/data_notifier.dart';
+import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/state/quiz_notifier.dart';
 import 'package:futurama_quiz/view/big_back_button.dart';
 import 'package:futurama_quiz/view/cage.dart';
@@ -26,12 +26,12 @@ class QuestionView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final quizNotifier = getStateNotifier(context, listen: false);
-    final dataNotifier = getDataNotifier(context, listen: true);
+    final apiNotifier = getApiNotifier(context, listen: true);
 
-    quizNotifier.setCurrentQuestion(dataNotifier.questions[0]);
+    quizNotifier.setCurrentQuestion(apiNotifier.questions[0]);
     final question = quizNotifier.currentQuestion!;
 
-    return dataNotifier.haveQuestions
+    return apiNotifier.haveQuestions
         ? Column(
             children: [
               Text(question.id.toString()),
@@ -57,13 +57,13 @@ class _Score extends StatelessWidget {
   String getQuestionNumberString(BuildContext context) {
     final quizNotifier = getStateNotifier(context, listen: false);
 
-    final dataNotifier = getDataNotifier(context, listen: true);
-    return '${quizNotifier.currentQuestion!.id} / ${dataNotifier.questions.length}';
+    final apiNotifier = getApiNotifier(context, listen: true);
+    return '${quizNotifier.currentQuestion!.id} / ${apiNotifier.questions.length}';
   }
 
   @override
   Widget build(BuildContext context) {
-    final dataNotifier = getDataNotifier(context, listen: true);
+    final apiNotifier = getApiNotifier(context, listen: true);
     return Text('');
   }
 }
