@@ -80,9 +80,9 @@ class _QuestionViewState extends State<QuestionView> {
                     _answer = null;
 
                     currentQuestionIndex += 1;
-                    // if (currentQuestionIndex == questions.length){
-                    Navigator.of(context).pushNamed('Results');
-                    // }
+                    if (currentQuestionIndex == questions.length) {
+                      Navigator.of(context).pushNamed('Results');
+                    }
                     setState(() {});
                   },
                 ),

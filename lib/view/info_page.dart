@@ -6,8 +6,8 @@ import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class InfoPage extends StatelessWidget {
+  const InfoPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

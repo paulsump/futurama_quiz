@@ -7,8 +7,8 @@ import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/state/quiz_notifier.dart';
 import 'package:futurama_quiz/view/characters.dart';
-import 'package:futurama_quiz/view/home_page.dart';
 import 'package:futurama_quiz/view/hue.dart';
+import 'package:futurama_quiz/view/info_page.dart';
 import 'package:futurama_quiz/view/quiz_view.dart';
 import 'package:futurama_quiz/view/results_view.dart';
 import 'package:provider/provider.dart';
@@ -49,12 +49,12 @@ class _App extends StatelessWidget {
                 unawaited(apiNotifier.initialize(context));
               }
 
-              return const HomePage();
+              return const InfoPage();
             }
           },
         ),
         routes: {
-          'Home': (context) => const HomePage(),
+          'Home': (context) => const InfoPage(),
           'Characters': (context) => const CharacterListView(),
           'CharacterBiography': (context) => const CharacterBiography(),
           'Quiz': (context) => const QuizView(),
