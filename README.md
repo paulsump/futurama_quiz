@@ -11,14 +11,11 @@
 - display error on screen if no internet
 - don't add any info, characters or questions that had bad date (catch them).
 - adjust Font size for different screens. e.g. answers.
-- SnackBar delay is long, so need to cancel it if already on a couple of questions ahead. Probably
-  wouldn't happen if doing the quiz properly.
 
 ## To do
 
 - Borders.
 - More obvious buttons.
-- SnackBar text color.
 - Check all TODOs
 - remove all hacks
 - Check able to run on any device
@@ -34,11 +31,5 @@
 - tool tips
 - dark theme
 - Click on text to choose radio. Fry starts big then animates small when haveInfo API.
-- Tick and cross icons on core and snackBar. Hero animations.
 
-### Ideas (Later/Never)
-
-- Consistent font e.g. is snackBar different?
-- Random character avatars e.g. on snackBar.
-- //Pick character... Character then uses tube lift in quiz.
 

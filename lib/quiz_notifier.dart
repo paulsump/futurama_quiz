@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:futurama_quiz/api/question.dart';
+import 'package:futurama_quiz/out.dart';
 import 'package:provider/provider.dart';
+
+const noWarn = [out, Question];
 
 QuizNotifier getQuizNotifier(BuildContext context, {required bool listen}) =>
     Provider.of<QuizNotifier>(context, listen: listen);
@@ -9,12 +13,25 @@ class QuizNotifier extends ChangeNotifier {
   int currentQuestionIndex = 27; //hack
 
   var score = Score();
+  var message = '';
 
   void restart() {
     score.reset();
 
     currentQuestionIndex = 0;
     notifyListeners();
+  }
+
+  void updateScoreMessage(int answerIndex, Question question) {
+    if (question.correctAnswer == question.possibleAnswers[answerIndex]) {
+      score.correct += 1;
+
+      message = 'Correct!';
+    } else {
+      score.incorrect += 1;
+
+      message = '\nSorry, the correct answer was\n"${question.correctAnswer}".';
+    }
   }
 }
 

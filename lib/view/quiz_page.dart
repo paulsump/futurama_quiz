@@ -4,7 +4,6 @@ import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
-import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
 const noWarn = out;
@@ -66,10 +65,10 @@ class _QuestionViewState extends State<QuestionView> {
               )),
         ),
         Adjusted(
-          isPortrait(context) ? 1 : 9,
+          isPortrait(context) ? 1 : 8,
           isPortrait(context) ? 5 : 0.5,
           SizedBox(
-            width: screenAdjust(0.8, context),
+            width: screenAdjust(0.9, context),
             child: Column(
               children: <Widget>[
                 for (int i = 0; i < question.possibleAnswers.length; ++i)
@@ -97,21 +96,8 @@ class _QuestionViewState extends State<QuestionView> {
                     TextButton(
                       child: const Text('Final Answer'),
                       onPressed: () {
-                        var message = 'Correct!';
-
-                        if (question.correctAnswer ==
-                            question.possibleAnswers[_answer!.index]) {
-                          score.correct += 1;
-                        } else {
-                          score.incorrect += 1;
-                          message =
-                              'Sorry, the correct answer was "${question.correctAnswer}".';
-                        }
-
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          backgroundColor: Hue.tileBackground,
-                          content: Text(message),
-                        ));
+                        quizNotifier.updateScoreMessage(
+                            _answer!.index, question);
 
                         _answer = null;
                         quizNotifier.currentQuestionIndex += 1;
@@ -119,6 +105,7 @@ class _QuestionViewState extends State<QuestionView> {
                         if (quizNotifier.currentQuestionIndex ==
                             questions.length) {
                           quizNotifier.currentQuestionIndex = 0;
+
                           Navigator.of(context).pushReplacementNamed('Results');
                         } else {
                           setState(() {});
@@ -131,9 +118,10 @@ class _QuestionViewState extends State<QuestionView> {
           ),
         ),
         Adjusted(
-          isPortrait(context) ? 5 : 1,
-          isPortrait(context) ? 1 : 6,
-          Text('${score.correct} right, ${score.incorrect} wrong.'),
+          isPortrait(context) ? 1 : 1,
+          isPortrait(context) ? 11 : 4,
+          Text(
+              '${quizNotifier.message}\n\n${score.correct} right, ${score.incorrect} wrong.'),
         ),
       ],
     );
