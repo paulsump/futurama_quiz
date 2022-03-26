@@ -2,8 +2,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/api/character.dart';
-import 'package:futurama_quiz/api/info.dart';
-import 'package:futurama_quiz/api/question.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
@@ -93,4 +91,68 @@ class _Fetcher {
       throw Exception('Fetch failed. (${response.statusCode})($url)');
     }
   }
+}
+
+/// General Futurama information for the homepage.
+class Info {
+  Info.fromJson(Map<String, dynamic> json)
+      //TODO CHeck if containsKey()
+      : _synopsis = json['synopsis'],
+        yearsAired = json['yearsAired'],
+        _creators = json['creators']
+            .map<_Creator>(
+                (creator) => _Creator(creator['name'], creator['url']))
+            .toList(),
+        id = json['id'] {
+    // TODO PIC for each paragraph?
+    // Probably not in case the api data changed.
+    synopsis = _synopsis.replaceFirst('2999. ', '2999.\n\n');
+    synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');
+    synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');
+    synopsis = synopsis.replaceFirst('forgetful. ', 'forgetful.\n\n');
+    synopsis = synopsis.replaceFirst('hip. ', 'hip.\n\n');
+    synopsis = synopsis.replaceFirst('look. ', 'look.\n\n');
+    synopsis = synopsis.replaceFirst('humans. ', 'humans.\n\n');
+  }
+
+  final String _synopsis;
+  late String synopsis;
+  final String yearsAired;
+
+  Iterable<String> get creatorNames sync* {
+    for (final creator in _creators) {
+      yield creator.name;
+    }
+  }
+
+  final int id;
+
+  final List<_Creator> _creators;
+}
+
+/// for [Info]
+class _Creator {
+  _Creator(this.name, this.url);
+
+  final String name;
+  final String url;
+}
+
+/// For the quiz, this has everything you need for a question
+/// including question number (id), multiple choice
+/// and the correct answer.
+class Question {
+  Question.fromJson(Map<String, dynamic> json)
+      //TODO containsKey
+      : id = json['id'],
+        question = json['question'],
+        possibleAnswers = json['possibleAnswers']
+            .map<String>((answer) => answer.toString())
+            .toList(),
+        correctAnswer = json['correctAnswer'].toString();
+
+  final int id;
+  final String question;
+  final List<String> possibleAnswers;
+  final String correctAnswer;
 }
