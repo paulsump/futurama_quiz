@@ -73,7 +73,12 @@ class BiographyPage extends StatelessWidget {
     final padY = SizedBox(height: screenAdjust(0.04, context));
 
     return ConstrainedBox(
-      constraints: BoxConstraints(maxHeight: screenAdjust(0.6, context)),
+      constraints: BoxConstraints(
+        maxHeight: screenAdjust(
+          isPortrait(context) ? 0.9 : 0.8,
+          context,
+        ),
+      ),
       child: ListView(children: [
         Text(character.type),
         padY,

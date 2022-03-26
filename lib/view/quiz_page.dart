@@ -74,11 +74,12 @@ class _QuestionViewState extends State<QuestionView> {
               children: <Widget>[
                 for (int i = 0; i < question.possibleAnswers.length; ++i)
                   SizedBox(
-                    height: screenAdjust(0.1, context),
+                    height: screenAdjust(0.12, context),
                     child: ListTile(
                       title: Text(
                         question.possibleAnswers[i],
-                        style: TextStyle(fontSize: screenAdjust(0.03, context)),
+                        style:
+                            TextStyle(fontSize: screenAdjust(0.032, context)),
                       ),
                       leading: Radio<_Answer>(
                           value: _Answer.values[i],
