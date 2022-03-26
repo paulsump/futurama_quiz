@@ -1,7 +1,6 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/api/character.dart';
 import 'package:futurama_quiz/view/big_back_button.dart';
@@ -20,7 +19,8 @@ class CharactersPage extends StatelessWidget {
       child: Stack(
         children: [
           ListView(
-            scrollDirection: Axis.horizontal,
+            scrollDirection:
+                isPortrait(context) ? Axis.vertical : Axis.horizontal,
             children: [
               for (final character in apiNotifier.characters)
                 SizedBox(
@@ -54,22 +54,22 @@ class BiographyPage extends StatelessWidget {
           const BigBackButton(),
           Container(),
           Adjusted(
-            0.5,
-            isPortrait(context) ? 0.5 : 0.0,
+            isPortrait(context) ? 0.7 : 0.5,
+            isPortrait(context) ? 1.75 : 0.0,
             Stack(children: [
               Adjusted(1.5, 0.5, _buildThumbnail(context, character)),
               if (isPortrait(context))
                 Adjusted(
-                    1,
+                    1.2,
                     8,
                     SizedBox(
-                      width: screenAdjust(0.8, context),
+                      width: screenAdjust(0.6, context),
                       child: _buildWords(context, character),
                     ))
               else
                 Adjusted(
                     7,
-                    1,
+                    0.8,
                     SizedBox(
                         width: screenAdjust(1, context),
                         child: _buildWords(context, character))),
@@ -85,7 +85,9 @@ class BiographyPage extends StatelessWidget {
 
     return Column(children: [
       Container(
-          constraints: BoxConstraints(maxWidth: screenAdjust(0.63, context)),
+          constraints: BoxConstraints(
+              maxWidth:
+                  screenAdjust(isPortrait(context) ? 0.53 : 0.63, context)),
           height: screenAdjust(0.73, context),
           child: Image.network(character.image)),
       padY,
