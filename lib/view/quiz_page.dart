@@ -49,25 +49,26 @@ class _QuestionViewState extends State<QuestionView> {
     return Stack(
       children: [
         Container(),
-        Adjusted(
-          isPortrait(context) ? 2.5 : 4.0,
-          isPortrait(context) ? 2 : 1,
-          Text('Question ${question.id} of ${fetchNotifier.questions.length}:'),
+        ScreenAdjust(
+          x: isPortrait(context) ? 2.5 : 4.0,
+          y: isPortrait(context) ? 2 : 1,
+          child: Text(
+              'Question ${question.id} of ${fetchNotifier.questions.length}:'),
         ),
-        Adjusted(
-          isPortrait(context) ? 1 : 2,
-          isPortrait(context) ? 3 : 2,
-          SizedBox(
+        ScreenAdjust(
+          x: isPortrait(context) ? 1 : 2,
+          y: isPortrait(context) ? 3 : 2,
+          child: SizedBox(
               width: screenAdjust(isPortrait(context) ? 0.73 : 0.9, context),
               child: Text(
                 question.question,
                 style: const TextStyle(fontWeight: FontWeight.bold),
               )),
         ),
-        Adjusted(
-          isPortrait(context) ? 1 : 8,
-          isPortrait(context) ? 5 : 0.5,
-          SizedBox(
+        ScreenAdjust(
+          x: isPortrait(context) ? 1 : 8,
+          y: isPortrait(context) ? 5 : 0.5,
+          child: SizedBox(
             width: screenAdjust(0.9, context),
             child: Column(
               children: <Widget>[
@@ -90,10 +91,10 @@ class _QuestionViewState extends State<QuestionView> {
                     ),
                   ),
                 if (_answer != null)
-                  Adjusted(
-                    isPortrait(context) ? 1 : 0,
-                    0.5,
-                    TextButton(
+                  ScreenAdjust(
+                    x: isPortrait(context) ? 1 : 0,
+                    y: 0.5,
+                    child: TextButton(
                       child: const Text('Final Answer'),
                       onPressed: () {
                         quizNotifier.updateScoreMessage(
@@ -117,10 +118,10 @@ class _QuestionViewState extends State<QuestionView> {
             ),
           ),
         ),
-        Adjusted(
-          isPortrait(context) ? 1 : 1,
-          isPortrait(context) ? 11 : 4,
-          Text(
+        ScreenAdjust(
+          x: isPortrait(context) ? 1 : 1,
+          y: isPortrait(context) ? 11 : 4,
+          child: Text(
               '${quizNotifier.message}\n\n${score.correct} right, ${score.incorrect} wrong.'),
         ),
       ],
@@ -141,15 +142,15 @@ class ResultsPage extends StatelessWidget {
       children: [
         const CancelButton(),
         //TODO Animate this hero onto ResultsView
-        Adjusted(
-          isPortrait(context) ? 3 : 8,
-          isPortrait(context) ? 3 : 2.5,
-          Text('${score.correct} right,\n${score.incorrect} wrong.'),
+        ScreenAdjust(
+          x: isPortrait(context) ? 3 : 8,
+          y: isPortrait(context) ? 3 : 2.5,
+          child: Text('${score.correct} right,\n${score.incorrect} wrong.'),
         ),
-        Adjusted(
-          isPortrait(context) ? 3 : 7.5,
-          isPortrait(context) ? 6 : 4,
-          TextButton(
+        ScreenAdjust(
+          x: isPortrait(context) ? 3 : 7.5,
+          y: isPortrait(context) ? 6 : 4,
+          child: TextButton(
             child: const Text('Restart Quiz'),
             onPressed: () {
               quizNotifier.restart();

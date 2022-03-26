@@ -18,10 +18,10 @@ class CharactersPage extends StatelessWidget {
     return Cage(
       child: Stack(
         children: [
-          Adjusted(
-            0,
-            isPortrait(context) ? 0 : 1.5,
-            ListView(
+          ScreenAdjust(
+            x: 0,
+            y: isPortrait(context) ? 0 : 1.5,
+            child: ListView(
               scrollDirection:
                   isPortrait(context) ? Axis.vertical : Axis.horizontal,
               children: [

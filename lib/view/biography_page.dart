@@ -6,6 +6,8 @@ import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
+/// Character Biography - Info on a person/alien
+/// including a subset of his/her famous sayings.
 class BiographyPage extends StatelessWidget {
   const BiographyPage({Key? key}) : super(key: key);
 
@@ -18,29 +20,29 @@ class BiographyPage extends StatelessWidget {
         children: [
           const CancelButton(),
           Container(),
-          Adjusted(
-            isPortrait(context) ? 0.7 : 0.5,
-            isPortrait(context) ? 1.75 : 0.0,
-            Stack(children: [
-              Adjusted(
-                1.5,
-                isPortrait(context) ? -1 : 0.25,
-                _buildThumbnail(context, character),
+          ScreenAdjust(
+            x: isPortrait(context) ? 0.7 : 0.5,
+            y: isPortrait(context) ? 1.75 : 0.0,
+            child: Stack(children: [
+              ScreenAdjust(
+                x: 1.5,
+                y: isPortrait(context) ? -1 : 0.25,
+                child: _buildThumbnail(context, character),
               ),
               if (isPortrait(context))
-                Adjusted(
-                  0.9,
-                  6,
-                  SizedBox(
+                ScreenAdjust(
+                  x: 0.9,
+                  y: 6,
+                  child: SizedBox(
                     width: screenAdjust(0.6, context),
                     child: _buildWords(context, character),
                   ),
                 )
               else
-                Adjusted(
-                  7,
-                  0.8,
-                  SizedBox(
+                ScreenAdjust(
+                  x: 7,
+                  y: 0.8,
+                  child: SizedBox(
                       width: screenAdjust(1, context),
                       child: _buildWords(context, character)),
                 ),

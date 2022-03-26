@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/view/hue.dart';
 
-/// The basic frame / scaffold for all pages.
+/// A container frame / scaffold for all pages.
 class Cage extends StatelessWidget {
   final Widget child;
 
