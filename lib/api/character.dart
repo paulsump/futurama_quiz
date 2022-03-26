@@ -118,7 +118,7 @@ class _Images {
       : headShot = json['head-shot'],
         main = json['main'];
 
-  //"head-shot" i always empty?
+  //TODO check if "head-shot" is always empty?
   final String headShot, main;
 
   String get image => main;

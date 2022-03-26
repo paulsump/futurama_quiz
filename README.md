@@ -8,6 +8,8 @@ Font sizes and bold.
 Borders.
 Better more obvious buttons.
 SnackBar text color.
+check todos
+Check able to run on any device running Android 7 (API 24) or greater.
 
 ### Tests to do
 
@@ -16,6 +18,8 @@ Mock client.
 
 ### Ideas
 
+prerender character thumbnails
+dark theme
 Click on text to choose radio.
 Fry starts big then animates small when haveInfo API.
 Tick and cross icons on core and snackBar.
