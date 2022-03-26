@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/api/api_notifier.dart';
+import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/state/quiz_notifier.dart';
 import 'package:futurama_quiz/view/big_back_button.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
+
+const noWarn = out;
 
 //TODO MANages QuestionView etc
 class QuizPage extends StatelessWidget {
@@ -45,6 +48,7 @@ class _QuestionViewState extends State<QuestionView> {
 
     return Stack(
       children: [
+        Container(),
         Adjusted(
           isPortrait(context) ? 3 : 4.5,
           isPortrait(context) ? 2 : 1,
@@ -54,50 +58,56 @@ class _QuestionViewState extends State<QuestionView> {
           isPortrait(context) ? 1 : 2,
           isPortrait(context) ? 3 : 2,
           SizedBox(
-              width: screenAdjust(isPortrait(context) ? 0.73 : 1.0, context),
+              width: screenAdjust(isPortrait(context) ? 0.73 : 0.9, context),
               child: Text(question.question)),
         ),
         Adjusted(
           isPortrait(context) ? 1 : 9,
-          isPortrait(context) ? 5 : 1.0,
-          Column(
-            children: <Widget>[
-              for (int i = 0; i < question.possibleAnswers.length; ++i)
-                SizedBox(
-                  height: screenAdjust(0.1, context),
-                  child: ListTile(
-                    title: Text(
-                      question.possibleAnswers[i],
-                      style: TextStyle(fontSize: screenAdjust(0.03, context)),
+          isPortrait(context) ? 5 : 0.5,
+          SizedBox(
+            width: screenAdjust(0.8, context),
+            child: Column(
+              children: <Widget>[
+                for (int i = 0; i < question.possibleAnswers.length; ++i)
+                  SizedBox(
+                    height: screenAdjust(0.1, context),
+                    child: ListTile(
+                      title: Text(
+                        question.possibleAnswers[i],
+                        style: TextStyle(fontSize: screenAdjust(0.03, context)),
+                      ),
+                      leading: Radio<_Answer>(
+                          value: _Answer.values[i],
+                          groupValue: _answer,
+                          onChanged: (_Answer? value) {
+                            _answer = value!;
+                            setState(() {});
+                          }),
                     ),
-                    leading: Radio<_Answer>(
-                        value: _Answer.values[i],
-                        groupValue: _answer,
-                        onChanged: (_Answer? value) {
-                          _answer = value!;
+                  ),
+                if (_answer != null)
+                  Adjusted(
+                    isPortrait(context) ? 1 : 0,
+                    0.5,
+                    TextButton(
+                      child: const Text('Final Answer'),
+                      onPressed: () {
+                        quizNotifier.submitFinalAnswer(
+                            _answer!.index, question);
+                        _answer = null;
+                        quizNotifier.currentQuestionIndex += 1;
+                        if (quizNotifier.currentQuestionIndex ==
+                            questions.length) {
+                          quizNotifier.currentQuestionIndex = 0;
+                          Navigator.of(context).pushNamed('Results');
+                        } else {
                           setState(() {});
-                        }),
+                        }
+                      },
+                    ),
                   ),
-                ),
-              if (_answer != null)
-                Adjusted(
-                  isPortrait(context) ? 1 : -5,
-                  0.5,
-                  TextButton(
-                    child: const Text('Final Answer'),
-                    onPressed: () {
-                      quizNotifier.submitFinalAnswer(_answer!.index, question);
-                      _answer = null;
-                      quizNotifier.currentQuestionIndex += 1;
-                      if (quizNotifier.currentQuestionIndex ==
-                          questions.length) {
-                        Navigator.of(context).pushNamed('Results');
-                      }
-                      setState(() {});
-                    },
-                  ),
-                ),
-            ],
+              ],
+            ),
           ),
         ),
         Adjusted(
