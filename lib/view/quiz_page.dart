@@ -5,10 +5,10 @@ import 'package:futurama_quiz/view/big_back_button.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
+//TODO MANages QuestionView etc
 class QuizPage extends StatelessWidget {
   const QuizPage({Key? key}) : super(key: key);
 
-  //TODO MANage QuestionView etc
   @override
   Widget build(BuildContext context) {
     return Cage(
@@ -21,7 +21,7 @@ class QuizPage extends StatelessWidget {
   }
 }
 
-enum Answer { one, two, three, four, five, six, seven, eight, nine, ten }
+enum _Answer { one, two, three, four, five, six, seven, eight, nine, ten }
 
 class QuestionView extends StatefulWidget {
   const QuestionView({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class QuestionView extends StatefulWidget {
 }
 
 class _QuestionViewState extends State<QuestionView> {
-  Answer? _answer;
+  _Answer? _answer;
 
   @override
   Widget build(BuildContext context) {
@@ -62,10 +62,10 @@ class _QuestionViewState extends State<QuestionView> {
               for (int i = 0; i < question.possibleAnswers.length; ++i)
                 ListTile(
                   title: Text(question.possibleAnswers[i]),
-                  leading: Radio<Answer>(
-                      value: Answer.values[i],
+                  leading: Radio<_Answer>(
+                      value: _Answer.values[i],
                       groupValue: _answer,
-                      onChanged: (Answer? value) {
+                      onChanged: (_Answer? value) {
                         _answer = value!;
                         setState(() {});
                       }),
