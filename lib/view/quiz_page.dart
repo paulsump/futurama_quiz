@@ -50,9 +50,9 @@ class _QuestionViewState extends State<QuestionView> {
       children: [
         Container(),
         Adjusted(
-          isPortrait(context) ? 3 : 4.5,
+          isPortrait(context) ? 2.5 : 4.0,
           isPortrait(context) ? 2 : 1,
-          Text('${question.id} / ${apiNotifier.questions.length}'),
+          Text('Question ${question.id} of ${apiNotifier.questions.length}:'),
         ),
         Adjusted(
           isPortrait(context) ? 1 : 2,
@@ -92,10 +92,17 @@ class _QuestionViewState extends State<QuestionView> {
                     TextButton(
                       child: const Text('Final Answer'),
                       onPressed: () {
-                        quizNotifier.submitAnswer(_answer!.index, question);
+                        var message = 'Correct!';
 
-                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text('Yay! A SnackBar!'),
+                        if (question.correctAnswer == question.possibleAnswers[_answer!.index]) {
+                          score.correct += 1;
+                        } else {
+                          score.incorrect += 1;
+                          message = 'Sorry, the correct answer was "${question.correctAnswer}".';
+                        }
+
+                        ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+                          content: Text(message),
                         ));
 
                         _answer = null;

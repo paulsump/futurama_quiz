@@ -11,13 +11,6 @@ class QuizNotifier extends ChangeNotifier {
 
   var score = Score();
 
-  void submitAnswer(int answerIndex, Question question) {
-    if (question.correctAnswer == question.possibleAnswers[answerIndex]) {
-      score.correct += 1;
-    } else {
-      score.incorrect += 1;
-    }
-  }
 
   void restart() {
     score.reset();
