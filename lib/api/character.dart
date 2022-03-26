@@ -50,32 +50,16 @@ class _Sayings {
     final list = <String>[];
 
     const int n = 5;
-//TODO TIdy this up
-    for (final s in getShortSayings(30)) {
-      list.add(s);
 
-      if (list.length == n) {
-        return list;
-      }
-    }
+    for (final length in [30, 40, 999]) {
+      for (final s in getShortSayings(length)) {
+        if (!list.contains(s)) {
+          list.add(s);
+        }
 
-    for (final s in getShortSayings(40)) {
-      if (!list.contains(s)) {
-        list.add(s);
-      }
-
-      if (list.length == n) {
-        return list;
-      }
-    }
-
-    for (final s in _sayings.map<String>((s) => s.toString())) {
-      if (!list.contains(s)) {
-        list.add(s);
-      }
-
-      if (list.length == n) {
-        return list;
+        if (list.length == n) {
+          return list;
+        }
       }
     }
 
@@ -113,6 +97,7 @@ class _Name {
   }
 }
 
+// TODO mock test, then remove this class
 class _Images {
   _Images.fromJson(Map<String, dynamic> json)
       : headShot = json['head-shot'],

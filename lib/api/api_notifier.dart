@@ -9,7 +9,15 @@ import 'package:provider/provider.dart';
 ApiNotifier getApiNotifier(BuildContext context, {required bool listen}) =>
     Provider.of<ApiNotifier>(context, listen: listen);
 
-/// Everything that's fetched from the api (with http)
+/// Fetches everything that's used from the api (with http)
+/// After fetching the info and notifying,
+/// the characters are fetched and an image [Precacher] preloads the
+/// character thumbnails.  Then the
+/// questions are fetched.
+/// The buttons to get to the characters and quiz pages only appear
+/// when the characters and/or quiz have been fetched.
+/// The HttpClient is closed when everything has been fetched.
+/// This is all done in the initialize() function.
 class ApiNotifier extends ChangeNotifier {
   bool initializeHasBeenCalled = false;
 
