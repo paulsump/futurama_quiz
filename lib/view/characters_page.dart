@@ -85,11 +85,14 @@ class BiographyPage extends StatelessWidget {
             isPortrait(context) ? 0.7 : 0.5,
             isPortrait(context) ? 1.75 : 0.0,
             Stack(children: [
-              Adjusted(1.5, isPortrait(context) ? -1 : 0,
-                  _buildThumbnail(context, character)),
+              Adjusted(
+                1.5,
+                isPortrait(context) ? -1 : 0.25,
+                _buildThumbnail(context, character),
+              ),
               if (isPortrait(context))
                 Adjusted(
-                    1.2,
+                    0.9,
                     6,
                     SizedBox(
                       width: screenAdjust(0.6, context),
@@ -127,14 +130,17 @@ class BiographyPage extends StatelessWidget {
   Widget _buildWords(BuildContext context, Character character) {
     final padY = SizedBox(height: screenAdjust(0.04, context));
 
-    return ListView(children: [
-      Text(character.type),
-      padY,
-      Text(character.occupation),
-      padY,
-      padY,
-      for (final saying in character.sayings) Text('"$saying"\n'),
-      padY,
-    ]);
+    return SizedBox(
+      height: screenAdjust(0.8, context),
+      child: ListView(children: [
+        Text(character.type),
+        padY,
+        Text(character.occupation),
+        padY,
+        padY,
+        for (final saying in character.sayings) Text('"$saying"\n'),
+        padY,
+      ]),
+    );
   }
 }
