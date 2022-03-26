@@ -4,12 +4,12 @@ Demonstration of basic Flutter UI of data fetched from a simple API.
 
 ## To do
 
-SnackBar colors.
 Font sizes and bold.
 Borders.
 Better more obvious buttons.
+SnackBar text color.
 
-### Tests
+### Tests to do
 
 Page navigation in different orientations (at least no exceptions). 
 Mock client.

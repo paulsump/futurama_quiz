@@ -28,7 +28,7 @@ class CharactersPage extends StatelessWidget {
                 for (final character in apiNotifier.characters)
                   TextButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed('CharacterBiography',
+                        Navigator.of(context).pushNamed('Biography',
                             arguments: character);
                       },
                       child: _CharacterThumbnail(character: character)),
@@ -56,7 +56,7 @@ class _CharacterThumbnail extends StatelessWidget {
       children: [
         //TODO Animate this hero onto Biography
         SizedBox(
-            height: screenAdjust(0.6, context),
+            height: screenAdjust(isPortrait(context)?0.4:0.6, context),
             child: Image.network(character.image)),
         padY,
         Text(

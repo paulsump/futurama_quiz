@@ -55,7 +55,7 @@ class _App extends StatelessWidget {
         routes: {
           'Home': (context) => const InfoPage(),
           'Characters': (context) => const CharactersPage(),
-          'CharacterBiography': (context) => const BiographyPage(),
+          'Biography': (context) => const BiographyPage(),
           'Quiz': (context) => const QuizPage(),
           'Results': (context) => const ResultsPage(),
         },
