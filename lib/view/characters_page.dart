@@ -45,30 +45,45 @@ class BiographyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final character = ModalRoute.of(context)!.settings.arguments as Character;
+
     return Cage(
       child: Stack(children: [
         Transform.translate(
-          offset: const Offset(0, -3) * screenAdjust(0.13, context),
-          child: Column(children: [
-            Expanded(child: Image.network(character.image)),
-            Text(character.name),
-          ]),
+          offset: const Offset(1.5, 1) * screenAdjust(0.13, context),
+          child: _buildThumbnail(context, character),
         ),
         Transform.translate(
-          offset: const Offset(2, 9) * screenAdjust(0.13, context),
-          child: Column(children: [
-            Text(character.type),
-            SizedBox(height: screenAdjust(0.04, context)),
-            Text(character.occupation),
-            SizedBox(height: screenAdjust(0.04, context)),
-            for (final saying in character.sayings) Text(saying + '\n'),
-            SizedBox(height: screenAdjust(0.04, context)),
-          ]),
+          offset: const Offset(1, 9) * screenAdjust(0.13, context),
+          child: _buildWords(context, character),
         ),
         const BigBackButton(),
         Container(),
       ]),
     );
+  }
+
+  Column _buildThumbnail(BuildContext context, Character character) {
+    return Column(children: [
+      SizedBox(
+          height: screenAdjust(0.93, context),
+          child: Image.network(character.image)),
+      Text(character.name),
+    ]);
+  }
+
+  Widget _buildWords(BuildContext context, Character character) {
+    final padY = SizedBox(height: screenAdjust(0.04, context));
+
+    return Column(children: [
+      Text(character.type),
+      padY,
+      Text(character.occupation),
+      padY,
+      for (final saying in character.sayings)
+        SizedBox(
+            width: screenAdjust(0.73, context), child: Text(saying + '\n')),
+      padY,
+    ]);
   }
 }
 
