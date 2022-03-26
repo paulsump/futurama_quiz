@@ -2,10 +2,13 @@
 
 - Demonstration of basic Flutter UI of data fetched from a simple API.
 
-## Bugs
+## To do now
 
+- display error on screen if no internet
+- don't add any info, characters or questions that had bad date (catch them).
+- adjust Font size for different screens. e.g. answers.
 - SnackBar delay is long, so need to cancel it if already on a couple of questions ahead. Probably
-  only happens during dev.
+  wouldn't happen if doing the quiz properly.
 
 ## To do
 

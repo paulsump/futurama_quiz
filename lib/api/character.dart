@@ -50,7 +50,7 @@ class _Sayings {
     final list = <String>[];
 
     const int n = 5;
-
+//TODO TIdy this up
     for (final s in getShortSayings(30)) {
       list.add(s);
 

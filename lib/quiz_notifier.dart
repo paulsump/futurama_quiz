@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 QuizNotifier getQuizNotifier(BuildContext context, {required bool listen}) =>
     Provider.of<QuizNotifier>(context, listen: listen);
 
-/// for the current state of the quiz e.g. current question, score
+/// For the current state of the quiz e.g. current question, score
 class QuizNotifier extends ChangeNotifier {
-  int currentQuestionIndex = 28; //hack
+  int currentQuestionIndex = 27; //hack
 
   var score = Score();
 
