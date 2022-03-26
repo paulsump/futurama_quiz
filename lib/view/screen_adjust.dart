@@ -35,6 +35,7 @@ double _getScreenShortestEdge(BuildContext context) {
   return min(screen.width, screen.height);
 }
 
+// TODO REname to ScreenAdjusted
 class Adjusted extends StatelessWidget {
   const Adjusted(this.x, this.y, this.child, {Key? key}) : super(key: key);
 

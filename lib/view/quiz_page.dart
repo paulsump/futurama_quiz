@@ -46,20 +46,20 @@ class _QuestionViewState extends State<QuestionView> {
     return Stack(
       children: [
         Adjusted(
-          1,
-          1,
+          3,
+          2,
           Text('${question.id} / ${apiNotifier.questions.length}'),
         ),
         Adjusted(
           1,
-          2,
+          3,
           SizedBox(
               width: screenAdjust(isPortrait(context) ? 0.73 : 2.3, context),
               child: Text(question.question)),
         ),
         Adjusted(
-          1,
-          3,
+          isPortrait(context) ? 1 : 9,
+          isPortrait(context) ? 4 : 0.5,
           Column(
             children: <Widget>[
               for (int i = 0; i < question.possibleAnswers.length; ++i)
@@ -75,8 +75,8 @@ class _QuestionViewState extends State<QuestionView> {
                 ),
               if (_answer != null)
                 Adjusted(
-                  -2,
-                  1,
+                  -3,
+                  0.5,
                   TextButton(
                     child: const Text('Final Answer'),
                     onPressed: () {
