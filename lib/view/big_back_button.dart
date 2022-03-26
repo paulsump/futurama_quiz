@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futurama_quiz/view/screen_adjust.dart';
 
 class BigBackButton extends StatelessWidget {
   const BigBackButton({Key? key}) : super(key: key);
@@ -6,7 +7,7 @@ class BigBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Transform.scale(
-      scale: 3,
+      scale: screenAdjust(0.008, context),
       child: const BackButton(),
     );
   }

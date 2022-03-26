@@ -4,17 +4,13 @@ Demonstration of basic UI coming from basic API fetching.
 
 ## To do
 
-### Basic Functionality
+### Tests
 
-Tidy info. Add two navigation options: “Characters” and “Quiz”.
+page navigation in different orientations (at least no exceptions). Mock client.
 
-### Look and feel
+### Ideas
 
-Get inspiration from their app.
-
-### Later
-
-Mock client.
+hero animations
 
 ### Ideas (Later)
 

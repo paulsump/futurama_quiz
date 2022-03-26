@@ -74,6 +74,7 @@ class _CharacterThumbnail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        //TODO Animate this hero onto Biography
         Expanded(child: Image.network(character.image)),
         Text(
           character.name,

@@ -95,7 +95,8 @@ class _QuestionViewState extends State<QuestionView> {
           ),
         ),
         Transform.translate(
-          offset: const Offset(5, 0) * screenAdjust(0.13, context),
+          //TODO Animate this hero onto ResultsView
+          offset: const Offset(5, 1) * screenAdjust(0.13, context),
           child: Text('${score.correct} right, ${score.incorrect} wrong.'),
         ),
       ],
