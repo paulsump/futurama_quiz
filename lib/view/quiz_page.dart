@@ -92,10 +92,26 @@ class _QuestionViewState extends State<QuestionView> {
                     TextButton(
                       child: const Text('Final Answer'),
                       onPressed: () {
-                        quizNotifier.submitFinalAnswer(
+                        quizNotifier.submitAnswer(
                             _answer!.index, question);
+
+                        final snackBar = SnackBar(
+                          content: const Text('Yay! A SnackBar!'),
+                          action: SnackBarAction(
+                            label: 'Undo',
+                            onPressed: () {
+                              // Some code to undo the change.
+                            },
+                          ),
+                        );
+
+                        // Find the ScaffoldMessenger in the widget tree
+                        // and use it to show a SnackBar.
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
                         _answer = null;
                         quizNotifier.currentQuestionIndex += 1;
+
                         if (quizNotifier.currentQuestionIndex ==
                             questions.length) {
                           quizNotifier.currentQuestionIndex = 0;
