@@ -34,3 +34,19 @@ double _getScreenShortestEdge(BuildContext context) {
 
   return min(screen.width, screen.height);
 }
+
+class Adjusted extends StatelessWidget {
+  const Adjusted(this.x, this.y, this.child, {Key? key}) : super(key: key);
+
+  final double x, y;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Transform.translate(
+      // TODO round off this arbitrary number
+      offset: Offset(x, y) * screenAdjust(0.13, context),
+      child: child,
+    );
+  }
+}

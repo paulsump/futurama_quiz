@@ -48,34 +48,27 @@ class BiographyPage extends StatelessWidget {
 
     return Cage(
       child: Stack(children: [
-        _place(1.5, 0.5, _buildThumbnail(context, character), context),
+        Adjusted(1.5, 0.5, _buildThumbnail(context, character)),
         if (isPortrait(context))
-          _place(
+          Adjusted(
               1,
               8,
               SizedBox(
-                  width: screenAdjust(0.8, context),
-                  child: _buildWords(context, character)),
-              context)
+                width: screenAdjust(0.8, context),
+                child: _buildWords(context, character),
+              ))
         else
-          _place(
+          Adjusted(
               7,
               1,
               SizedBox(
                   width: screenAdjust(1, context),
-                  child: _buildWords(context, character)),
-              context),
+                  child: _buildWords(context, character))),
         const BigBackButton(),
         Container(),
       ]),
     );
   }
-
-  Widget _place(double x, double y, Widget widget, BuildContext context) =>
-      Transform.translate(
-        offset: Offset(x, y) * screenAdjust(0.13, context),
-        child: widget,
-      );
 
   Widget _buildThumbnail(BuildContext context, Character character) {
     final padY = SizedBox(height: screenAdjust(0.04, context));
