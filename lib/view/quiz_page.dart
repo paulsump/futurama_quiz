@@ -45,19 +45,22 @@ class _QuestionViewState extends State<QuestionView> {
 
     return Stack(
       children: [
-        Transform.translate(
-          offset: const Offset(1, 1) * screenAdjust(0.13, context),
-          child: Text('${question.id} / ${apiNotifier.questions.length}'),
+        Adjusted(
+          1,
+          1,
+          Text('${question.id} / ${apiNotifier.questions.length}'),
         ),
-        Transform.translate(
-          offset: const Offset(1, 2) * screenAdjust(0.13, context),
-          child: SizedBox(
+        Adjusted(
+          1,
+          2,
+          SizedBox(
               width: screenAdjust(isPortrait(context) ? 0.73 : 2.3, context),
               child: Text(question.question)),
         ),
-        Transform.translate(
-          offset: const Offset(1, 3) * screenAdjust(0.13, context),
-          child: Column(
+        Adjusted(
+          1,
+          3,
+          Column(
             children: <Widget>[
               for (int i = 0; i < question.possibleAnswers.length; ++i)
                 ListTile(
@@ -71,9 +74,10 @@ class _QuestionViewState extends State<QuestionView> {
                       }),
                 ),
               if (_answer != null)
-                Transform.translate(
-                  offset: const Offset(-2, 1) * screenAdjust(0.13, context),
-                  child: TextButton(
+                Adjusted(
+                  -2,
+                  1,
+                  TextButton(
                     child: const Text('Final Answer'),
                     onPressed: () {
                       quizNotifier.submitFinalAnswer(_answer!.index, question);
@@ -89,10 +93,10 @@ class _QuestionViewState extends State<QuestionView> {
             ],
           ),
         ),
-        Transform.translate(
-          //TODO Animate this hero onto ResultsView
-          offset: const Offset(5, 1) * screenAdjust(0.13, context),
-          child: Text('${score.correct} right, ${score.incorrect} wrong.'),
+        Adjusted(
+          5,
+          1,
+          Text('${score.correct} right, ${score.incorrect} wrong.'),
         ),
       ],
     );
@@ -111,14 +115,16 @@ class ResultsPage extends StatelessWidget {
         child: Stack(
       children: [
         const BigBackButton(),
-        Transform.translate(
-          //TODO Animate this hero onto ResultsView
-          offset: const Offset(3, 3) * screenAdjust(0.13, context),
-          child: Text('${score.correct} right,\n${score.incorrect} wrong.'),
+        //TODO Animate this hero onto ResultsView
+        Adjusted(
+          3,
+          3,
+          Text('${score.correct} right,\n${score.incorrect} wrong.'),
         ),
-        Transform.translate(
-          offset: const Offset(3, 6) * screenAdjust(0.13, context),
-          child: TextButton(
+        Adjusted(
+          3,
+          6,
+          TextButton(
             child: const Text('Restart Quiz'),
             onPressed: () {
               quizNotifier.restart();
