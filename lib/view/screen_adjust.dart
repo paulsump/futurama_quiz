@@ -10,15 +10,6 @@ const noWarn = out;
 /// convenient access to screen dimensions.
 Size getScreenSize(BuildContext context) => MediaQuery.of(context).size;
 
-double getScreenWidth(BuildContext context) => getScreenSize(context).width;
-
-double getScreenHeight(BuildContext context) => getScreenSize(context).height;
-
-Offset getScreenCenter(BuildContext context) {
-  final size = getScreenSize(context);
-  return Offset(size.width, size.height) / 2;
-}
-
 bool isPortrait(BuildContext context) {
   final screen = getScreenSize(context);
   return screen.width < screen.height;
@@ -35,7 +26,8 @@ double _getScreenShortestEdge(BuildContext context) {
   return min(screen.width, screen.height);
 }
 
-// TODO REname to ScreenAdjusted
+/// Translate a child widget by an amount relative to
+/// the length of the shortest edge of the device
 class ScreenAdjust extends StatelessWidget {
   const ScreenAdjust({
     Key? key,
@@ -50,7 +42,6 @@ class ScreenAdjust extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
-      // TODO round off this arbitrary number
       offset: Offset(x, y) * screenAdjust(0.13, context),
       child: child,
     );

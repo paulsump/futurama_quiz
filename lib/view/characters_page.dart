@@ -8,6 +8,8 @@ import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
+/// List of people/aliens with name and thumbnail.
+/// Click on a character to view his/her full biography.
 class CharactersPage extends StatelessWidget {
   const CharactersPage({Key? key}) : super(key: key);
 
@@ -31,7 +33,7 @@ class CharactersPage extends StatelessWidget {
                         Navigator.of(context)
                             .pushNamed('Biography', arguments: character);
                       },
-                      child: _CharacterThumbnail(character: character)),
+                      child: _Thumbnail(character: character)),
               ],
             ),
           ),
@@ -42,11 +44,11 @@ class CharactersPage extends StatelessWidget {
   }
 }
 
-class _CharacterThumbnail extends StatelessWidget {
+/// A labeled image of a character.
+class _Thumbnail extends StatelessWidget {
   final Character character;
 
-  const _CharacterThumbnail({Key? key, required this.character})
-      : super(key: key);
+  const _Thumbnail({Key? key, required this.character}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
