@@ -48,21 +48,21 @@ class BiographyPage extends StatelessWidget {
 
     return Cage(
       child: Stack(children: [
-        Transform.translate(
-          offset: const Offset(1.5, 1) * screenAdjust(0.13, context),
-          child: _buildThumbnail(context, character),
-        ),
-        Transform.translate(
-          offset: const Offset(1, 9) * screenAdjust(0.13, context),
-          child: _buildWords(context, character),
-        ),
+        _place(1.5, 1, _buildThumbnail(context, character), context),
+        _place(1, 9, _buildWords(context, character), context),
         const BigBackButton(),
         Container(),
       ]),
     );
   }
 
-  Column _buildThumbnail(BuildContext context, Character character) {
+  Widget _place(double x, double y, Widget widget, BuildContext context) =>
+      Transform.translate(
+        offset: Offset(x, y) * screenAdjust(0.13, context),
+        child: widget,
+      );
+
+  Widget _buildThumbnail(BuildContext context, Character character) {
     return Column(children: [
       SizedBox(
           height: screenAdjust(0.93, context),
