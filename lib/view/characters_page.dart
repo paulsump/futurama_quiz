@@ -18,21 +18,22 @@ class CharactersPage extends StatelessWidget {
     return Cage(
       child: Stack(
         children: [
-          ListView(
-            scrollDirection:
-                isPortrait(context) ? Axis.vertical : Axis.horizontal,
-            children: [
-              for (final character in apiNotifier.characters)
-                SizedBox(
-                  height: screenAdjust(0.5, context),
-                  child: TextButton(
+          Adjusted(
+            0,
+            isPortrait(context) ? 0 : 1.5,
+            ListView(
+              scrollDirection:
+                  isPortrait(context) ? Axis.vertical : Axis.horizontal,
+              children: [
+                for (final character in apiNotifier.characters)
+                  TextButton(
                       onPressed: () {
                         Navigator.of(context).pushNamed('CharacterBiography',
                             arguments: character);
                       },
                       child: _CharacterThumbnail(character: character)),
-                ),
-            ],
+              ],
+            ),
           ),
           const CancelButton(),
         ],
@@ -124,7 +125,9 @@ class _CharacterThumbnail extends StatelessWidget {
     return Column(
       children: [
         //TODO Animate this hero onto Biography
-        Expanded(child: Image.network(character.image)),
+        SizedBox(
+            height: screenAdjust(0.6, context),
+            child: Image.network(character.image)),
         padY,
         Text(
           character.name,
