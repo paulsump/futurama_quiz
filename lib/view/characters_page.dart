@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/api/character.dart';
-import 'package:futurama_quiz/view/big_back_button.dart';
 import 'package:futurama_quiz/view/cage.dart';
+import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
@@ -34,7 +34,7 @@ class CharactersPage extends StatelessWidget {
                 ),
             ],
           ),
-          const BigBackButton(),
+          const CancelButton(),
         ],
       ),
     );
@@ -51,7 +51,7 @@ class BiographyPage extends StatelessWidget {
     return Cage(
       child: Stack(
         children: [
-          const BigBackButton(),
+          const CancelButton(),
           Container(),
           Adjusted(
             isPortrait(context) ? 0.7 : 0.5,

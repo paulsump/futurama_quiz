@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/state/quiz_notifier.dart';
-import 'package:futurama_quiz/view/big_back_button.dart';
 import 'package:futurama_quiz/view/cage.dart';
+import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
 const noWarn = out;
@@ -18,7 +18,7 @@ class QuizPage extends StatelessWidget {
         child: Stack(
       children: const [
         QuestionView(),
-        BigBackButton(),
+        CancelButton(),
       ],
     ));
   }
@@ -131,7 +131,7 @@ class ResultsPage extends StatelessWidget {
     return Cage(
         child: Stack(
       children: [
-        const BigBackButton(),
+        const CancelButton(),
         //TODO Animate this hero onto ResultsView
         Adjusted(
           isPortrait(context) ? 3 : 8,
