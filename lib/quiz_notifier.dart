@@ -10,9 +10,9 @@ class QuizNotifier extends ChangeNotifier {
 
   var score = Score();
 
-
   void restart() {
     score.reset();
+
     currentQuestionIndex = 0;
     notifyListeners();
   }

@@ -29,19 +29,21 @@ class BiographyPage extends StatelessWidget {
               ),
               if (isPortrait(context))
                 Adjusted(
-                    0.9,
-                    6,
-                    SizedBox(
-                      width: screenAdjust(0.6, context),
-                      child: _buildWords(context, character),
-                    ))
+                  0.9,
+                  6,
+                  SizedBox(
+                    width: screenAdjust(0.6, context),
+                    child: _buildWords(context, character),
+                  ),
+                )
               else
                 Adjusted(
-                    7,
-                    0.8,
-                    SizedBox(
-                        width: screenAdjust(1, context),
-                        child: _buildWords(context, character))),
+                  7,
+                  0.8,
+                  SizedBox(
+                      width: screenAdjust(1, context),
+                      child: _buildWords(context, character)),
+                ),
             ]),
           ),
         ],
@@ -67,8 +69,12 @@ class BiographyPage extends StatelessWidget {
   Widget _buildWords(BuildContext context, Character character) {
     final padY = SizedBox(height: screenAdjust(0.04, context));
 
-    return SizedBox(
-      height: screenAdjust(0.8, context),
+    return ConstrainedBox(
+      constraints: new BoxConstraints(
+        minHeight: 5.0,
+        maxHeight: screenAdjust(0.6, context),
+      ),
+
       child: ListView(children: [
         Text(character.type),
         padY,
