@@ -54,28 +54,34 @@ class _QuestionViewState extends State<QuestionView> {
           1,
           3,
           SizedBox(
-              width: screenAdjust(isPortrait(context) ? 0.73 : 2.3, context),
+              width: screenAdjust(isPortrait(context) ? 0.73 : 1.0, context),
               child: Text(question.question)),
         ),
         Adjusted(
           isPortrait(context) ? 1 : 9,
-          isPortrait(context) ? 4 : 0.5,
+          isPortrait(context) ? 5 : 1.0,
           Column(
             children: <Widget>[
               for (int i = 0; i < question.possibleAnswers.length; ++i)
-                ListTile(
-                  title: Text(question.possibleAnswers[i]),
-                  leading: Radio<_Answer>(
-                      value: _Answer.values[i],
-                      groupValue: _answer,
-                      onChanged: (_Answer? value) {
-                        _answer = value!;
-                        setState(() {});
-                      }),
+                SizedBox(
+                  height: screenAdjust(0.1, context),
+                  child: ListTile(
+                    title: Text(
+                      question.possibleAnswers[i],
+                      style: TextStyle(fontSize: screenAdjust(0.03, context)),
+                    ),
+                    leading: Radio<_Answer>(
+                        value: _Answer.values[i],
+                        groupValue: _answer,
+                        onChanged: (_Answer? value) {
+                          _answer = value!;
+                          setState(() {});
+                        }),
+                  ),
                 ),
               if (_answer != null)
                 Adjusted(
-                  -3,
+                  isPortrait(context) ? 1 : -5,
                   0.5,
                   TextButton(
                     child: const Text('Final Answer'),
@@ -83,9 +89,10 @@ class _QuestionViewState extends State<QuestionView> {
                       quizNotifier.submitFinalAnswer(_answer!.index, question);
                       _answer = null;
                       quizNotifier.currentQuestionIndex += 1;
-                      // if (quizNotifier.currentQuestionIndex == questions.length) {
-                      Navigator.of(context).pushNamed('Results');
-                      // }
+                      if (quizNotifier.currentQuestionIndex ==
+                          questions.length) {
+                        Navigator.of(context).pushNamed('Results');
+                      }
                       setState(() {});
                     },
                   ),
