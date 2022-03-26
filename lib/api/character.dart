@@ -7,17 +7,17 @@ class Character {
       //TODO containsKey
       : _name = _Name.fromJson(json['name']),
         _images = _Images.fromJson(json['images']),
-        gender = json['gender'],
-        species = json['species'],
-        homePlanet = json.containsKey('homePlanet') ? json['homePlanet'] : '',
-        occupation = json['occupation'],
+        _gender = json['gender'],
+        _species = json['species'],
+        _homePlanet = json.containsKey('homePlanet') ? json['homePlanet'] : '',
+        _occupation = json['occupation'],
         _sayings = _Sayings(json['sayings']);
 
-  final String gender;
-  final String species;
+  final String _gender;
+  final String _species;
 
-  final String homePlanet;
-  final String occupation;
+  final String _homePlanet;
+  final String _occupation;
 
   final _Name _name;
   final _Images _images;
@@ -27,7 +27,18 @@ class Character {
 
   String get image => _images.image;
 
+  String get occupation => '$_occupation.';
+
   List<String> get sayings => _sayings.sayings;
+
+  String get type {
+    var s = '$_species $_gender';
+
+    if (_homePlanet.isNotEmpty) {
+      s += ' from $_homePlanet.';
+    }
+    return s;
+  }
 }
 
 class _Sayings {
@@ -72,8 +83,15 @@ class _Name {
 
   final String first, middle, last;
 
-  String get fullName =>
-      middle.isEmpty ? '$first $last' : '$first $middle $last';
+  String get fullName {
+    var s = '$first ';
+
+    if (middle.isNotEmpty) {
+      s += '$middle ';
+    }
+
+    return s + '$last.';
+  }
 }
 
 class _Images {
