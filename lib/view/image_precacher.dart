@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:futurama_quiz/api/fetch_notifier.dart';
 
 class Precacher extends StatefulWidget {
   const Precacher({Key? key}) : super(key: key);
