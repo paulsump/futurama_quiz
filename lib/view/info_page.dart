@@ -43,25 +43,43 @@ class InfoPage extends StatelessWidget {
                   : Container(),
             ],
           ),
-          Expanded(
-            child: ListView(children: [
-              Image(
-                image: const AssetImage('images/fry.png'),
-                height: screenAdjust(0.5, context),
+          if (isPortrait(context))
+            Expanded(
+              child: ListView(children: [
+                _buildImage(context),
+                _buildInfo(context),
+              ]),
+            )
+          else
+            Expanded(
+              child: Row(
+                children: [
+                  _buildImage(context),
+                  Expanded(
+                    child: ListView(children: [
+                      _buildInfo(context),
+                    ]),
+                  ),
+                ],
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: screenAdjust(0.08, context),
-                  horizontal: screenAdjust(0.1, context),
-                ),
-                child: const _InfoView(),
-              ),
-            ]),
-          ),
+            ),
         ],
       ),
     );
   }
+
+  Widget _buildImage(BuildContext context) => Image(
+        image: const AssetImage('images/fry.png'),
+        height: screenAdjust(0.5, context),
+      );
+
+  Widget _buildInfo(BuildContext context) => Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: screenAdjust(0.08, context),
+          horizontal: screenAdjust(0.1, context),
+        ),
+        child: const _InfoView(),
+      );
 }
 
 class _InfoView extends StatelessWidget {
@@ -72,7 +90,6 @@ class _InfoView extends StatelessWidget {
     final apiNotifier = getApiNotifier(context, listen: true);
 
     return apiNotifier.haveInfo
-        //TODO add the other info fields
         ? Column(
             children: [
               Text(apiNotifier.info.synopsis),
