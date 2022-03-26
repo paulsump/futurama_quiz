@@ -48,8 +48,23 @@ class BiographyPage extends StatelessWidget {
 
     return Cage(
       child: Stack(children: [
-        _place(1.5, 1, _buildThumbnail(context, character), context),
-        _place(1, 9, _buildWords(context, character), context),
+        _place(1.5, 0.5, _buildThumbnail(context, character), context),
+        if (isPortrait(context))
+          _place(
+              1,
+              8,
+              SizedBox(
+                  width: screenAdjust(0.8, context),
+                  child: _buildWords(context, character)),
+              context)
+        else
+          _place(
+              6,
+              1,
+              SizedBox(
+                  width: screenAdjust(1.2, context),
+                  child: _buildWords(context, character)),
+              context),
         const BigBackButton(),
         Container(),
       ]),
@@ -65,7 +80,7 @@ class BiographyPage extends StatelessWidget {
   Widget _buildThumbnail(BuildContext context, Character character) {
     return Column(children: [
       SizedBox(
-          height: screenAdjust(0.93, context),
+          height: screenAdjust(0.73, context),
           child: Image.network(character.image)),
       Text(character.name),
     ]);
@@ -74,14 +89,12 @@ class BiographyPage extends StatelessWidget {
   Widget _buildWords(BuildContext context, Character character) {
     final padY = SizedBox(height: screenAdjust(0.04, context));
 
-    return Column(children: [
+    return ListView(children: [
       Text(character.type),
       padY,
       Text(character.occupation),
       padY,
-      for (final saying in character.sayings)
-        SizedBox(
-            width: screenAdjust(0.73, context), child: Text(saying + '\n')),
+      for (final saying in character.sayings) Text(saying + '\n'),
       padY,
     ]);
   }
