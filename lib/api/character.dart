@@ -2,6 +2,7 @@ import 'package:futurama_quiz/out.dart';
 
 const noWarn = out;
 
+/// Biography from API
 class Character {
   Character.fromJson(Map<String, dynamic> json)
       //TODO containsKey
