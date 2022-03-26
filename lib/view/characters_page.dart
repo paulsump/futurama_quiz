@@ -22,7 +22,7 @@ class CharactersPage extends StatelessWidget {
             children: [
               for (final character in apiNotifier.characters)
                 SizedBox(
-                  height: screenAdjust(0.4, context),
+                  height: screenAdjust(0.5, context),
                   child: TextButton(
                       onPressed: () {
                         Navigator.of(context).pushNamed('CharacterBiography',
@@ -59,10 +59,10 @@ class BiographyPage extends StatelessWidget {
               context)
         else
           _place(
-              6,
+              7,
               1,
               SizedBox(
-                  width: screenAdjust(1.2, context),
+                  width: screenAdjust(1, context),
                   child: _buildWords(context, character)),
               context),
         const BigBackButton(),
@@ -78,10 +78,14 @@ class BiographyPage extends StatelessWidget {
       );
 
   Widget _buildThumbnail(BuildContext context, Character character) {
+    final padY = SizedBox(height: screenAdjust(0.04, context));
+
     return Column(children: [
-      SizedBox(
+      Container(
+          constraints: BoxConstraints(maxWidth: screenAdjust(0.63, context)),
           height: screenAdjust(0.73, context),
           child: Image.network(character.image)),
+      padY,
       Text(character.name),
     ]);
   }
@@ -108,14 +112,18 @@ class _CharacterThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final padY = SizedBox(height: screenAdjust(0.02, context));
+
     return Column(
       children: [
         //TODO Animate this hero onto Biography
         Expanded(child: Image.network(character.image)),
+        padY,
         Text(
           character.name,
           style: const TextStyle(color: Hue.text),
         ),
+        padY,
       ],
     );
   }

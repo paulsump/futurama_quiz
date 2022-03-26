@@ -8,7 +8,10 @@ class BigBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Transform.scale(
       scale: screenAdjust(0.008, context),
-      child: const BackButton(),
+      child: Padding(
+        padding: EdgeInsets.all(screenAdjust(0.05, context)),
+        child: const BackButton(),
+      ),
     );
   }
 }
