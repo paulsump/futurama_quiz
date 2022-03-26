@@ -8,8 +8,8 @@ import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
-class CharacterListView extends StatelessWidget {
-  const CharacterListView({Key? key}) : super(key: key);
+class CharactersPage extends StatelessWidget {
+  const CharactersPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,8 @@ class CharacterListView extends StatelessWidget {
   }
 }
 
-class Biography extends StatelessWidget {
-  const Biography({Key? key}) : super(key: key);
+class BiographyPage extends StatelessWidget {
+  const BiographyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -9,7 +9,7 @@ import 'package:futurama_quiz/state/quiz_notifier.dart';
 import 'package:futurama_quiz/view/characters.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/info_page.dart';
-import 'package:futurama_quiz/view/quiz_view.dart';
+import 'package:futurama_quiz/view/quiz.dart';
 import 'package:provider/provider.dart';
 
 /// prevent 'organise imports' from removing imports
@@ -53,10 +53,10 @@ class _App extends StatelessWidget {
         ),
         routes: {
           'Home': (context) => const InfoPage(),
-          'Characters': (context) => const CharacterListView(),
-          'CharacterBiography': (context) => const Biography(),
-          'Quiz': (context) => const QuizView(),
-          'Results': (context) => const ResultsView(),
+          'Characters': (context) => const CharactersPage(),
+          'CharacterBiography': (context) => const BiographyPage(),
+          'Quiz': (context) => const QuizPage(),
+          'Results': (context) => const ResultsPage(),
         },
       ),
     );

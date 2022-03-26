@@ -5,8 +5,8 @@ import 'package:futurama_quiz/view/big_back_button.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
-class QuizView extends StatelessWidget {
-  const QuizView({Key? key}) : super(key: key);
+class QuizPage extends StatelessWidget {
+  const QuizPage({Key? key}) : super(key: key);
 
   //TODO MANage QuestionView etc
   @override
@@ -99,8 +99,8 @@ class _QuestionViewState extends State<QuestionView> {
   }
 }
 
-class ResultsView extends StatelessWidget {
-  const ResultsView({Key? key}) : super(key: key);
+class ResultsPage extends StatelessWidget {
+  const ResultsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
