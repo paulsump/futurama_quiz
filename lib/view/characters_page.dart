@@ -81,7 +81,7 @@ class BiographyPage extends StatelessWidget {
   }
 
   Widget _buildThumbnail(BuildContext context, Character character) {
-    final padY = SizedBox(height: screenAdjust(0.04, context));
+    final padY = SizedBox(height: screenAdjust(0.06, context));
 
     return Column(children: [
       Container(
@@ -103,7 +103,8 @@ class BiographyPage extends StatelessWidget {
       padY,
       Text(character.occupation),
       padY,
-      for (final saying in character.sayings) Text(saying + '\n'),
+      padY,
+      for (final saying in character.sayings) Text('"$saying"\n'),
       padY,
     ]);
   }

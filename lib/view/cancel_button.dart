@@ -10,7 +10,10 @@ class CancelButton extends StatelessWidget {
     return Transform.scale(
       scale: screenAdjust(0.006, context),
       child: Padding(
-        padding: EdgeInsets.all(screenAdjust(0.05, context)),
+        padding: EdgeInsets.symmetric(
+          vertical: screenAdjust(0.05, context),
+          horizontal: screenAdjust(0.03, context),
+        ),
         child: TextButton(
             onPressed: () {
               Navigator.of(context).pop();

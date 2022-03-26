@@ -46,30 +46,49 @@ class _Sayings {
 
   final List<dynamic> _sayings;
 
-  bool get hasShortSayings => shortSayings.isNotEmpty;
-
   List<String> get sayings {
-    if (hasShortSayings) {
-      return shortSayings;
+    final list = <String>[];
+
+    const int n = 5;
+
+    for (final s in getShortSayings(30)) {
+      list.add(s);
+
+      if (list.length == n) {
+        return list;
+      }
     }
 
-    final medium = getShortSayings(40).toList();
+    for (final s in getShortSayings(40)) {
+      if (!list.contains(s)) {
+        list.add(s);
+      }
 
-    if (medium.isNotEmpty) {
-      return medium;
+      if (list.length == n) {
+        return list;
+      }
     }
 
-    return _sayings.map<String>((s) => s.toString()).toList();
+    for (final s in _sayings.map<String>((s) => s.toString())) {
+      if (!list.contains(s)) {
+        list.add(s);
+      }
+
+      if (list.length == n) {
+        return list;
+      }
+    }
+
+    return list;
   }
 
-  List<String> get shortSayings => getShortSayings(30).toList();
 
   Iterable<String> getShortSayings(int length) sync* {
     for (dynamic saying in _sayings) {
       final shortSaying = saying.toString();
 
       if (shortSaying.length < length) {
-        yield '"$shortSaying"';
+        yield shortSaying;
       }
     }
   }
