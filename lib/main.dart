@@ -10,7 +10,6 @@ import 'package:futurama_quiz/view/characters.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/info_page.dart';
 import 'package:futurama_quiz/view/quiz_view.dart';
-import 'package:futurama_quiz/view/results_view.dart';
 import 'package:provider/provider.dart';
 
 /// prevent 'organise imports' from removing imports
@@ -32,7 +31,7 @@ class _App extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => QuizNotifier()),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Futurama',
         theme: _buildThemeData(context),
         home: LayoutBuilder(
           builder: (
@@ -44,7 +43,6 @@ class _App extends StatelessWidget {
             } else {
               final apiNotifier = getApiNotifier(context, listen: false);
 
-              // Initialize once only
               if (!apiNotifier.initializeHasBeenCalled) {
                 unawaited(apiNotifier.initialize(context));
               }

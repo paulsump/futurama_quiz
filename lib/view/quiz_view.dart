@@ -84,9 +84,9 @@ class _QuestionViewState extends State<QuestionView> {
                       _answer = null;
 
                       currentQuestionIndex += 1;
-                      if (currentQuestionIndex == questions.length) {
-                        Navigator.of(context).pushNamed('Results');
-                      }
+                      // if (currentQuestionIndex == questions.length) {
+                      Navigator.of(context).pushNamed('Results');
+                      // }
                       setState(() {});
                     },
                   ),
@@ -101,5 +101,29 @@ class _QuestionViewState extends State<QuestionView> {
         ),
       ],
     );
+  }
+}
+
+class ResultsView extends StatelessWidget {
+  const ResultsView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final quizNotifier = getQuizNotifier(context, listen: false);
+    final score = quizNotifier.score;
+
+    return Cage(
+        child: Stack(
+      children: [
+        const BigBackButton(),
+        Transform.translate(
+          //TODO Animate this hero onto ResultsView
+          offset: const Offset(3, 3) * screenAdjust(0.13, context),
+          child: Text('${score.correct} right,\n${score.incorrect} wrong.'),
+        ),
+        // TODO Restart quiz button calls score.reset()
+        Container(),
+      ],
+    ));
   }
 }

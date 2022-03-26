@@ -47,18 +47,26 @@ class Biography extends StatelessWidget {
     final character = ModalRoute.of(context)!.settings.arguments as Character;
     return Cage(
       child: Stack(children: [
-        Column(children: [
-          Expanded(child: Image.network(character.image)),
-          Text(character.name),
-          SizedBox(height: screenAdjust(0.04, context)),
-          Text(character.type),
-          SizedBox(height: screenAdjust(0.04, context)),
-          Text(character.occupation),
-          SizedBox(height: screenAdjust(0.04, context)),
-          for (final saying in character.sayings) Text(saying + '\n'),
-          SizedBox(height: screenAdjust(0.04, context)),
-        ]),
+        Transform.translate(
+          offset: const Offset(0, -3) * screenAdjust(0.13, context),
+          child: Column(children: [
+            Expanded(child: Image.network(character.image)),
+            Text(character.name),
+          ]),
+        ),
+        Transform.translate(
+          offset: const Offset(2, 9) * screenAdjust(0.13, context),
+          child: Column(children: [
+            Text(character.type),
+            SizedBox(height: screenAdjust(0.04, context)),
+            Text(character.occupation),
+            SizedBox(height: screenAdjust(0.04, context)),
+            for (final saying in character.sayings) Text(saying + '\n'),
+            SizedBox(height: screenAdjust(0.04, context)),
+          ]),
+        ),
         const BigBackButton(),
+        Container(),
       ]),
     );
   }
