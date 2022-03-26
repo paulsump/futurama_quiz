@@ -99,7 +99,7 @@ class _QuestionViewState extends State<QuestionView> {
                         if (quizNotifier.currentQuestionIndex ==
                             questions.length) {
                           quizNotifier.currentQuestionIndex = 0;
-                          Navigator.of(context).pushNamed('Results');
+                          Navigator.of(context).popAndPushNamed('Results');
                         } else {
                           setState(() {});
                         }
@@ -134,18 +134,18 @@ class ResultsPage extends StatelessWidget {
         const BigBackButton(),
         //TODO Animate this hero onto ResultsView
         Adjusted(
-          3,
-          3,
+          isPortrait(context) ? 3 : 8,
+          isPortrait(context) ? 3 : 2.5,
           Text('${score.correct} right,\n${score.incorrect} wrong.'),
         ),
         Adjusted(
-          3,
-          6,
+          isPortrait(context) ? 3 : 7.5,
+          isPortrait(context) ? 6 : 4,
           TextButton(
             child: const Text('Restart Quiz'),
             onPressed: () {
               quizNotifier.restart();
-              Navigator.of(context).pop();
+              Navigator.of(context).popAndPushNamed('Quiz');
             },
           ),
         ),
