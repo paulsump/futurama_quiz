@@ -7,22 +7,21 @@ QuizNotifier getQuizNotifier(BuildContext context, {required bool listen}) =>
 
 /// for the current state of the quiz e.g. current question, score
 class QuizNotifier extends ChangeNotifier {
-  Question? currentQuestion;
+  int currentQuestionIndex = 0;
 
   var score = Score();
 
-  void setCurrentQuestion(Question question) {
-    currentQuestion = question;
-  }
-
-  void submitFinalAnswer(int answerIndex) {
-    final question = currentQuestion!;
-
+  void submitFinalAnswer(int answerIndex, Question question) {
     if (question.correctAnswer == question.possibleAnswers[answerIndex]) {
       score.correct += 1;
     } else {
       score.incorrect += 1;
     }
+  }
+
+  void restart() {
+    score.reset();
+    currentQuestionIndex = 0;
   }
 }
 
@@ -30,7 +29,6 @@ class Score {
   int correct = 0;
   int incorrect = 0;
 
-  // TODO Restart quiz
   void reset() {
     correct = 0;
     incorrect = 0;

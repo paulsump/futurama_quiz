@@ -31,7 +31,6 @@ class QuestionView extends StatefulWidget {
 }
 
 class _QuestionViewState extends State<QuestionView> {
-  int currentQuestionIndex = 0;
   Answer? _answer;
 
   @override
@@ -41,17 +40,14 @@ class _QuestionViewState extends State<QuestionView> {
     final apiNotifier = getApiNotifier(context, listen: true);
     final questions = apiNotifier.questions;
 
-    quizNotifier.setCurrentQuestion(questions[currentQuestionIndex]);
-    final question = quizNotifier.currentQuestion!;
-
+    final question = questions[quizNotifier.currentQuestionIndex];
     final score = quizNotifier.score;
 
     return Stack(
       children: [
         Transform.translate(
           offset: const Offset(1, 1) * screenAdjust(0.13, context),
-          child: Text(
-              '${quizNotifier.currentQuestion!.id} / ${apiNotifier.questions.length}'),
+          child: Text('${question.id} / ${apiNotifier.questions.length}'),
         ),
         Transform.translate(
           offset: const Offset(1, 2) * screenAdjust(0.13, context),
@@ -80,11 +76,10 @@ class _QuestionViewState extends State<QuestionView> {
                   child: TextButton(
                     child: const Text('Final Answer'),
                     onPressed: () {
-                      quizNotifier.submitFinalAnswer(_answer!.index);
+                      quizNotifier.submitFinalAnswer(_answer!.index, question);
                       _answer = null;
-
-                      currentQuestionIndex += 1;
-                      // if (currentQuestionIndex == questions.length) {
+                      quizNotifier.currentQuestionIndex += 1;
+                      // if (quizNotifier.currentQuestionIndex == questions.length) {
                       Navigator.of(context).pushNamed('Results');
                       // }
                       setState(() {});
@@ -121,7 +116,16 @@ class ResultsView extends StatelessWidget {
           offset: const Offset(3, 3) * screenAdjust(0.13, context),
           child: Text('${score.correct} right,\n${score.incorrect} wrong.'),
         ),
-        // TODO Restart quiz button calls score.reset()
+        Transform.translate(
+          offset: const Offset(3, 6) * screenAdjust(0.13, context),
+          child: TextButton(
+            child: const Text('Restart Quiz'),
+            onPressed: () {
+              quizNotifier.restart();
+              Navigator.of(context).pop();
+            },
+          ),
+        ),
         Container(),
       ],
     ));
