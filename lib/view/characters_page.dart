@@ -42,6 +42,33 @@ class CharactersPage extends StatelessWidget {
   }
 }
 
+class _CharacterThumbnail extends StatelessWidget {
+  final Character character;
+
+  const _CharacterThumbnail({Key? key, required this.character})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final padY = SizedBox(height: screenAdjust(0.02, context));
+
+    return Column(
+      children: [
+        //TODO Animate this hero onto Biography
+        SizedBox(
+            height: screenAdjust(0.6, context),
+            child: Image.network(character.image)),
+        padY,
+        Text(
+          character.name,
+          style: const TextStyle(color: Hue.text),
+        ),
+        padY,
+      ],
+    );
+  }
+}
+
 class BiographyPage extends StatelessWidget {
   const BiographyPage({Key? key}) : super(key: key);
 
@@ -109,32 +136,5 @@ class BiographyPage extends StatelessWidget {
       for (final saying in character.sayings) Text('"$saying"\n'),
       padY,
     ]);
-  }
-}
-
-class _CharacterThumbnail extends StatelessWidget {
-  final Character character;
-
-  const _CharacterThumbnail({Key? key, required this.character})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final padY = SizedBox(height: screenAdjust(0.02, context));
-
-    return Column(
-      children: [
-        //TODO Animate this hero onto Biography
-        SizedBox(
-            height: screenAdjust(0.6, context),
-            child: Image.network(character.image)),
-        padY,
-        Text(
-          character.name,
-          style: const TextStyle(color: Hue.text),
-        ),
-        padY,
-      ],
-    );
   }
 }
