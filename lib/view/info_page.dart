@@ -32,7 +32,8 @@ class InfoPage extends StatelessWidget {
                             Navigator.of(context).pushNamed('Characters');
                           },
                         ),
-                        const Precacher(),
+                        // TODO CHeck if we need to put this in here in the widget tree
+                        const ImagePrecacher(),
                       ],
                     )
                   : Container(),

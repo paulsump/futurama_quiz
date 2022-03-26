@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
 
-class Precacher extends StatefulWidget {
-  const Precacher({Key? key}) : super(key: key);
+/// Pre loads all the character images so that we
+/// see them immediately when we go to the [CharactersPage]
+class ImagePrecacher extends StatefulWidget {
+  const ImagePrecacher({Key? key}) : super(key: key);
 
   @override
-  State<Precacher> createState() => _PrecacherState();
+  State<ImagePrecacher> createState() => _ImagePrecacherState();
 }
 
-class _PrecacherState extends State<Precacher> {
+class _ImagePrecacherState extends State<ImagePrecacher> {
+  //TODO check if it works without this array
   final images = <Image>[];
 
   @override
@@ -17,15 +20,13 @@ class _PrecacherState extends State<Precacher> {
 
     for (final character in fetchNotifier.characters) {
       final image = Image.network(character.image);
-      images.add(image);
 
+      images.add(image);
       precacheImage(image.image, context);
     }
     super.didChangeDependencies();
   }
 
   @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  Widget build(BuildContext context) => Container();
 }
