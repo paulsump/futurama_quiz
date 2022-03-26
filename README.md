@@ -4,10 +4,10 @@ Demonstration of basic Flutter UI of data fetched from a simple API.
 
 ## To do
 
+SnackBar colors.
+Font sizes and bold.
 Borders.
 Better more obvious buttons.
-Font sizes and bold.
-SnackBar colors.
 
 ### Tests
 
@@ -23,6 +23,7 @@ Hero animations.
 
 ### Ideas (Later/Never)
 
+Consistent font e.g. is snackBar different?
 Random character avatars e.g. on snackBar.
 //Pick character... Character then uses tube lift in quiz.
 

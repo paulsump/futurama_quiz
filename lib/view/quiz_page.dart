@@ -4,6 +4,7 @@ import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
+import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
 const noWarn = out;
@@ -94,14 +95,17 @@ class _QuestionViewState extends State<QuestionView> {
                       onPressed: () {
                         var message = 'Correct!';
 
-                        if (question.correctAnswer == question.possibleAnswers[_answer!.index]) {
+                        if (question.correctAnswer ==
+                            question.possibleAnswers[_answer!.index]) {
                           score.correct += 1;
                         } else {
                           score.incorrect += 1;
-                          message = 'Sorry, the correct answer was "${question.correctAnswer}".';
+                          message =
+                              'Sorry, the correct answer was "${question.correctAnswer}".';
                         }
 
-                        ScaffoldMessenger.of(context).showSnackBar( SnackBar(
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          backgroundColor: Hue.tileBackground,
                           content: Text(message),
                         ));
 
