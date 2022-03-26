@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/fetch/character.dart';
+import 'package:futurama_quiz/character.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 

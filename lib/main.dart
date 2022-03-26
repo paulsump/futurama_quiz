@@ -3,7 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/fetch/fetch_notifier.dart';
+import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
 import 'package:futurama_quiz/view/biography_page.dart';
