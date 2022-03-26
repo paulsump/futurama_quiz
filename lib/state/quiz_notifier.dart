@@ -22,6 +22,7 @@ class QuizNotifier extends ChangeNotifier {
   void restart() {
     score.reset();
     currentQuestionIndex = 0;
+    notifyListeners();
   }
 }
 

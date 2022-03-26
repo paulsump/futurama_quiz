@@ -35,7 +35,7 @@ class _QuestionViewState extends State<QuestionView> {
 
   @override
   Widget build(BuildContext context) {
-    final quizNotifier = getQuizNotifier(context, listen: false);
+    final quizNotifier = getQuizNotifier(context, listen: true);
 
     final apiNotifier = getApiNotifier(context, listen: true);
     final questions = apiNotifier.questions;
