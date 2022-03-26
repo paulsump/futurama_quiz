@@ -1,28 +1,36 @@
 # Futurama Characters and Quiz
 
-Demonstration of basic Flutter UI of data fetched from a simple API.
+- Demonstration of basic Flutter UI of data fetched from a simple API.
+
+## Bugs
+
+- SnackBar delay is long, so need to cancel it if already on a couple of questions ahead. Probably
+  only happens during dev.
 
 ## To do
 
-Borders. More obvious buttons. SnackBar text color. Check all TODOs Check able to run on any device
-running Android 7 (API 24) or greater. Font sizes and bold.
+- Borders.
+- More obvious buttons.
+- SnackBar text color.
+- Check all TODOs
+- remove all hacks
+- Check able to run on any device
+- running Android 7 (API 24) or greater. Font sizes and bold.
 
 ### Tests to do
 
-Page navigation in different orientations (at least no exceptions). 
-Mock client.
+- Page navigation in different orientations (at least no exceptions).
+- Mock client.
 
 ### Ideas
 
-dark theme
-Click on text to choose radio.
-Fry starts big then animates small when haveInfo API.
-Tick and cross icons on core and snackBar.
-Hero animations.
+- dark theme
+- Click on text to choose radio. Fry starts big then animates small when haveInfo API.
+- Tick and cross icons on core and snackBar. Hero animations.
 
 ### Ideas (Later/Never)
 
-Consistent font e.g. is snackBar different?
-Random character avatars e.g. on snackBar.
-//Pick character... Character then uses tube lift in quiz.
+- Consistent font e.g. is snackBar different?
+- Random character avatars e.g. on snackBar.
+- //Pick character... Character then uses tube lift in quiz.
 

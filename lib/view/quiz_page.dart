@@ -60,7 +60,10 @@ class _QuestionViewState extends State<QuestionView> {
           isPortrait(context) ? 3 : 2,
           SizedBox(
               width: screenAdjust(isPortrait(context) ? 0.73 : 0.9, context),
-              child: Text(question.question)),
+              child: Text(
+                question.question,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              )),
         ),
         Adjusted(
           isPortrait(context) ? 1 : 9,

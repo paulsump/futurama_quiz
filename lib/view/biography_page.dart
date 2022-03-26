@@ -64,9 +64,7 @@ class BiographyPage extends StatelessWidget {
       padY,
       Text(
         character.name,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
+        style: const TextStyle(fontWeight: FontWeight.bold),
       ),
     ]);
   }
