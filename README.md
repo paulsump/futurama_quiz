@@ -4,12 +4,8 @@ Demonstration of basic Flutter UI of data fetched from a simple API.
 
 ## To do
 
-Font sizes and bold.
-Borders.
-Better more obvious buttons.
-SnackBar text color.
-check todos
-Check able to run on any device running Android 7 (API 24) or greater.
+Borders. More obvious buttons. SnackBar text color. Check all TODOs Check able to run on any device
+running Android 7 (API 24) or greater. Font sizes and bold.
 
 ### Tests to do
 
@@ -18,7 +14,6 @@ Mock client.
 
 ### Ideas
 
-prerender character thumbnails
 dark theme
 Click on text to choose radio.
 Fry starts big then animates small when haveInfo API.

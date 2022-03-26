@@ -62,7 +62,12 @@ class BiographyPage extends StatelessWidget {
           height: screenAdjust(0.73, context),
           child: Image.network(character.image)),
       padY,
-      Text(character.name),
+      Text(
+        character.name,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     ]);
   }
 
@@ -70,16 +75,18 @@ class BiographyPage extends StatelessWidget {
     final padY = SizedBox(height: screenAdjust(0.04, context));
 
     return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxHeight: screenAdjust(0.6, context)),
-
+      constraints: BoxConstraints(maxHeight: screenAdjust(0.6, context)),
       child: ListView(children: [
         Text(character.type),
         padY,
         Text(character.occupation),
         padY,
         padY,
-        for (final saying in character.sayings) Text('"$saying"\n'),
+        for (final saying in character.sayings)
+          Text(
+            '"$saying"\n',
+            style: const TextStyle(fontStyle: FontStyle.italic),
+          ),
         padY,
       ]),
     );
