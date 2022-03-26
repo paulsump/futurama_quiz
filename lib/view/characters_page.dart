@@ -1,6 +1,7 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/api/character.dart';
 import 'package:futurama_quiz/view/big_back_button.dart';
@@ -19,6 +20,7 @@ class CharactersPage extends StatelessWidget {
       child: Stack(
         children: [
           ListView(
+            scrollDirection: Axis.horizontal,
             children: [
               for (final character in apiNotifier.characters)
                 SizedBox(
@@ -47,26 +49,34 @@ class BiographyPage extends StatelessWidget {
     final character = ModalRoute.of(context)!.settings.arguments as Character;
 
     return Cage(
-      child: Stack(children: [
-        Adjusted(1.5, 0.5, _buildThumbnail(context, character)),
-        if (isPortrait(context))
+      child: Stack(
+        children: [
+          const BigBackButton(),
+          Container(),
           Adjusted(
-              1,
-              8,
-              SizedBox(
-                width: screenAdjust(0.8, context),
-                child: _buildWords(context, character),
-              ))
-        else
-          Adjusted(
-              7,
-              1,
-              SizedBox(
-                  width: screenAdjust(1, context),
-                  child: _buildWords(context, character))),
-        const BigBackButton(),
-        Container(),
-      ]),
+            0.5,
+            isPortrait(context) ? 0.5 : 0.0,
+            Stack(children: [
+              Adjusted(1.5, 0.5, _buildThumbnail(context, character)),
+              if (isPortrait(context))
+                Adjusted(
+                    1,
+                    8,
+                    SizedBox(
+                      width: screenAdjust(0.8, context),
+                      child: _buildWords(context, character),
+                    ))
+              else
+                Adjusted(
+                    7,
+                    1,
+                    SizedBox(
+                        width: screenAdjust(1, context),
+                        child: _buildWords(context, character))),
+            ]),
+          ),
+        ],
+      ),
     );
   }
 
