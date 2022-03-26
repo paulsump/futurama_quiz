@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/state/quiz_notifier.dart';
+import 'package:futurama_quiz/view/biography_page.dart';
 import 'package:futurama_quiz/view/characters_page.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/info_page.dart';

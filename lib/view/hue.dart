@@ -23,7 +23,10 @@ class Hue {
   static const Color enabledIcon = text;
   static const Color text = Color(0xff095A49);
 
-  static const Color background = Color(0xff70E3A2);
+  static const Color foreground = Color(0xff70E3A2);
+  static const Color background = Color(0xff7ED2F8);
+
+  static const Color border = Color(0xffC80B17);
   static final Color button = _getTweenTtoBRColor(0.4);
 
   static final Color buttonBorder = _getTweenTtoBRColor(0.1);
