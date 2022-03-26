@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/api/question.dart';
 import 'package:futurama_quiz/out.dart';
 import 'package:provider/provider.dart';
+
+import 'fetch/fetch_notifier.dart';
 
 const noWarn = [out, Question];
 

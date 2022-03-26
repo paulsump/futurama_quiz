@@ -1,7 +1,7 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/api/character.dart';
+import 'package:futurama_quiz/fetch/character.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
