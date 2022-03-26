@@ -57,11 +57,12 @@ class BiographyPage extends StatelessWidget {
             isPortrait(context) ? 0.7 : 0.5,
             isPortrait(context) ? 1.75 : 0.0,
             Stack(children: [
-              Adjusted(1.5, 0.5, _buildThumbnail(context, character)),
+              Adjusted(1.5, isPortrait(context) ? -1 : 0,
+                  _buildThumbnail(context, character)),
               if (isPortrait(context))
                 Adjusted(
                     1.2,
-                    8,
+                    6,
                     SizedBox(
                       width: screenAdjust(0.6, context),
                       child: _buildWords(context, character),

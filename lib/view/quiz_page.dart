@@ -99,7 +99,7 @@ class _QuestionViewState extends State<QuestionView> {
                         if (quizNotifier.currentQuestionIndex ==
                             questions.length) {
                           quizNotifier.currentQuestionIndex = 0;
-                          Navigator.of(context).popAndPushNamed('Results');
+                          Navigator.of(context).pushReplacementNamed('Results');
                         } else {
                           setState(() {});
                         }
@@ -145,7 +145,7 @@ class ResultsPage extends StatelessWidget {
             child: const Text('Restart Quiz'),
             onPressed: () {
               quizNotifier.restart();
-              Navigator.of(context).popAndPushNamed('Quiz');
+              Navigator.of(context).pushReplacementNamed('Quiz');
             },
           ),
         ),
