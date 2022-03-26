@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/api/api_notifier.dart';
+import 'package:futurama_quiz/api/fetch_notifier.dart';
 import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
 import 'package:futurama_quiz/view/cage.dart';
@@ -40,8 +40,8 @@ class _QuestionViewState extends State<QuestionView> {
   Widget build(BuildContext context) {
     final quizNotifier = getQuizNotifier(context, listen: true);
 
-    final apiNotifier = getApiNotifier(context, listen: true);
-    final questions = apiNotifier.questions;
+    final fetchNotifier = getFetchNotifier(context, listen: true);
+    final questions = fetchNotifier.questions;
 
     final question = questions[quizNotifier.currentQuestionIndex];
     final score = quizNotifier.score;
@@ -52,7 +52,7 @@ class _QuestionViewState extends State<QuestionView> {
         Adjusted(
           isPortrait(context) ? 2.5 : 4.0,
           isPortrait(context) ? 2 : 1,
-          Text('Question ${question.id} of ${apiNotifier.questions.length}:'),
+          Text('Question ${question.id} of ${fetchNotifier.questions.length}:'),
         ),
         Adjusted(
           isPortrait(context) ? 1 : 2,

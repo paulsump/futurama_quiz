@@ -7,8 +7,8 @@ import 'package:futurama_quiz/api/question.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
-ApiNotifier getApiNotifier(BuildContext context, {required bool listen}) =>
-    Provider.of<ApiNotifier>(context, listen: listen);
+FetchNotifier getFetchNotifier(BuildContext context, {required bool listen}) =>
+    Provider.of<FetchNotifier>(context, listen: listen);
 
 /// Fetches everything that's used from the api (with http)
 /// After fetching the info and notifying,
@@ -19,7 +19,7 @@ ApiNotifier getApiNotifier(BuildContext context, {required bool listen}) =>
 /// when the characters and/or quiz have been fetched.
 /// The HttpClient is closed when everything has been fetched.
 /// This is all done in the initialize() function.
-class ApiNotifier extends ChangeNotifier {
+class FetchNotifier extends ChangeNotifier {
   bool initializeHasBeenCalled = false;
 
   late Info info;

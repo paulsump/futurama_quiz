@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/api/api_notifier.dart';
 
 class Precacher extends StatefulWidget {
   const Precacher({Key? key}) : super(key: key);
@@ -13,9 +12,9 @@ class _PrecacherState extends State<Precacher> {
 
   @override
   void didChangeDependencies() {
-    final apiNotifier = getApiNotifier(context, listen: true);
+    final fetchNotifier = getFetchNotifier(context, listen: true);
 
-    for (final character in apiNotifier.characters) {
+    for (final character in fetchNotifier.characters) {
       final image = Image.network(character.image);
       images.add(image);
 

@@ -1,8 +1,8 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/api/character.dart';
+import 'package:futurama_quiz/api/fetch_notifier.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/hue.dart';
@@ -13,7 +13,7 @@ class CharactersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final apiNotifier = getApiNotifier(context, listen: true);
+    final fetchNotifier = getFetchNotifier(context, listen: true);
 
     return Cage(
       child: Stack(
@@ -25,11 +25,11 @@ class CharactersPage extends StatelessWidget {
               scrollDirection:
                   isPortrait(context) ? Axis.vertical : Axis.horizontal,
               children: [
-                for (final character in apiNotifier.characters)
+                for (final character in fetchNotifier.characters)
                   TextButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed('Biography',
-                            arguments: character);
+                        Navigator.of(context)
+                            .pushNamed('Biography', arguments: character);
                       },
                       child: _CharacterThumbnail(character: character)),
               ],

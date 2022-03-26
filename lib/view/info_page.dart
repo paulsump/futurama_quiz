@@ -1,7 +1,6 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/image_precacher.dart';
@@ -12,7 +11,7 @@ class InfoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final apiNotifier = getApiNotifier(context, listen: true);
+    final fetchNotifier = getFetchNotifier(context, listen: true);
 
     return Cage(
       child: Column(
@@ -20,7 +19,7 @@ class InfoPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              apiNotifier.haveCharacters
+              fetchNotifier.haveCharacters
                   ? Column(
                       children: [
                         TextButton(
@@ -36,7 +35,7 @@ class InfoPage extends StatelessWidget {
                       ],
                     )
                   : Container(),
-              apiNotifier.haveQuestions
+              fetchNotifier.haveQuestions
                   ? TextButton(
                       child: const Text(
                         'Quiz',
@@ -93,15 +92,15 @@ class _InfoView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final apiNotifier = getApiNotifier(context, listen: true);
+    final fetchNotifier = getFetchNotifier(context, listen: true);
 
-    return apiNotifier.haveInfo
+    return fetchNotifier.haveInfo
         ? Column(
             children: [
-              Text(apiNotifier.info.synopsis),
+              Text(fetchNotifier.info.synopsis),
               SizedBox(height: screenAdjust(0.1, context)),
-              Text(apiNotifier.info.yearsAired),
-              for (final name in apiNotifier.info.creatorNames) Text(name),
+              Text(fetchNotifier.info.yearsAired),
+              for (final name in fetchNotifier.info.creatorNames) Text(name),
             ],
           )
         : Container();
