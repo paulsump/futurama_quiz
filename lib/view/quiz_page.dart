@@ -46,13 +46,13 @@ class _QuestionViewState extends State<QuestionView> {
     return Stack(
       children: [
         Adjusted(
-          3,
-          2,
+          isPortrait(context) ? 3 : 4.5,
+          isPortrait(context) ? 2 : 1,
           Text('${question.id} / ${apiNotifier.questions.length}'),
         ),
         Adjusted(
-          1,
-          3,
+          isPortrait(context) ? 1 : 2,
+          isPortrait(context) ? 3 : 2,
           SizedBox(
               width: screenAdjust(isPortrait(context) ? 0.73 : 1.0, context),
               child: Text(question.question)),
@@ -101,8 +101,8 @@ class _QuestionViewState extends State<QuestionView> {
           ),
         ),
         Adjusted(
-          5,
-          1,
+          isPortrait(context) ? 5 : 1,
+          isPortrait(context) ? 1 : 6,
           Text('${score.correct} right, ${score.incorrect} wrong.'),
         ),
       ],
