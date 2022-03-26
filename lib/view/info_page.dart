@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:futurama_quiz/api/api_notifier.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/hue.dart';
+import 'package:futurama_quiz/view/image_precacher.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
 class InfoPage extends StatelessWidget {
@@ -20,14 +21,19 @@ class InfoPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               apiNotifier.haveCharacters
-                  ? TextButton(
-                      child: const Text(
-                        'Characters',
-                        style: TextStyle(color: Hue.text),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pushNamed('Characters');
-                      },
+                  ? Column(
+                      children: [
+                        TextButton(
+                          child: const Text(
+                            'Characters',
+                            style: TextStyle(color: Hue.text),
+                          ),
+                          onPressed: () {
+                            Navigator.of(context).pushNamed('Characters');
+                          },
+                        ),
+                        const Precacher(),
+                      ],
                     )
                   : Container(),
               apiNotifier.haveQuestions
