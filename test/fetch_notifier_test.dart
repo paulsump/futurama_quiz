@@ -61,4 +61,28 @@ void main() {
       expect(fetcher.getCharacters(), throwsException);
     });
   });
+
+  group('fetcher.getQuestions()', () {
+    test('returns a List if the http call completes successfully', () async {
+      final client = MockClient((_) async => http.Response(
+              fixture('questions.json'), 200, headers: {
+            HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+          }));
+
+      final fetcher = Fetcher(client);
+      final questionsList = await fetcher.getQuestions();
+      expect(
+          questionsList
+              .map((character) => Question.fromJson(character))
+              .toList(),
+          isA<List<Question>>());
+    });
+
+    test('throws an exception if the http call completes with an error', () {
+      final client = MockClient((_) async => http.Response('Not Found', 404));
+
+      final fetcher = Fetcher(client);
+      expect(fetcher.getQuestions(), throwsException);
+    });
+  });
 }

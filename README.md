@@ -27,7 +27,8 @@
 ### Tests to do
 
 - Page navigation in different orientations (at least no exceptions).
-- Mock client.
+- test exact field data after load.
+- quiz answering widget test.
 
 ### Ideas
 
