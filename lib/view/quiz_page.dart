@@ -73,36 +73,27 @@ class _QuizPageState extends State<QuizPage> {
                             groupValue: _answer,
                             onChanged: (Answer? value) {
                               _answer = value!;
+                              {
+                                quizNotifier.updateScoreMessage(
+                                    _answer!.index, question);
+
+                                _answer = null;
+                                quizNotifier.currentQuestionIndex += 1;
+
+                                if (quizNotifier.currentQuestionIndex ==
+                                    questions.length) {
+                                  quizNotifier.currentQuestionIndex = 0;
+
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('Results');
+                                } else {
+                                  setState(() {});
+                                }
+                              }
                               setState(() {});
                             }),
                       ),
                     ),
-                  ScreenAdjust(
-                    x: isPortrait(context) ? 1 : 0,
-                    y: 0.5,
-                    child: TextButton(
-                      child: const Text('Final Answer'),
-                      onPressed: _answer == null
-                          ? null
-                          : () {
-                              quizNotifier.updateScoreMessage(
-                                  _answer!.index, question);
-
-                              _answer = null;
-                              quizNotifier.currentQuestionIndex += 1;
-
-                              if (quizNotifier.currentQuestionIndex ==
-                                  questions.length) {
-                                quizNotifier.currentQuestionIndex = 0;
-
-                                Navigator.of(context)
-                                    .pushReplacementNamed('Results');
-                              } else {
-                                setState(() {});
-                              }
-                            },
-                    ),
-                  ),
                 ],
               ),
             ),
