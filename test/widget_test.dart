@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:futurama_quiz/main.dart';
 import 'package:futurama_quiz/out.dart';
-import 'package:futurama_quiz/view/biography_page.dart';
 import 'package:futurama_quiz/view/cage.dart';
-import 'package:futurama_quiz/view/characters_page.dart';
 import 'package:futurama_quiz/view/info_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
@@ -45,9 +43,6 @@ void main() {
 
     expect(find.byType(Cage), findsOneWidget);
     expect(find.byType(ListView), findsOneWidget);
-    // expect(find.byType(AssetImage), findsOneWidget);
-    // expect(find.byType(_InfoView), findsOneWidget);
-    expect(find.byType(Text), findsOneWidget);
     expect(find.text('Please connect to the internet.'), findsOneWidget);
 
     expect(find.text('1'), findsNothing);

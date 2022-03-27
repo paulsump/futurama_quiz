@@ -1,11 +1,12 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
-import 'dart:io' show Platform;
 
 /// The home page of the app, showing a synopsis of Futurama.
 /// Allows access to the other two pages [CharactersPage] and [QuizPage]
@@ -24,34 +25,32 @@ class InfoPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              fetchNotifier.haveCharacters
-                  ? Column(
-                      children: [
-                        TextButton(
-                          child: const Text(
-                            'Characters',
-                            style: TextStyle(color: Hue.text),
-                          ),
-                          onPressed: () {
-                            Navigator.of(context).pushNamed('Characters');
-                          },
-                        ),
-                        // TODO Call this elsewhere only once
-                        _precacheImages(context),
-                      ],
-                    )
-                  : Container(),
-              fetchNotifier.haveQuestions
-                  ? TextButton(
-                      child: const Text(
-                        'Quiz',
-                        style: TextStyle(color: Hue.text),
-                      ),
-                      onPressed: () {
+              Column(children: [
+                TextButton(
+                  child: const Text(
+                    'Characters',
+                    style: TextStyle(color: Hue.text),
+                  ),
+                  onPressed: fetchNotifier.haveCharacters
+                      ? () {
+                          Navigator.of(context).pushNamed('Characters');
+                        }
+                      : null,
+                ),
+                // TODO Call this elsewhere only once
+                if (fetchNotifier.haveCharacters) _precacheImages(context),
+              ]),
+              TextButton(
+                child: const Text(
+                  'Quiz',
+                  style: TextStyle(color: Hue.text),
+                ),
+                onPressed: fetchNotifier.haveQuestions
+                    ? () {
                         Navigator.of(context).pushNamed('Quiz');
-                      },
-                    )
-                  : Container(),
+                      }
+                    : null,
+              )
             ],
           ),
           if (isPortrait(context))
