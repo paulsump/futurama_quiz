@@ -146,6 +146,7 @@ class ResultsPage extends StatelessWidget {
           y: isPortrait(context) ? 6 : 4,
           child: TextButton(
             child: const Text('Restart Quiz'),
+            style: TextButton.styleFrom(padding: EdgeInsets.zero),
             onPressed: () {
               quizNotifier.restart();
               Navigator.of(context).pushReplacementNamed('Quiz');
