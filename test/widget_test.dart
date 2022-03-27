@@ -6,12 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:futurama_quiz/main.dart';
 import 'package:futurama_quiz/out.dart';
+import 'package:futurama_quiz/view/biography_page.dart';
 import 'package:futurama_quiz/view/cage.dart';
+import 'package:futurama_quiz/view/characters_page.dart';
 import 'package:futurama_quiz/view/info_page.dart';
+import 'package:futurama_quiz/view/quiz_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
-const noWarn = out;
+const noWarn = [out, CharactersPage, BiographyPage, QuizPage];
 
 void main() {
   String fixture(String name) => File('test_data/$name').readAsStringSync();
@@ -45,14 +48,11 @@ void main() {
     expect(find.byType(ListView), findsOneWidget);
     expect(find.text('Please connect to the internet.'), findsOneWidget);
 
-    expect(find.text('1'), findsNothing);
-
     // before rebuild
     expect(find.textContaining('Philip J. Fry is...'), findsNothing);
     await tester.pump();
     //after rebuild!
     expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
-    // expect(find.byType(TextButton), findsOneWidget);
   });
 
   testWidgets('Navigate from Info page to Characters Page',
@@ -62,12 +62,13 @@ void main() {
     expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
     expect(find.textContaining('Characters'), findsOneWidget);
     expect(find.textContaining('Quiz'), findsOneWidget);
-    // expect(find.byType(TextButton), findsOneWidget);
-    await tester.tap(find.textContaining('Characters'));
+    expect(find.byType(TextButton), findsNWidgets(2));
+    await tester.tap(find.widgetWithText(TextButton, 'Characters'));
     await tester.pump();
-    expect(find.textContaining('Philip'), findsOneWidget);
     expect(find.byType(InfoPage), findsOneWidget);
-    //i.e. it doesn't get to characters page
+
+    await tester.pump();
+    expect(find.byType(CharactersPage), findsOneWidget);
   });
 
   testWidgets('Navigate from Info to Quiz Page', (WidgetTester tester) async {
@@ -77,10 +78,12 @@ void main() {
     expect(find.textContaining('Characters'), findsOneWidget);
     expect(find.textContaining('Quiz'), findsOneWidget);
 
-    expect(find.byType(InfoPage), findsOneWidget);
-    await tester.tap(find.textContaining('Quiz'));
+    expect(find.byType(TextButton), findsNWidgets(2));
+    await tester.tap(find.widgetWithText(TextButton, 'Quiz'));
     await tester.pump();
     expect(find.byType(InfoPage), findsOneWidget);
-    //i.e. it doesn't get to quiz page
+
+    await tester.pump();
+    expect(find.byType(QuizPage), findsOneWidget);
   });
 }
