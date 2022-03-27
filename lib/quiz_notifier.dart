@@ -11,7 +11,7 @@ QuizNotifier getQuizNotifier(BuildContext context, {required bool listen}) =>
 
 /// For the current state of the quiz e.g. current question, score
 class QuizNotifier extends ChangeNotifier {
-  int currentQuestionIndex = 27; //hack
+  int currentQuestionIndex = 0;
 
   var score = Score();
   var message = '';

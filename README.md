@@ -17,7 +17,6 @@
 - Borders.
 - More obvious buttons.
 - Check all TODOs
-- remove all hacks
 - Check able to run on any device
 - running Android 7 (API 24) or greater. Font sizes and bold.
 
