@@ -1,5 +1,7 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/character.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
@@ -63,9 +65,10 @@ class _Thumbnail extends StatelessWidget {
     return Column(
       children: [
         //TODO Animate this hero onto Biography
-        SizedBox(
-            height: screenAdjust(isPortrait(context) ? 0.4 : 0.6, context),
-            child: Image.network(character.image)),
+        if (!Platform.environment.containsKey('FLUTTER_TEST'))
+          SizedBox(
+              height: screenAdjust(isPortrait(context) ? 0.4 : 0.6, context),
+              child: Image.network(character.image)),
         padY,
         Text(
           character.name,
