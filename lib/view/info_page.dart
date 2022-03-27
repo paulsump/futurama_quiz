@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/hue.dart';
-import 'package:futurama_quiz/view/image_precacher.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
 /// The home page of the app, showing a synopsis of Futurama.
@@ -36,8 +35,8 @@ class InfoPage extends StatelessWidget {
                             Navigator.of(context).pushNamed('Characters');
                           },
                         ),
-                        // TODO CHeck if we need to put this in here in the widget tree
-                        const ImagePrecacher(),
+                        // TODO Call this elsewhere only once
+                        _precacheImages(context),
                       ],
                     )
                   : Container(),
@@ -77,6 +76,17 @@ class InfoPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Widget _precacheImages(BuildContext context) {
+    final fetchNotifier = getFetchNotifier(context, listen: false);
+
+    for (final character in fetchNotifier.characters) {
+      final image = Image.network(character.image);
+
+      precacheImage(image.image, context);
+    }
+    return Container();
   }
 
   Widget _buildImage(BuildContext context) => Image(
