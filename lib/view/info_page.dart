@@ -7,6 +7,10 @@ import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/image_precacher.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
+/// The home page of the app, showing a synopsis of Futurama.
+/// Allows access to the other two pages [CharactersPage] and [QuizPage]
+/// via the two buttons that appear at the top once
+/// the [Character]s and [Question]s have been fetched.
 class InfoPage extends StatelessWidget {
   const InfoPage({Key? key}) : super(key: key);
 
@@ -89,6 +93,7 @@ class InfoPage extends StatelessWidget {
       );
 }
 
+/// The view of the actual fetched data.
 class _InfoView extends StatelessWidget {
   const _InfoView({Key? key}) : super(key: key);
 

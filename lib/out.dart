@@ -3,7 +3,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 const noWarn = log;
 
@@ -25,13 +24,3 @@ void out(Object object) {
     _out(object.toString());
   }
 }
-
-void clipError(String text) {
-  out(text);
-  //TODO append to error log
-//TODO make a command that user can load the log and saveTolClip
-  writeToClipboard(text);
-}
-
-void writeToClipboard(String text) =>
-    Clipboard.setData(ClipboardData(text: text));

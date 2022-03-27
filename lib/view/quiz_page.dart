@@ -8,32 +8,15 @@ import 'package:futurama_quiz/view/screen_adjust.dart';
 
 const noWarn = out;
 
-//TODO MANages QuestionView etc
-class QuizPage extends StatelessWidget {
+/// Display one question, current score etc.
+class QuizPage extends StatefulWidget {
   const QuizPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return Cage(
-        child: Stack(
-      children: const [
-        QuestionView(),
-        CancelButton(),
-      ],
-    ));
-  }
+  State<QuizPage> createState() => _QuizPageState();
 }
 
-enum _Answer { one, two, three, four, five, six, seven, eight, nine, ten }
-
-class QuestionView extends StatefulWidget {
-  const QuestionView({Key? key}) : super(key: key);
-
-  @override
-  State<QuestionView> createState() => _QuestionViewState();
-}
-
-class _QuestionViewState extends State<QuestionView> {
+class _QuizPageState extends State<QuizPage> {
   _Answer? _answer;
 
   @override
@@ -46,95 +29,103 @@ class _QuestionViewState extends State<QuestionView> {
     final question = questions[quizNotifier.currentQuestionIndex];
     final score = quizNotifier.score;
 
-    return Stack(
-      children: [
-        Container(),
-        ScreenAdjust(
-          x: isPortrait(context) ? 2.5 : 4.0,
-          y: isPortrait(context) ? 2 : 1,
-          child: Text(
-              'Question ${question.id} of ${fetchNotifier.questions.length}:'),
-        ),
-        ScreenAdjust(
-          x: isPortrait(context) ? 1 : 2,
-          y: isPortrait(context) ? 3 : 2,
-          child: SizedBox(
-              width: screenAdjust(isPortrait(context) ? 0.73 : 0.9, context),
-              child: Text(
-                question.question,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              )),
-        ),
-        ScreenAdjust(
-          x: isPortrait(context) ? 1 : 8,
-          y: isPortrait(context) ? 5 : 0.5,
-          child: SizedBox(
-            width: screenAdjust(0.9, context),
-            child: Column(
-              children: <Widget>[
-                for (int i = 0; i < question.possibleAnswers.length; ++i)
-                  SizedBox(
-                    height: screenAdjust(0.12, context),
-                    child: ListTile(
-                      title: Text(
-                        question.possibleAnswers[i],
-                        style:
-                            TextStyle(fontSize: screenAdjust(0.032, context)),
+    return Cage(
+      child: Stack(
+        children: [
+          Container(),
+          ScreenAdjust(
+            x: isPortrait(context) ? 2.5 : 4.0,
+            y: isPortrait(context) ? 2 : 1,
+            child: Text(
+                'Question ${question.id} of ${fetchNotifier.questions.length}:'),
+          ),
+          ScreenAdjust(
+            x: isPortrait(context) ? 1 : 2,
+            y: isPortrait(context) ? 3 : 2,
+            child: SizedBox(
+                width: screenAdjust(isPortrait(context) ? 0.73 : 0.9, context),
+                child: Text(
+                  question.question,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                )),
+          ),
+          ScreenAdjust(
+            x: isPortrait(context) ? 1 : 8,
+            y: isPortrait(context) ? 5 : 0.5,
+            child: SizedBox(
+              width: screenAdjust(0.9, context),
+              child: Column(
+                children: <Widget>[
+                  for (int i = 0; i < question.possibleAnswers.length; ++i)
+                    SizedBox(
+                      height: screenAdjust(0.12, context),
+                      child: ListTile(
+                        title: Text(
+                          question.possibleAnswers[i],
+                          style:
+                              TextStyle(fontSize: screenAdjust(0.032, context)),
+                        ),
+                        leading: Radio<_Answer>(
+                            value: _Answer.values[i],
+                            groupValue: _answer,
+                            onChanged: (_Answer? value) {
+                              _answer = value!;
+                              setState(() {});
+                            }),
                       ),
-                      leading: Radio<_Answer>(
-                          value: _Answer.values[i],
-                          groupValue: _answer,
-                          onChanged: (_Answer? value) {
-                            _answer = value!;
+                    ),
+                  if (_answer != null)
+                    ScreenAdjust(
+                      x: isPortrait(context) ? 1 : 0,
+                      y: 0.5,
+                      child: TextButton(
+                        child: const Text('Final Answer'),
+                        onPressed: () {
+                          quizNotifier.updateScoreMessage(
+                              _answer!.index, question);
+
+                          _answer = null;
+                          quizNotifier.currentQuestionIndex += 1;
+
+                          if (quizNotifier.currentQuestionIndex ==
+                              questions.length) {
+                            quizNotifier.currentQuestionIndex = 0;
+
+                            Navigator.of(context)
+                                .pushReplacementNamed('Results');
+                          } else {
                             setState(() {});
-                          }),
+                          }
+                        },
+                      ),
                     ),
-                  ),
-                if (_answer != null)
-                  ScreenAdjust(
-                    x: isPortrait(context) ? 1 : 0,
-                    y: 0.5,
-                    child: TextButton(
-                      child: const Text('Final Answer'),
-                      onPressed: () {
-                        quizNotifier.updateScoreMessage(
-                            _answer!.index, question);
-
-                        _answer = null;
-                        quizNotifier.currentQuestionIndex += 1;
-
-                        if (quizNotifier.currentQuestionIndex ==
-                            questions.length) {
-                          quizNotifier.currentQuestionIndex = 0;
-
-                          Navigator.of(context).pushReplacementNamed('Results');
-                        } else {
-                          setState(() {});
-                        }
-                      },
-                    ),
-                  ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-        ScreenAdjust(
-          x: isPortrait(context) ? 1 : 1,
-          y: isPortrait(context) ? 11 : 4,
-          child: Text(
-              '${quizNotifier.message}\n\n${score.correct} right, ${score.incorrect} wrong.'),
-        ),
-      ],
+          ScreenAdjust(
+            x: isPortrait(context) ? 1 : 1,
+            y: isPortrait(context) ? 11 : 4,
+            child: Text(
+                '${quizNotifier.message}\n\n${score.correct} right, ${score.incorrect} wrong.'),
+          ),
+          const CancelButton(),
+        ],
+      ),
     );
   }
 }
 
+enum _Answer { one, two, three, four, five, six, seven, eight, nine, ten }
+
+/// Display score and restart button
 class ResultsPage extends StatelessWidget {
   const ResultsPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final quizNotifier = getQuizNotifier(context, listen: false);
+
     final score = quizNotifier.score;
 
     return Cage(

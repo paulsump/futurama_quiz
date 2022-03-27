@@ -16,9 +16,9 @@ FetchNotifier getFetchNotifier(BuildContext context, {required bool listen}) =>
 /// The buttons to get to the characters and quiz pages only appear
 /// when the characters and/or quiz have been fetched.
 /// The HttpClient is closed when everything has been fetched.
-/// This is all done in the initialize() function.
+/// This is all done in the fetchAll() function.
 class FetchNotifier extends ChangeNotifier {
-  bool initializeHasBeenCalled = false;
+  bool fetchAllHasBeenCalled = false;
 
   late Info info;
   bool haveInfo = false;
@@ -31,8 +31,8 @@ class FetchNotifier extends ChangeNotifier {
 
   /// The main starting point for the app data.
   /// Called only once.
-  Future<void> initialize(BuildContext context) async {
-    initializeHasBeenCalled = true;
+  Future<void> fetchAll(BuildContext context) async {
+    fetchAllHasBeenCalled = true;
 
     final client = http.Client();
 

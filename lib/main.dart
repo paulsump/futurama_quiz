@@ -21,6 +21,8 @@ void main() => runApp(createApp());
 
 Widget createApp() => const _App();
 
+/// The only app.  Has all the notifiers and navigator routes.
+/// Calls fetchAll() once on the FetchNotifier.
 class _App extends StatelessWidget {
   const _App({Key? key}) : super(key: key);
 
@@ -44,8 +46,8 @@ class _App extends StatelessWidget {
             } else {
               final fetchNotifier = getFetchNotifier(context, listen: false);
 
-              if (!fetchNotifier.initializeHasBeenCalled) {
-                unawaited(fetchNotifier.initialize(context));
+              if (!fetchNotifier.fetchAllHasBeenCalled) {
+                unawaited(fetchNotifier.fetchAll(context));
               }
 
               return const InfoPage();
