@@ -110,7 +110,6 @@ class _InfoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fetchNotifier = getFetchNotifier(context, listen: true);
-
     return fetchNotifier.haveInfo
         ? Column(
             children: [
@@ -120,6 +119,6 @@ class _InfoView extends StatelessWidget {
               for (final name in fetchNotifier.info.creatorNames) Text(name),
             ],
           )
-        : Container();
+        : const Center(child: Text('Please connect to the internet.'));
   }
 }

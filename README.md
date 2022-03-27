@@ -12,9 +12,8 @@
 
 ## To do now
 
-- Display error on screen if no internet
-- Don't add any info, characters or questions that had bad date (catch them).
-- Adjust Font size for different screens. e.g. answers.
+- Don't add any info, characters or questions that have bad data (try/catch them).
+- //Adjust Font size for different screens. e.g. answers.
 
 ## To do
 
@@ -22,16 +21,19 @@
 - More obvious buttons.
 - Check all TODOs
 - Check able to run on any device
-- Running Android 7 (API 24) or greater. Font sizes and bold.
+- Running Android 7 (API 24) or greater.
+- //Font sizes and bold.
 
 ### Tests to do
 
+- Pass Client into fetchAll() so that FetchNotifier can be used in tests.
 - Page navigation in different orientations (at least no exceptions).
-- test exact field data after load.
-- quiz answering widget test.
+- Test exact field data after load.
+- Quiz answering widget test.
 
 ### Ideas
 
 - Tool tips
 - Dark theme
-- Click on text to choose radio. Fry starts big then animates small when haveInfo API.
+- Click on text to choose answer too (not just radio).
+- Fry starts big then animates small when haveInfo API.

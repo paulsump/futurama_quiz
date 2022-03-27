@@ -67,6 +67,7 @@ class FetchNotifier extends ChangeNotifier {
 /// Helper class to fetch and convert json
 /// In this api, json lists are returned, so
 /// Lists of Map can be got from getList
+/// Public for tests only, including getCharacters() etc
 class Fetcher {
   final http.Client client;
 
