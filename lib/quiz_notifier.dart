@@ -31,7 +31,7 @@ class QuizNotifier extends ChangeNotifier {
     } else {
       score.incorrect += 1;
 
-      message = '\nSorry, the correct answer was\n"${question.correctAnswer}".';
+      message = 'Sorry, the correct answer was\n"${question.correctAnswer}".';
     }
   }
 }

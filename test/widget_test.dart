@@ -89,7 +89,7 @@ void main() {
     await tester.tap(find.widgetWithText(TextButton, 'Philip Jay Fry.'));
 
     await tester.pump();
-    //doesn't get to BiographyPage
+    //warning doesn't get to BiographyPage
     // expect(find.byType(BiographyPage), findsOneWidget);
     // expect(find.textContaining('Human Male'), findsOneWidget);
     expect(find.textContaining('Philip Jay Fry.'), findsOneWidget);

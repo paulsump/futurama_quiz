@@ -109,11 +109,17 @@ class _QuizPageState extends State<QuizPage> {
           ),
           ScreenAdjust(
             x: isPortrait(context) ? 1 : 1,
-            y: isPortrait(context) ? 11 : 4,
+            y: isPortrait(context) ? 10 : 4,
             child: SizedBox(
               width: screenAdjust(0.75, context),
-              child: Text(
-                  '${quizNotifier.message}\n\n${score.correct} right, ${score.incorrect} wrong.'),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(quizNotifier.message),
+                  SizedBox(height: screenAdjust(0.03, context)),
+                  Text('${score.correct} right, ${score.incorrect} wrong.'),
+                ],
+              ),
             ),
           ),
           const CancelButton(),
