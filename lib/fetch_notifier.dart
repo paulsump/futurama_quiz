@@ -31,10 +31,8 @@ class FetchNotifier extends ChangeNotifier {
 
   /// The main starting point for the app data.
   /// Called only once.
-  Future<void> fetchAll(BuildContext context) async {
+  Future<void> fetchAll(BuildContext context, http.Client client) async {
     fetchAllHasBeenCalled = true;
-
-    final client = http.Client();
 
     final fetcher = Fetcher(client);
     final infoList = await fetcher.getInfo();

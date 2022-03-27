@@ -12,6 +12,8 @@
 
 ## To do now
 
+- Handle exceptions (at least with http) e.g. Display proper error, not just "Please connect to the
+  internet" on screen if request failed. Modify the test if appropriate.
 - Don't add any info, characters or questions that have bad data (try/catch them).
 - //Adjust Font size for different screens. e.g. answers.
 
@@ -26,7 +28,6 @@
 
 ### Tests to do
 
-- Pass Client into fetchAll() so that FetchNotifier can be used in tests.
 - Page navigation in different orientations (at least no exceptions).
 - Test exact field data after load.
 - Quiz answering widget test.

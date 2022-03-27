@@ -11,6 +11,7 @@ import 'package:futurama_quiz/view/characters_page.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/info_page.dart';
 import 'package:futurama_quiz/view/quiz_page.dart';
+import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 /// prevent 'organise imports' from removing imports
@@ -47,7 +48,7 @@ class _App extends StatelessWidget {
               final fetchNotifier = getFetchNotifier(context, listen: false);
 
               if (!fetchNotifier.fetchAllHasBeenCalled) {
-                unawaited(fetchNotifier.fetchAll(context));
+                unawaited(fetchNotifier.fetchAll(context, http.Client()));
               }
 
               return const InfoPage();
