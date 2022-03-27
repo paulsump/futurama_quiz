@@ -34,13 +34,13 @@ class _QuizPageState extends State<QuizPage> {
         children: [
           Container(),
           ScreenAdjust(
-            x: isPortrait(context) ? 2.5 : 4.0,
-            y: isPortrait(context) ? 2 : 1,
+            x: isPortrait(context) ? 2.5 : 3.0,
+            y: isPortrait(context) ? 1 : 1,
             child: Text(
                 'Question ${question.id} of ${fetchNotifier.questions.length}:'),
           ),
           ScreenAdjust(
-            x: isPortrait(context) ? 1 : 2,
+            x: isPortrait(context) ? 1 : 1,
             y: isPortrait(context) ? 3 : 2,
             child: SizedBox(
                 width: screenAdjust(isPortrait(context) ? 0.73 : 0.9, context),
@@ -50,11 +50,12 @@ class _QuizPageState extends State<QuizPage> {
                 )),
           ),
           ScreenAdjust(
-            x: isPortrait(context) ? 1 : 8,
-            y: isPortrait(context) ? 5 : 0.5,
+            x: isPortrait(context) ? 0.5 : 8,
+            y: isPortrait(context) ? 5 : -0.0,
             child: SizedBox(
               width: screenAdjust(0.9, context),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   for (int i = 0; i < question.possibleAnswers.length; ++i)
                     SizedBox(
@@ -74,24 +75,25 @@ class _QuizPageState extends State<QuizPage> {
                             }),
                       ),
                     ),
-                  if (_answer != null)
-                    ScreenAdjust(
+                  ScreenAdjust(
                       x: isPortrait(context) ? 1 : 0,
                       y: 0.5,
                       child: TextButton(
                         child: const Text('Final Answer'),
-                        onPressed: () {
-                          quizNotifier.updateScoreMessage(
-                              _answer!.index, question);
+                        onPressed: _answer == null
+                          ? null
+                          : () {
+                              quizNotifier.updateScoreMessage(
+                                  _answer!.index, question);
 
-                          _answer = null;
-                          quizNotifier.currentQuestionIndex += 1;
+                              _answer = null;
+                              quizNotifier.currentQuestionIndex += 1;
 
-                          if (quizNotifier.currentQuestionIndex ==
-                              questions.length) {
-                            quizNotifier.currentQuestionIndex = 0;
+                              if (quizNotifier.currentQuestionIndex ==
+                                  questions.length) {
+                                quizNotifier.currentQuestionIndex = 0;
 
-                            Navigator.of(context)
+                                Navigator.of(context)
                                 .pushReplacementNamed('Results');
                           } else {
                             setState(() {});
@@ -106,8 +108,11 @@ class _QuizPageState extends State<QuizPage> {
           ScreenAdjust(
             x: isPortrait(context) ? 1 : 1,
             y: isPortrait(context) ? 11 : 4,
-            child: Text(
-                '${quizNotifier.message}\n\n${score.correct} right, ${score.incorrect} wrong.'),
+            child: SizedBox(
+              width: screenAdjust(0.75, context),
+              child: Text(
+                  '${quizNotifier.message}\n\n${score.correct} right, ${score.incorrect} wrong.'),
+            ),
           ),
           const CancelButton(),
         ],
