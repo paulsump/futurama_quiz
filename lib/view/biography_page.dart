@@ -1,5 +1,7 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/character.dart';
 import 'package:futurama_quiz/view/cage.dart';
@@ -58,11 +60,13 @@ class BiographyPage extends StatelessWidget {
 
     return Column(children: [
       Container(
-          constraints: BoxConstraints(
-              maxWidth:
-                  screenAdjust(isPortrait(context) ? 0.53 : 0.63, context)),
-          height: screenAdjust(0.73, context),
-          child: Image.network(character.image)),
+        constraints: BoxConstraints(
+            maxWidth: screenAdjust(isPortrait(context) ? 0.53 : 0.63, context)),
+        height: screenAdjust(0.73, context),
+        child: Platform.environment.containsKey('FLUTTER_TEST')
+            ? null
+            : Image.network(character.image),
+      ),
       padY,
       Text(
         character.name,

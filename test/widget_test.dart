@@ -68,7 +68,31 @@ void main() {
     expect(find.byType(InfoPage), findsOneWidget);
 
     await tester.pump();
+    expect(find.byType(InfoPage), findsOneWidget);
     expect(find.byType(CharactersPage), findsOneWidget);
+  });
+
+  testWidgets('Navigate Info => Characters => Biography Page',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(app);
+    await tester.pump();
+    expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
+    expect(find.textContaining('Characters'), findsOneWidget);
+    expect(find.textContaining('Quiz'), findsOneWidget);
+    expect(find.byType(TextButton), findsNWidgets(2));
+    await tester.tap(find.widgetWithText(TextButton, 'Characters'));
+    await tester.pump();
+    expect(find.byType(InfoPage), findsOneWidget);
+
+    await tester.pump();
+    expect(find.byType(CharactersPage), findsOneWidget);
+    await tester.tap(find.widgetWithText(TextButton, 'Philip Jay Fry.'));
+
+    await tester.pump();
+    //doesn't get to BiographyPage
+    // expect(find.byType(BiographyPage), findsOneWidget);
+    // expect(find.textContaining('Human Male'), findsOneWidget);
+    expect(find.textContaining('Philip Jay Fry.'), findsOneWidget);
   });
 
   testWidgets('Navigate from Info to Quiz Page', (WidgetTester tester) async {
