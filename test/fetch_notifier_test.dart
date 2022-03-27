@@ -5,11 +5,9 @@ import 'package:futurama_quiz/character.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-import 'package:mockito/annotations.dart';
 
 // Generate a MockClient using the Mockito package.
 // Create new instances of this class in each test.
-@GenerateMocks([http.Client])
 void main() {
   String fixture(String name) => File('test_data/$name').readAsStringSync();
 
