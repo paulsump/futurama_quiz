@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:futurama_quiz/main.dart';
 import 'package:futurama_quiz/out.dart';
+import 'package:futurama_quiz/view/biography_page.dart';
 import 'package:futurama_quiz/view/cage.dart';
+import 'package:futurama_quiz/view/characters_page.dart';
+import 'package:futurama_quiz/view/info_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
@@ -68,6 +71,21 @@ void main() {
     await tester.tap(find.textContaining('Characters'));
     await tester.pump();
     expect(find.textContaining('Philip'), findsOneWidget);
-    // await tester.tap(find.textContaining('Carol Mom'));
+    expect(find.byType(InfoPage), findsOneWidget);
+    //i.e. it doesn't get to characters page
+  });
+
+  testWidgets('Navigate from Info to Quiz Page', (WidgetTester tester) async {
+    await tester.pumpWidget(app);
+    await tester.pump();
+    expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
+    expect(find.textContaining('Characters'), findsOneWidget);
+    expect(find.textContaining('Quiz'), findsOneWidget);
+
+    expect(find.byType(InfoPage), findsOneWidget);
+    await tester.tap(find.textContaining('Quiz'));
+    await tester.pump();
+    expect(find.byType(InfoPage), findsOneWidget);
+    //i.e. it doesn't get to quiz page
   });
 }
