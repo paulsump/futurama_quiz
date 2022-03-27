@@ -17,7 +17,7 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  _Answer? _answer;
+  Answer? _answer;
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +68,10 @@ class _QuizPageState extends State<QuizPage> {
                           style:
                               TextStyle(fontSize: screenAdjust(0.032, context)),
                         ),
-                        leading: Radio<_Answer>(
-                            value: _Answer.values[i],
+                        leading: Radio<Answer>(
+                            value: Answer.values[i],
                             groupValue: _answer,
-                            onChanged: (_Answer? value) {
+                            onChanged: (Answer? value) {
                               _answer = value!;
                               setState(() {});
                             }),
@@ -123,7 +123,7 @@ class _QuizPageState extends State<QuizPage> {
   }
 }
 
-enum _Answer { one, two, three, four, five, six, seven, eight, nine, ten }
+enum Answer { one, two, three, four, five, six, seven, eight, nine, ten }
 
 /// Display score and restart button
 class ResultsPage extends StatelessWidget {

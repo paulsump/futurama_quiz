@@ -110,4 +110,25 @@ void main() {
     await tester.pump();
     expect(find.byType(QuizPage), findsOneWidget);
   });
+
+  testWidgets('Info => Quiz => Answer Incorrectly.',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(app);
+    await tester.pump();
+    expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
+    expect(find.textContaining('Characters'), findsOneWidget);
+    expect(find.textContaining('Quiz'), findsOneWidget);
+
+    expect(find.byType(TextButton), findsNWidgets(2));
+    await tester.tap(find.widgetWithText(TextButton, 'Quiz'));
+    await tester.pump();
+    expect(find.byType(InfoPage), findsOneWidget);
+
+    await tester.pump();
+    expect(find.byType(QuizPage), findsOneWidget);
+    await tester.tap(find.byWidgetPredicate(
+        (widget) => widget is Radio && widget.value == Answer.one));
+    await tester.tap(find.widgetWithText(TextButton, 'Final Answer'));
+    //warning final answer button not tapped
+  });
 }
