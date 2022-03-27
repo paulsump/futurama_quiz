@@ -73,24 +73,22 @@ class _QuizPageState extends State<QuizPage> {
                             groupValue: _answer,
                             onChanged: (Answer? value) {
                               _answer = value!;
-                              {
-                                quizNotifier.updateScoreMessage(
-                                    _answer!.index, question);
 
-                                _answer = null;
-                                quizNotifier.currentQuestionIndex += 1;
+                              quizNotifier.updateScoreMessage(
+                                  _answer!.index, question);
 
-                                if (quizNotifier.currentQuestionIndex ==
-                                    questions.length) {
-                                  quizNotifier.currentQuestionIndex = 0;
+                              _answer = null;
+                              quizNotifier.currentQuestionIndex += 1;
 
-                                  Navigator.of(context)
-                                      .pushReplacementNamed('Results');
-                                } else {
-                                  setState(() {});
-                                }
+                              if (quizNotifier.currentQuestionIndex ==
+                                  questions.length) {
+                                quizNotifier.currentQuestionIndex = 0;
+
+                                Navigator.of(context)
+                                    .pushReplacementNamed('Results');
+                              } else {
+                                setState(() {});
                               }
-                              setState(() {});
                             }),
                       ),
                     ),
