@@ -126,9 +126,12 @@ void main() {
 
     await tester.pump();
     expect(find.byType(QuizPage), findsOneWidget);
+    expect(find.textContaining('0 wrong'), findsOneWidget);
+
     await tester.tap(find.byWidgetPredicate(
         (widget) => widget is Radio && widget.value == Answer.one));
-    await tester.tap(find.widgetWithText(TextButton, 'Final Answer'));
-    //warning final answer button not tapped
+    await tester.pump();
+
+    expect(find.textContaining('1 wrong'), findsOneWidget);
   });
 }
