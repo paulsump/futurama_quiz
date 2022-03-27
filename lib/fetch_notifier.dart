@@ -36,8 +36,8 @@ class FetchNotifier extends ChangeNotifier {
 
     final client = http.Client();
 
-    final fetcher = _Fetcher(client);
-    final infoList = await fetcher.getList('info');
+    final fetcher = Fetcher(client);
+    final infoList = await fetcher.getInfo();
 
     assert(infoList.length == 1);
     info = Info.fromJson(infoList[0]);
@@ -45,7 +45,7 @@ class FetchNotifier extends ChangeNotifier {
     haveInfo = true;
     notifyListeners();
 
-    final characterList = await fetcher.getList('characters');
+    final characterList = await fetcher.getCharacters();
     characters = characterList
         .map((character) => Character.fromJson(character))
         .toList();
@@ -53,7 +53,7 @@ class FetchNotifier extends ChangeNotifier {
     haveCharacters = true;
     notifyListeners();
 
-    final questionsList = await fetcher.getList('questions');
+    final questionsList = await fetcher.getQuestions();
     questions =
         questionsList.map((character) => Question.fromJson(character)).toList();
 
@@ -67,14 +67,20 @@ class FetchNotifier extends ChangeNotifier {
 /// Helper class to fetch and convert json
 /// In this api, json lists are returned, so
 /// Lists of Map can be got from getList
-class _Fetcher {
+class Fetcher {
   final http.Client client;
 
-  _Fetcher(this.client);
+  Fetcher(this.client);
+
+  Future<List<dynamic>> getInfo() async => _getList('info');
+
+  Future<List<dynamic>> getCharacters() async => _getList('characters');
+
+  Future<List<dynamic>> getQuestions() async => _getList('questions');
 
   /// url = the last bit of the endpoint
   /// i.e. 'info', 'questions' or 'characters'
-  Future<List<dynamic>> getList(String url) async {
+  Future<List<dynamic>> _getList(String url) async {
     final json = await _getJson(url);
 
     return jsonDecode(json);
