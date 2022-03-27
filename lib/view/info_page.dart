@@ -5,6 +5,7 @@ import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
+import 'dart:io' show Platform;
 
 /// The home page of the app, showing a synopsis of Futurama.
 /// Allows access to the other two pages [CharactersPage] and [QuizPage]
@@ -79,6 +80,9 @@ class InfoPage extends StatelessWidget {
   }
 
   Widget _precacheImages(BuildContext context) {
+    if (Platform.environment.containsKey('FLUTTER_TEST')) {
+      return Container();
+    }
     final fetchNotifier = getFetchNotifier(context, listen: false);
 
     for (final character in fetchNotifier.characters) {
@@ -110,6 +114,7 @@ class _InfoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fetchNotifier = getFetchNotifier(context, listen: true);
+
     return fetchNotifier.haveInfo
         ? Column(
             children: [
