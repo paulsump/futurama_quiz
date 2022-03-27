@@ -41,7 +41,7 @@ class _QuizPageState extends State<QuizPage> {
           ),
           ScreenAdjust(
             x: isPortrait(context) ? 1 : 1,
-            y: isPortrait(context) ? 3 : 2,
+            y: isPortrait(context) ? 2.2 : 2,
             child: SizedBox(
                 width: screenAdjust(isPortrait(context) ? 0.73 : 0.9, context),
                 child: Text(
@@ -51,11 +51,13 @@ class _QuizPageState extends State<QuizPage> {
           ),
           ScreenAdjust(
             x: isPortrait(context) ? 0.5 : 8,
-            y: isPortrait(context) ? 5 : -0.0,
+            y: isPortrait(context) ? 4 : -0.0,
             child: SizedBox(
               width: screenAdjust(0.9, context),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: isPortrait(context)
+                    ? MainAxisAlignment.start
+                    : MainAxisAlignment.center,
                 children: <Widget>[
                   for (int i = 0; i < question.possibleAnswers.length; ++i)
                     SizedBox(
@@ -76,11 +78,11 @@ class _QuizPageState extends State<QuizPage> {
                       ),
                     ),
                   ScreenAdjust(
-                      x: isPortrait(context) ? 1 : 0,
-                      y: 0.5,
-                      child: TextButton(
-                        child: const Text('Final Answer'),
-                        onPressed: _answer == null
+                    x: isPortrait(context) ? 1 : 0,
+                    y: 0.5,
+                    child: TextButton(
+                      child: const Text('Final Answer'),
+                      onPressed: _answer == null
                           ? null
                           : () {
                               quizNotifier.updateScoreMessage(
@@ -94,13 +96,13 @@ class _QuizPageState extends State<QuizPage> {
                                 quizNotifier.currentQuestionIndex = 0;
 
                                 Navigator.of(context)
-                                .pushReplacementNamed('Results');
-                          } else {
-                            setState(() {});
-                          }
-                        },
-                      ),
+                                    .pushReplacementNamed('Results');
+                              } else {
+                                setState(() {});
+                              }
+                            },
                     ),
+                  ),
                 ],
               ),
             ),
@@ -141,7 +143,8 @@ class ResultsPage extends StatelessWidget {
         ScreenAdjust(
           x: isPortrait(context) ? 3 : 8,
           y: isPortrait(context) ? 3 : 2.5,
-          child: Text('${score.correct} right,\n${score.incorrect} wrong.'),
+          child: Text(
+              'Great!\n\n\n${score.correct} right,\n\n${score.incorrect} wrong.'),
         ),
         ScreenAdjust(
           x: isPortrait(context) ? 3 : 7.5,
