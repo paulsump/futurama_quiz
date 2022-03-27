@@ -17,6 +17,8 @@ class CharactersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final fetchNotifier = getFetchNotifier(context, listen: true);
 
+    final characters = fetchNotifier.characters;
+
     return Cage(
       child: Stack(
         children: [
@@ -27,13 +29,17 @@ class CharactersPage extends StatelessWidget {
               scrollDirection:
                   isPortrait(context) ? Axis.vertical : Axis.horizontal,
               children: [
-                for (final character in fetchNotifier.characters)
-                  TextButton(
-                      onPressed: () {
-                        Navigator.of(context)
-                            .pushNamed('Biography', arguments: character);
-                      },
-                      child: _Thumbnail(character: character)),
+                for (int i = 0; i < characters.length; ++i)
+                  ScreenAdjust(
+                    x: isPortrait(context) ? (i.isEven ? 1 : -1) : 0,
+                    y: 0,
+                    child: TextButton(
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushNamed('Biography', arguments: characters[i]);
+                        },
+                        child: _Thumbnail(character: characters[i])),
+                  ),
               ],
             ),
           ),
@@ -58,7 +64,7 @@ class _Thumbnail extends StatelessWidget {
       children: [
         //TODO Animate this hero onto Biography
         SizedBox(
-            height: screenAdjust(isPortrait(context)?0.4:0.6, context),
+            height: screenAdjust(isPortrait(context) ? 0.4 : 0.6, context),
             child: Image.network(character.image)),
         padY,
         Text(
