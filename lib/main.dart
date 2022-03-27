@@ -18,14 +18,18 @@ import 'package:provider/provider.dart';
 /// when temporarily commenting out.
 const noWarn = out;
 
-void main() => runApp(createApp());
+void main() => runApp(createApp(client: http.Client()));
 
-Widget createApp() => const _App();
+Widget createApp({required http.Client client}) => _App(client: client);
 
 /// The only app.  Has all the notifiers and navigator routes.
 /// Calls fetchAll() once on the FetchNotifier.
 class _App extends StatelessWidget {
-  const _App({Key? key}) : super(key: key);
+  const _App({Key? key, required http.Client client})
+      : _client = client,
+        super(key: key);
+
+  final http.Client _client;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +52,7 @@ class _App extends StatelessWidget {
               final fetchNotifier = getFetchNotifier(context, listen: false);
 
               if (!fetchNotifier.fetchAllHasBeenCalled) {
-                unawaited(fetchNotifier.fetchAll(context, http.Client()));
+                unawaited(fetchNotifier.fetchAll(context, _client));
               }
 
               return const InfoPage();
