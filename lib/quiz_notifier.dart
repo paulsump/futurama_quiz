@@ -6,7 +6,8 @@ import 'fetch_notifier.dart';
 QuizNotifier getQuizNotifier(BuildContext context, {required bool listen}) =>
     Provider.of<QuizNotifier>(context, listen: listen);
 
-/// For the current state of the quiz e.g. current question, score
+/// For the current state of the quiz i.e. current question, score.
+/// Also any logic is done here rather than in the ui code.
 class QuizNotifier extends ChangeNotifier {
   int currentQuestionIndex = 0;
 

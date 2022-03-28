@@ -13,8 +13,11 @@ import 'package:futurama_quiz/view/quiz_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
+/// The main entry point for the flutter app
 void main() => runApp(createApp(client: http.Client()));
 
+/// Create the app instance (uses in tests too)
+/// This allow the app to be private
 Widget createApp({required http.Client client}) => _App(client: client);
 
 /// The only app.  Has all the notifiers and navigator routes.

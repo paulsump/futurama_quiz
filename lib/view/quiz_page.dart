@@ -102,6 +102,7 @@ class QuizPage extends StatelessWidget {
   }
 }
 
+/// Public for tests only.
 enum Answer { one, two, three, four, five, six, seven, eight, nine, ten }
 
 /// Display score and restart button

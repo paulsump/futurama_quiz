@@ -1,5 +1,4 @@
 
-
 /// Biography from API
 class Character {
   Character.fromJson(Map<String, dynamic> json)
@@ -39,6 +38,7 @@ class Character {
   }
 }
 
+/// loads all the sayings and gives access to the 5 shortest ones.
 class _Sayings {
   _Sayings(this._sayings);
 
@@ -75,6 +75,8 @@ class _Sayings {
   }
 }
 
+/// Load the first, middle and last names, then
+/// provides the concatenated name.
 class _Name {
   _Name.fromJson(Map<String, dynamic> json)
       : first = json['first'],
@@ -94,6 +96,9 @@ class _Name {
   }
 }
 
+/// Loads two fields, but only returns the main one
+/// since the other one is always empty.
+/// It's better to leave it rather than guess what might happen in the future(rama).
 class _Images {
   _Images.fromJson(Map<String, dynamic> json)
       : headShot = json['head-shot'],
