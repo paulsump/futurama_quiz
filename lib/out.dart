@@ -1,10 +1,6 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-
-const noWarn = log;
 
 // const _out = log;
 final _out = debugPrint; // for tests

@@ -4,7 +4,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
-import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
 import 'package:futurama_quiz/view/biography_page.dart';
 import 'package:futurama_quiz/view/characters_page.dart';
@@ -13,10 +12,6 @@ import 'package:futurama_quiz/view/info_page.dart';
 import 'package:futurama_quiz/view/quiz_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-
-/// prevent 'organise imports' from removing imports
-/// when temporarily commenting out.
-const noWarn = out;
 
 void main() => runApp(createApp(client: http.Client()));
 

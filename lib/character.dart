@@ -1,6 +1,4 @@
-import 'package:futurama_quiz/out.dart';
 
-const noWarn = out;
 
 /// Biography from API
 class Character {
@@ -65,7 +63,6 @@ class _Sayings {
 
     return list;
   }
-
 
   Iterable<String> getShortSayings(int length) sync* {
     for (dynamic saying in _sayings) {

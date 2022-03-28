@@ -5,16 +5,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:futurama_quiz/main.dart';
-import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/view/background.dart';
-import 'package:futurama_quiz/view/biography_page.dart';
 import 'package:futurama_quiz/view/characters_page.dart';
 import 'package:futurama_quiz/view/info_page.dart';
 import 'package:futurama_quiz/view/quiz_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
-
-const noWarn = [out, CharactersPage, BiographyPage, QuizPage];
 
 void main() {
   String fixture(String name) => File('test_data/$name').readAsStringSync();

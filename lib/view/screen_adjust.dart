@@ -3,10 +3,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/out.dart';
-import 'package:futurama_quiz/view/hue.dart';
-
-const noWarn = [out, Hue];
 
 /// convenient access to screen dimensions.
 Size _getScreenSize(BuildContext context) => MediaQuery.of(context).size;

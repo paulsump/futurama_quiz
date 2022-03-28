@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
-import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
 import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
-
-const noWarn = out;
 
 /// Display one question, current score etc.
 class QuizPage extends StatelessWidget {
