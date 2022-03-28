@@ -34,7 +34,7 @@ class BiographyPage extends StatelessWidget {
               ScreenAdjust(
                 portrait: const Offset(0.9, 7.5),
                 landscape: const Offset(7, 6.8),
-                width: isPortrait(context) ? 0.6 : 1,
+                width: isPortrait(context) ? 0.3 : 1,
                 fromBottomUp: true,
                 child: _buildWords(context, character),
               ),
@@ -71,7 +71,7 @@ class BiographyPage extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(
         maxHeight: screenAdjust(
-          isPortrait(context) ? 0.76 : 0.68,
+          isPortrait(context) ? 0.48 : 0.68,
           context,
         ),
       ),
