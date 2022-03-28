@@ -128,19 +128,14 @@ class ResultsPage extends StatelessWidget {
         ),
         const CancelButton(),
         const ScreenAdjust(
-          portrait: Offset(2.2, 2),
-          landscape: Offset(4.5, 1.5),
-          child: Text('Great!'),
-        ),
-        const ScreenAdjust(
-          portrait: Offset(3.5, 4),
-          landscape: Offset(7, 3),
+          portrait: Offset(3.2, 3),
+          landscape: Offset(7, 2.4),
           // TODO Animate Score
           child: _Score(),
         ),
         ScreenAdjust(
-          portrait: const Offset(5, 6.8),
-          landscape: const Offset(11, 4.7),
+          portrait: const Offset(4.5, 6.0),
+          landscape: const Offset(11, 4.3),
           child: TextButton(
             child: const Text(
               'Restart Quiz',
