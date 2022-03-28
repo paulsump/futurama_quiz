@@ -12,12 +12,12 @@
 
 ## Bugs
 
+- Back button gesture clip? It's area seams bigger than it should be. Reproduce: ResultsPage.
 - ListView gestures don't work in landscape. Reproduce: Biography/Zoidberg.
 
 
 ## To do now
 
-- Fill up bottom of screen in Biography and Quiz (maybe use a Column)
 - Handle exceptions (at least with http) e.g. Display proper error, not just "Please connect to the
   internet" on screen if request failed. Modify the test if appropriate.
 - Don't add any info, characters or questions that have bad data (try/catch each one).
@@ -40,9 +40,7 @@
 
 ### Ideas
 
-- Results animation would be simpler if ResultPage wasn't a separate page. Also, remove
-  pushReplacementNamed()
 - Tool tips
-- Dark theme
+- [Dark theme](https://stackoverflow.com/questions/56304215/how-to-check-if-dark-mode-is-enabled-on-ios-android-using-flutter)
 - Click on text to choose answer too (not just radio).
-- Fry starts big then animates small when haveInfo API.
+- Fry starts big then animates small when haveInfo API. (Only worth it for when no internet)

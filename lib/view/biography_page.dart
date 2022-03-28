@@ -31,20 +31,13 @@ class BiographyPage extends StatelessWidget {
                 landscape: const Offset(1.5, 0.25),
                 child: _buildThumbnail(context, character),
               ),
-              if (isPortrait(context))
-                ScreenAdjust(
-                  portrait: const Offset(0.9, 6),
-                  landscape: const Offset(0.9, 6),
-                  width: 0.6,
-                  child: _buildWords(context, character),
-                )
-              else
-                ScreenAdjust(
-                  portrait: const Offset(7, 0.8),
-                  landscape: const Offset(7, 0.8),
-                  width: 1,
-                  child: _buildWords(context, character),
-                ),
+              ScreenAdjust(
+                portrait: const Offset(0.9, 9.8),
+                landscape: const Offset(7, 6.8),
+                width: isPortrait(context) ? 0.6 : 1,
+                fromBottomUp: true,
+                child: _buildWords(context, character),
+              ),
             ]),
           ),
         ],
@@ -78,7 +71,7 @@ class BiographyPage extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(
         maxHeight: screenAdjust(
-          isPortrait(context) ? 0.9 : 0.8,
+          isPortrait(context) ? 0.76 : 0.68,
           context,
         ),
       ),

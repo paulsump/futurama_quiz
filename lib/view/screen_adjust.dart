@@ -9,10 +9,10 @@ import 'package:futurama_quiz/view/hue.dart';
 const noWarn = [out, Hue];
 
 /// convenient access to screen dimensions.
-Size getScreenSize(BuildContext context) => MediaQuery.of(context).size;
+Size _getScreenSize(BuildContext context) => MediaQuery.of(context).size;
 
 bool isPortrait(BuildContext context) {
-  final screen = getScreenSize(context);
+  final screen = _getScreenSize(context);
   return screen.width < screen.height;
 }
 
@@ -22,7 +22,7 @@ double screenAdjust(double length, BuildContext context) =>
     length * _getScreenShortestEdge(context);
 
 double _getScreenShortestEdge(BuildContext context) {
-  final screen = getScreenSize(context);
+  final screen = _getScreenSize(context);
 
   return min(screen.width, screen.height);
 }
@@ -36,17 +36,25 @@ class ScreenAdjust extends StatelessWidget {
     required this.landscape,
     this.width,
     required this.child,
+    this.fromBottomUp = false,
   }) : super(key: key);
 
   final Offset portrait, landscape;
   final double? width;
   final Widget child;
+  final bool fromBottomUp;
 
   @override
   Widget build(BuildContext context) {
+    final offset_ = (isPortrait(context) ? portrait : landscape) *
+        screenAdjust(0.13, context);
+
+    final h = _getScreenSize(context).height;
+    final offset =
+        Offset(offset_.dx, fromBottomUp ? h - offset_.dy : offset_.dy);
+
     return Transform.translate(
-      offset: (isPortrait(context) ? portrait : landscape) *
-          screenAdjust(0.13, context),
+      offset: offset,
       child: width != null
           ? SizedBox(
               // Container(

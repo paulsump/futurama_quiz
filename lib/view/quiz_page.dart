@@ -77,9 +77,10 @@ class QuizPage extends StatelessWidget {
             child: _Score(),
           ),
           ScreenAdjust(
-            portrait: const Offset(1, 9.5),
-            landscape: const Offset(3.5, 3.3),
+            portrait: const Offset(1, 5.5),
+            landscape: const Offset(3.5, 4.3),
             width: isPortrait(context) ? 0.7 : 0.6,
+            fromBottomUp: true,
             child: const Image(image: AssetImage('images/hypnotoad.png')),
           ),
           const CancelButton(),
@@ -118,9 +119,10 @@ class ResultsPage extends StatelessWidget {
         child: Stack(
       children: [
         ScreenAdjust(
-          portrait: const Offset(0.1, 5.5),
-          landscape: const Offset(1.0, 1.3),
+          portrait: const Offset(0.1, 10.5),
+          landscape: const Offset(1.0, 6.3),
           width: isPortrait(context) ? 0.7 : 0.4,
+          fromBottomUp: true,
           child: const Image(image: AssetImage('images/zapp.png')),
         ),
         const CancelButton(),
