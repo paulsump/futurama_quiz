@@ -1,7 +1,6 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
-import 'package:futurama_quiz/view/hue.dart';
 
 /// A container frame / scaffold for all pages.
 class Cage extends StatelessWidget {
@@ -12,13 +11,17 @@ class Cage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Hue.background,
-        child: SafeArea(
-          left: false,
-          child: child,
+        body: Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('images/background.png'),
+          fit: BoxFit.cover,
         ),
       ),
-    );
+      child: SafeArea(
+        left: false,
+        child: child,
+      ),
+    ));
   }
 }
