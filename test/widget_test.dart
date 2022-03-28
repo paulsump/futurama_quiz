@@ -111,10 +111,28 @@ void main() {
     expect(find.byType(QuizPage), findsOneWidget);
   });
 
-  testWidgets('Info => Quiz => Answer Incorrectly.',
-      (WidgetTester tester) async {
+  testWidgets('Info => Quiz => Answer Correctly.', (WidgetTester tester) async {
+    const double PORTRAIT_WIDTH = 400.0;
+    const double PORTRAIT_HEIGHT = 1200.0;
+    const double LANDSCAPE_WIDTH = PORTRAIT_HEIGHT;
+    const double LANDSCAPE_HEIGHT = PORTRAIT_WIDTH;
+
+    final WidgetsBinding binding =
+        TestWidgetsFlutterBinding.ensureInitialized();
+
+    await (binding as TestWidgetsFlutterBinding)
+        .setSurfaceSize(Size(PORTRAIT_WIDTH, PORTRAIT_HEIGHT));
+
     await tester.pumpWidget(app);
     await tester.pump();
+
+    // await tester.pumpWidget(MyWidget());
+
+// test in portrait
+
+    await binding.setSurfaceSize(Size(LANDSCAPE_WIDTH, LANDSCAPE_HEIGHT));
+    await tester.pumpAndSettle();
+
     expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
     expect(find.textContaining('Characters'), findsOneWidget);
     expect(find.textContaining('Quiz'), findsOneWidget);
@@ -126,12 +144,12 @@ void main() {
 
     await tester.pump();
     expect(find.byType(QuizPage), findsOneWidget);
-    expect(find.textContaining('0 wrong'), findsOneWidget);
+    expect(find.textContaining('0 correct'), findsOneWidget);
 
     await tester.tap(find.byWidgetPredicate(
-        (widget) => widget is Radio && widget.value == Answer.one));
+        (widget) => widget is Radio && widget.value == Answer.two));
     await tester.pump();
 
-    expect(find.textContaining('1 wrong'), findsOneWidget);
+    expect(find.textContaining('1 correct'), findsOneWidget);
   });
 }
