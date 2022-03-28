@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/view/hue.dart';
 
-const noWarn = out;
+const noWarn = [out, Hue];
 
 /// convenient access to screen dimensions.
 Size getScreenSize(BuildContext context) => MediaQuery.of(context).size;
@@ -48,9 +48,11 @@ class ScreenAdjust extends StatelessWidget {
       offset: (isPortrait(context) ? portrait : landscape) *
           screenAdjust(0.13, context),
       child: width != null
-          ? Container(
-              decoration: BoxDecoration(border: Border.all(color: Hue.border)),
-              // color: Hue.lightForeground,
+          ? SizedBox(
+              // Container(
+              // decoration: BoxDecoration(
+              //     color: Hue.lightForeground,
+              //     border: Border.all(color: Hue.border)),
               width: screenAdjust(width!, context),
               child: child)
           : child,

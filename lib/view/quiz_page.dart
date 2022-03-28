@@ -109,7 +109,7 @@ class ResultsPage extends StatelessWidget {
         const CancelButton(),
         //TODO Animate this hero onto ResultsView
         const ScreenAdjust(
-          portrait: Offset(2, 3),
+          portrait: Offset(3, 3),
           landscape: Offset(4.5, 2),
           child: Text('Great!'),
         ),
@@ -119,7 +119,7 @@ class ResultsPage extends StatelessWidget {
           child: _Score(),
         ),
         ScreenAdjust(
-          portrait: const Offset(4, 9.5),
+          portrait: const Offset(3, 9.5),
           landscape: const Offset(11.5, 5),
           child: TextButton(
             child: const Text('Restart Quiz'),
@@ -146,13 +146,16 @@ class _Score extends StatelessWidget {
     final quizNotifier = getQuizNotifier(context, listen: true);
     final score = quizNotifier.score;
 
+    var scoreMessage = '$score correct';
+    if (score > 0) {
+      scoreMessage += '!';
+    }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('$score correct',
-            style: const TextStyle(fontWeight: FontWeight.bold)),
+        Text(scoreMessage, style: const TextStyle(fontWeight: FontWeight.bold)),
         SizedBox(height: screenAdjust(0.05, context)),
-        Text('out of ${fetchNotifier.questions.length}.'),
+        Text('(out of ${fetchNotifier.questions.length}).'),
       ],
     );
   }
