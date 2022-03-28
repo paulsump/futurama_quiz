@@ -20,6 +20,7 @@ class QuizPage extends StatelessWidget {
     final questions = fetchNotifier.questions;
 
     final question = questions[quizNotifier.currentQuestionIndex];
+    const width = 0.73;
 
     return Cage(
       child: Stack(
@@ -28,16 +29,16 @@ class QuizPage extends StatelessWidget {
           ScreenAdjust(
             portrait: const Offset(1, 2.2),
             landscape: const Offset(1, 2),
-            width: isPortrait(context) ? 0.73 : 0.9,
+            width: isPortrait(context) ? width : 0.9,
             child: Text(
               question.question,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
           ScreenAdjust(
-            portrait: const Offset(0.7, 4),
+            portrait: const Offset(1, 4),
             landscape: const Offset(8, 0),
-            width: 0.85,
+            width: width,
             child: Column(
               mainAxisAlignment: isPortrait(context)
                   ? MainAxisAlignment.start
@@ -47,6 +48,9 @@ class QuizPage extends StatelessWidget {
                   SizedBox(
                     height: screenAdjust(0.12, context),
                     child: ListTile(
+                      dense: true,
+                      contentPadding:
+                          const EdgeInsets.only(left: 0.0, right: 0.0),
                       title: Text(
                         question.possibleAnswers[i],
                         style: TextStyle(
@@ -69,7 +73,7 @@ class QuizPage extends StatelessWidget {
           const ScreenAdjust(
               portrait: Offset(1, 10),
               landscape: Offset(1, 4),
-              width: 0.75,
+              width: width,
               child: _Score()),
           const CancelButton(),
         ],
