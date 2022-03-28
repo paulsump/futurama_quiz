@@ -13,8 +13,9 @@
 ## Bugs
 
 - Back button gesture clip? It's area seams bigger than it should be. Reproduce: ResultsPage.
+- Or maybe that was just the bug that happens when you tap too fast after it starts to navigate to
+  the ResultsPage?
 - ListView gestures don't work in landscape. Reproduce: Biography/Zoidberg.
-
 
 ## To do now
 
@@ -24,12 +25,10 @@
 
 ## To do
 
-- Borders.
-- More obvious Character and Quiz buttons.
+- More obvious Character, Quiz and Restart Quiz buttons.
 - Check all TODOs
 - Check able to run on any device
 - Running Android 7 (API 24) or greater.
-- //Font sizes and bold.
 
 ### Tests to do
 
@@ -40,7 +39,7 @@
 
 ### Ideas
 
-- Tool tips
 - [Dark theme](https://stackoverflow.com/questions/56304215/how-to-check-if-dark-mode-is-enabled-on-ios-android-using-flutter)
 - Click on text to choose answer too (not just radio).
+- Tool tips.
 - Fry starts big then animates small when haveInfo API. (Only worth it for when no internet)

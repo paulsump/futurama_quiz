@@ -61,7 +61,6 @@ class ScreenAdjust extends StatelessWidget {
               // decoration: BoxDecoration(
               //     color: Hue.lightForeground,
               //     border: Border.all(color: Hue.border)),
-              //TODO maybe rename width to scale
               width: fromBottomUp ? width! * h : screenAdjust(width!, context),
               child: child)
           : child,

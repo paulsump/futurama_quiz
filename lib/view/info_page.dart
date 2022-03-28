@@ -38,6 +38,7 @@ class InfoPage extends StatelessWidget {
                       : null,
                 ),
                 // TODO Call this elsewhere only once
+                // So far it's not slowing anything down.
                 if (fetchNotifier.haveCharacters) _precacheImages(context),
               ]),
               TextButton(

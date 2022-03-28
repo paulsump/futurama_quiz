@@ -101,7 +101,6 @@ class Fetcher {
 /// General Futurama information for the homepage.
 class Info {
   Info.fromJson(Map<String, dynamic> json)
-      //TODO CHeck if containsKey()
       : _synopsis = json['synopsis'],
         yearsAired = json['yearsAired'],
         _creators = json['creators']
@@ -109,8 +108,6 @@ class Info {
                 (creator) => _Creator(creator['name'], creator['url']))
             .toList(),
         id = json['id'] {
-    // TODO PIC for each paragraph?
-    // Probably not in case the api data changed.
     synopsis = _synopsis.replaceFirst('2999. ', '2999.\n\n');
     synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');
     synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');
@@ -148,7 +145,6 @@ class _Creator {
 /// and the correct answer.
 class Question {
   Question.fromJson(Map<String, dynamic> json)
-      //TODO containsKey
       : id = json['id'],
         question = json['question'],
         possibleAnswers = json['possibleAnswers']

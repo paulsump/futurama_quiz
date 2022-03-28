@@ -5,7 +5,6 @@ const noWarn = out;
 /// Biography from API
 class Character {
   Character.fromJson(Map<String, dynamic> json)
-      //TODO containsKey
       : _name = _Name.fromJson(json['name']),
         _images = _Images.fromJson(json['images']),
         _gender = json['gender'],
@@ -98,7 +97,6 @@ class _Name {
   }
 }
 
-// TODO mock test, then remove this class
 class _Images {
   _Images.fromJson(Map<String, dynamic> json)
       : headShot = json['head-shot'],
