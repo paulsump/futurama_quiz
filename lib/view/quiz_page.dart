@@ -26,12 +26,12 @@ class QuizPage extends StatelessWidget {
       child: Stack(
         children: [
           Container(),
-          ScreenAdjust(
-            portrait: const Offset(2.5, 1),
-            landscape: const Offset(3.0, 1),
-            child: Text(
-                'Question ${question.id} of ${fetchNotifier.questions.length}:'),
-          ),
+          // ScreenAdjust(
+          //   portrait: const Offset(2.5, 1),
+          //   landscape: const Offset(3.0, 1),
+          //   child: Text(
+          //       'Question ${question.id} of ${fetchNotifier.questions.length}:'),
+          // ),
           ScreenAdjust(
             portrait: const Offset(1, 2.2),
             landscape: const Offset(1, 2),
@@ -80,9 +80,10 @@ class QuizPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(quizNotifier.message),
+                // Text(quizNotifier.message),
                 SizedBox(height: screenAdjust(0.03, context)),
-                Text('${score.correct} right, ${score.incorrect} wrong.'),
+                Text(
+                    '${score.correct} correct out of ${fetchNotifier.questions.length}'),
               ],
             ),
           ),
@@ -102,6 +103,7 @@ class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final quizNotifier = getQuizNotifier(context, listen: false);
+    final fetchNotifier = getFetchNotifier(context, listen: false);
 
     final score = quizNotifier.score;
 
@@ -114,7 +116,7 @@ class ResultsPage extends StatelessWidget {
           portrait: const Offset(3, 3),
           landscape: const Offset(8, 2),
           child: Text(
-              'Great!\n\n\n${score.correct} right,\n\n${score.incorrect} wrong.'),
+              'Great!\n\n\n${score.correct} correct\n\nout of ${fetchNotifier.questions.length}.'),
         ),
         ScreenAdjust(
           portrait: const Offset(3, 6),
