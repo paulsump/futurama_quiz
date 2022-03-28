@@ -31,19 +31,24 @@ double _getScreenShortestEdge(BuildContext context) {
 class ScreenAdjust extends StatelessWidget {
   const ScreenAdjust({
     Key? key,
-    required this.x,
-    required this.y,
+    required this.portrait,
+    required this.landscape,
+    this.width,
     required this.child,
   }) : super(key: key);
 
-  final double x, y;
+  final Offset portrait, landscape;
+  final double? width;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Transform.translate(
-      offset: Offset(x, y) * screenAdjust(0.13, context),
-      child: child,
+      offset: (isPortrait(context) ? portrait : landscape) *
+          screenAdjust(0.13, context),
+      child: width != null
+          ? SizedBox(width: screenAdjust(width!, context), child: child)
+          : child,
     );
   }
 }

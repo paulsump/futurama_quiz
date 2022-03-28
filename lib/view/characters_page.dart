@@ -25,16 +25,16 @@ class CharactersPage extends StatelessWidget {
       child: Stack(
         children: [
           ScreenAdjust(
-            x: 0,
-            y: isPortrait(context) ? 0 : 1.5,
+            portrait: const Offset(0, 0),
+            landscape: const Offset(0, 1.5),
             child: ListView(
               scrollDirection:
                   isPortrait(context) ? Axis.vertical : Axis.horizontal,
               children: [
                 for (int i = 0; i < characters.length; ++i)
                   ScreenAdjust(
-                    x: isPortrait(context) ? (i.isEven ? 1 : -1) : 0,
-                    y: 0,
+                    portrait: Offset(i.isEven ? 1 : -1, 0),
+                    landscape: const Offset(0, 0),
                     child: TextButton(
                         onPressed: () {
                           Navigator.of(context)

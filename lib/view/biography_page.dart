@@ -23,30 +23,27 @@ class BiographyPage extends StatelessWidget {
           const CancelButton(),
           Container(),
           ScreenAdjust(
-            x: isPortrait(context) ? 0.7 : 0.5,
-            y: isPortrait(context) ? 1.75 : 0.0,
+            portrait: const Offset(0.7, 1.75),
+            landscape: const Offset(0.5, 0.0),
             child: Stack(children: [
               ScreenAdjust(
-                x: 1.5,
-                y: isPortrait(context) ? -1 : 0.25,
+                portrait: const Offset(1.5, -1),
+                landscape: const Offset(1.5, 0.25),
                 child: _buildThumbnail(context, character),
               ),
               if (isPortrait(context))
                 ScreenAdjust(
-                  x: 0.9,
-                  y: 6,
-                  child: SizedBox(
-                    width: screenAdjust(0.6, context),
-                    child: _buildWords(context, character),
-                  ),
+                  portrait: const Offset(0.9, 6),
+                  landscape: const Offset(0.9, 6),
+                  width: 0.6,
+                  child: _buildWords(context, character),
                 )
               else
                 ScreenAdjust(
-                  x: 7,
-                  y: 0.8,
-                  child: SizedBox(
-                      width: screenAdjust(1, context),
-                      child: _buildWords(context, character)),
+                  portrait: const Offset(7, 0.8),
+                  landscape: const Offset(7, 0.8),
+                  width: 1,
+                  child: _buildWords(context, character),
                 ),
             ]),
           ),
