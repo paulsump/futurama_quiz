@@ -60,13 +60,14 @@ class QuizPage extends StatelessWidget {
                           fontSize: screenAdjust(0.032, context),
                         ),
                       ),
-                      leading: Radio<Answer>(
-                          value: Answer.values[i],
-                          groupValue: null,
-                          onChanged: (Answer? value) {
-                            quizNotifier.setAnswer(
-                                value!.index, questions, context);
-                          }),
+                      trailing: Radio<Answer>(
+                        value: Answer.values[i],
+                        groupValue: null,
+                        onChanged: (Answer? value) {
+                          quizNotifier.setAnswer(
+                              value!.index, questions, context);
+                        },
+                      ),
                     ),
                   ),
               ],
@@ -111,13 +112,13 @@ class ResultsPage extends StatelessWidget {
         //TODO Animate this hero onto ResultsView
         ScreenAdjust(
           portrait: const Offset(3, 3),
-          landscape: const Offset(8, 2.5),
+          landscape: const Offset(8, 2),
           child: Text(
               'Great!\n\n\n${score.correct} right,\n\n${score.incorrect} wrong.'),
         ),
         ScreenAdjust(
           portrait: const Offset(3, 6),
-          landscape: const Offset(7.5, 4),
+          landscape: const Offset(8, 5),
           child: TextButton(
             child: const Text('Restart Quiz'),
             style: TextButton.styleFrom(padding: EdgeInsets.zero),
