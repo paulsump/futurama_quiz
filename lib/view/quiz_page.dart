@@ -57,14 +57,10 @@ class QuizPage extends StatelessWidget {
                           fontSize: screenAdjust(0.032, context),
                         ),
                       ),
-                      trailing: Radio<Answer>(
-                        value: Answer.values[i],
-                        groupValue: null,
-                        onChanged: (Answer? value) {
-                          quizNotifier.setAnswer(
-                              value!.index, questions, context);
-                        },
-                      ),
+                      leading:
+                          isPortrait(context) ? _buildRadio(i, context) : null,
+                      trailing:
+                          isPortrait(context) ? null : _buildRadio(i, context),
                     ),
                   ),
               ],
@@ -78,6 +74,21 @@ class QuizPage extends StatelessWidget {
           const CancelButton(),
         ],
       ),
+    );
+  }
+
+  Radio<Answer> _buildRadio(int i, BuildContext context) {
+    final quizNotifier = getQuizNotifier(context, listen: false);
+
+    final fetchNotifier = getFetchNotifier(context, listen: false);
+    final questions = fetchNotifier.questions;
+
+    return Radio<Answer>(
+      value: Answer.values[i],
+      groupValue: null,
+      onChanged: (Answer? value) {
+        quizNotifier.setAnswer(value!.index, questions, context);
+      },
     );
   }
 }
