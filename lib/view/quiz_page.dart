@@ -74,7 +74,6 @@ class QuizPage extends StatelessWidget {
             landscape: Offset(1, 4),
             width: width,
             fromBottomUp: true,
-            // TODO Animate Score
             child: _Score(),
           ),
           ScreenAdjust(
@@ -130,7 +129,6 @@ class ResultsPage extends StatelessWidget {
         const ScreenAdjust(
           portrait: Offset(3.2, 3),
           landscape: Offset(7, 2.4),
-          // TODO Animate Score
           child: _Score(),
         ),
         ScreenAdjust(
