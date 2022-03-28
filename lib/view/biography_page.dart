@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/character.dart';
-import 'package:futurama_quiz/view/cage.dart';
+import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
@@ -17,7 +17,7 @@ class BiographyPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final character = ModalRoute.of(context)!.settings.arguments as Character;
 
-    return Cage(
+    return Background(
       child: Stack(
         children: [
           const CancelButton(),

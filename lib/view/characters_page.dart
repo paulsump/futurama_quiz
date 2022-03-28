@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/character.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
-import 'package:futurama_quiz/view/cage.dart';
+import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
@@ -21,7 +21,7 @@ class CharactersPage extends StatelessWidget {
 
     final characters = fetchNotifier.characters;
 
-    return Cage(
+    return Background(
       child: Stack(
         children: [
           ScreenAdjust(

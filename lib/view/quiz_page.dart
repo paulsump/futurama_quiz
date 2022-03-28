@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
-import 'package:futurama_quiz/view/cage.dart';
+import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
@@ -23,7 +23,7 @@ class QuizPage extends StatelessWidget {
     final question = questions[quizNotifier.currentQuestionIndex];
     const width = 0.73;
 
-    return Cage(
+    return Background(
       child: Stack(
         children: [
           Container(),
@@ -116,7 +116,7 @@ class ResultsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final quizNotifier = getQuizNotifier(context, listen: false);
 
-    return Cage(
+    return Background(
         child: Stack(
       children: [
         ScreenAdjust(

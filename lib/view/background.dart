@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 
 /// A container frame / scaffold for all pages.
-class Cage extends StatelessWidget {
+class Background extends StatelessWidget {
   final Widget child;
 
-  const Cage({Key? key, required this.child}) : super(key: key);
+  const Background({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

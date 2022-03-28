@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:futurama_quiz/main.dart';
 import 'package:futurama_quiz/out.dart';
+import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/biography_page.dart';
-import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/characters_page.dart';
 import 'package:futurama_quiz/view/info_page.dart';
 import 'package:futurama_quiz/view/quiz_page.dart';
@@ -44,7 +44,7 @@ void main() {
   testWidgets('Info page', (WidgetTester tester) async {
     await tester.pumpWidget(app);
 
-    expect(find.byType(Cage), findsOneWidget);
+    expect(find.byType(Background), findsOneWidget);
     expect(find.byType(ListView), findsOneWidget);
     expect(find.text('Please connect to the internet.'), findsOneWidget);
 

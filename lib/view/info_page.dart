@@ -4,7 +4,7 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
-import 'package:futurama_quiz/view/cage.dart';
+import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
@@ -19,7 +19,7 @@ class InfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final fetchNotifier = getFetchNotifier(context, listen: true);
 
-    return Cage(
+    return Background(
       child: Column(
         children: [
           Row(
