@@ -28,8 +28,8 @@ class QuizPage extends StatelessWidget {
         children: [
           Container(),
           ScreenAdjust(
-            portrait: const Offset(1, 2.2),
-            landscape: const Offset(1, 2),
+            portrait: const Offset(1, 1.6),
+            landscape: const Offset(1, 1.5),
             width: isPortrait(context) ? width : 0.9,
             child: Text(
               question.question,
@@ -37,7 +37,7 @@ class QuizPage extends StatelessWidget {
             ),
           ),
           ScreenAdjust(
-            portrait: const Offset(1, 4),
+            portrait: const Offset(1, 3.5),
             landscape: const Offset(9, 0),
             width: width,
             child: Column(
@@ -47,7 +47,9 @@ class QuizPage extends StatelessWidget {
               children: <Widget>[
                 for (int i = 0; i < question.possibleAnswers.length; ++i)
                   SizedBox(
-                    height: screenAdjust(0.12, context),
+                    height: screenAdjust(
+                        question.possibleAnswers.length > 5 ? 0.11 : 0.12,
+                        context),
                     child: ListTile(
                       dense: true,
                       contentPadding:
@@ -68,11 +70,17 @@ class QuizPage extends StatelessWidget {
             ),
           ),
           const ScreenAdjust(
-            portrait: Offset(1, 10),
+            portrait: Offset(5, 8.5),
             landscape: Offset(1, 4),
             width: width,
             // TODO Animate Score
             child: _Score(),
+          ),
+          ScreenAdjust(
+            portrait: const Offset(1, 9.5),
+            landscape: const Offset(3.5, 3.3),
+            width: isPortrait(context) ? 0.7 : 0.6,
+            child: const Image(image: AssetImage('images/hypnotoad.png')),
           ),
           const CancelButton(),
         ],

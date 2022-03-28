@@ -16,8 +16,7 @@
 - Fill up bottom of screen in Biography and Quiz (maybe use a Column)
 - Handle exceptions (at least with http) e.g. Display proper error, not just "Please connect to the
   internet" on screen if request failed. Modify the test if appropriate.
-- Don't add any info, characters or questions that have bad data (try/catch them).
-- //Adjust Font size for different screens. e.g. answers.
+- Don't add any info, characters or questions that have bad data (try/catch each one).
 
 ## To do
 
@@ -37,6 +36,8 @@
 
 ### Ideas
 
+- Results animation would be simpler if ResultPage wasn't a separate page. Also, remove
+  pushReplacementNamed()
 - Tool tips
 - Dark theme
 - Click on text to choose answer too (not just radio).
