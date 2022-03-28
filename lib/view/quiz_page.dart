@@ -117,21 +117,27 @@ class ResultsPage extends StatelessWidget {
     return Cage(
         child: Stack(
       children: [
+        ScreenAdjust(
+          portrait: const Offset(0.1, 5.5),
+          landscape: const Offset(1.0, 1.3),
+          width: isPortrait(context) ? 0.7 : 0.4,
+          child: const Image(image: AssetImage('images/zapp.png')),
+        ),
         const CancelButton(),
         const ScreenAdjust(
-          portrait: Offset(3, 3),
-          landscape: Offset(4.5, 2),
+          portrait: Offset(2, 2),
+          landscape: Offset(4.5, 1.5),
           child: Text('Great!'),
         ),
         const ScreenAdjust(
-          portrait: Offset(3, 6),
-          landscape: Offset(8, 3),
+          portrait: Offset(3, 4),
+          landscape: Offset(7, 3),
           // TODO Animate Score
           child: _Score(),
         ),
         ScreenAdjust(
-          portrait: const Offset(3, 9.5),
-          landscape: const Offset(11.5, 5),
+          portrait: const Offset(5, 6.8),
+          landscape: const Offset(11, 4.7),
           child: TextButton(
             child: const Text(
               'Restart Quiz',
