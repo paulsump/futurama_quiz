@@ -112,25 +112,20 @@ void main() {
   });
 
   testWidgets('Info => Quiz => Answer Correctly.', (WidgetTester tester) async {
-    const double PORTRAIT_WIDTH = 400.0;
-    const double PORTRAIT_HEIGHT = 1200.0;
-    const double LANDSCAPE_WIDTH = PORTRAIT_HEIGHT;
-    const double LANDSCAPE_HEIGHT = PORTRAIT_WIDTH;
+    const double portraitWidth = 400.0;
+    const double portraitHeight = 1200.0;
+    const double landscapeWidth = portraitHeight;
+    const double landscapeHeight = portraitWidth;
 
-    final WidgetsBinding binding =
-        TestWidgetsFlutterBinding.ensureInitialized();
+    final binding = TestWidgetsFlutterBinding.ensureInitialized()
+        as TestWidgetsFlutterBinding;
 
-    await (binding as TestWidgetsFlutterBinding)
-        .setSurfaceSize(Size(PORTRAIT_WIDTH, PORTRAIT_HEIGHT));
+    // await binding.setSurfaceSize(const Size(portraitWidth, portraitHeight));
 
     await tester.pumpWidget(app);
     await tester.pump();
 
-    // await tester.pumpWidget(MyWidget());
-
-// test in portrait
-
-    await binding.setSurfaceSize(Size(LANDSCAPE_WIDTH, LANDSCAPE_HEIGHT));
+    await binding.setSurfaceSize(const Size(landscapeWidth, landscapeHeight));
     await tester.pumpAndSettle();
 
     expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
