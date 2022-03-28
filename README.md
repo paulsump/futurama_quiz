@@ -10,13 +10,10 @@
 
 - ListView gestures don't work in landscape. Reproduce: Biography/Zoidberg.
 
-## To do now Quiz Layout
-
-- Always use maxquestions space
-- Fill up bottom of screen in Biography and Quiz (maybe use a Column)
 
 ## To do now
 
+- Fill up bottom of screen in Biography and Quiz (maybe use a Column)
 - Handle exceptions (at least with http) e.g. Display proper error, not just "Please connect to the
   internet" on screen if request failed. Modify the test if appropriate.
 - Don't add any info, characters or questions that have bad data (try/catch them).

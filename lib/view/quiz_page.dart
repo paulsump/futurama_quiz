@@ -56,20 +56,21 @@ class QuizPage extends StatelessWidget {
                     child: ListTile(
                       title: Text(
                         question.possibleAnswers[i],
-                        style:
-                              TextStyle(fontSize: screenAdjust(0.032, context)),
+                        style: TextStyle(
+                          fontSize: screenAdjust(0.032, context),
                         ),
-                        leading: Radio<Answer>(
-                            value: Answer.values[i],
-                            groupValue: null,
-                            onChanged: (Answer? value) {
-                              quizNotifier.setAnswer(
-                                  value!.index, questions, context);
-                            }),
                       ),
+                      leading: Radio<Answer>(
+                          value: Answer.values[i],
+                          groupValue: null,
+                          onChanged: (Answer? value) {
+                            quizNotifier.setAnswer(
+                                value!.index, questions, context);
+                          }),
                     ),
-                ],
-              ),
+                  ),
+              ],
+            ),
           ),
           ScreenAdjust(
             portrait: const Offset(1, 10),
