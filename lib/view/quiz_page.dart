@@ -67,10 +67,12 @@ class QuizPage extends StatelessWidget {
             ),
           ),
           const ScreenAdjust(
-              portrait: Offset(1, 10),
-              landscape: Offset(1, 4),
-              width: width,
-              child: Hero(tag: 'scoreHero', child: _Score())),
+            portrait: Offset(1, 10),
+            landscape: Offset(1, 4),
+            width: width,
+            // TODO Animate Score
+            child: _Score(),
+          ),
           const CancelButton(),
         ],
       ),
@@ -115,7 +117,8 @@ class ResultsPage extends StatelessWidget {
         const ScreenAdjust(
           portrait: Offset(3, 6),
           landscape: Offset(8, 3),
-          child: Hero(tag: 'scoreHero', child: _Score()),
+          // TODO Animate Score
+          child: _Score(),
         ),
         ScreenAdjust(
           portrait: const Offset(3, 9.5),
@@ -136,7 +139,6 @@ class ResultsPage extends StatelessWidget {
 }
 
 /// 3 Correct! out of 28.
-/// TODO Hero animate
 class _Score extends StatelessWidget {
   const _Score({Key? key}) : super(key: key);
 
