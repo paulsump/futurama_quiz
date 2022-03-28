@@ -2,6 +2,10 @@
 
 - Demonstration of basic Flutter UI of data fetched from a simple API.
 
+| Fry  | Hypnotoad | Zapp |
+| ------------- | ------------- | ------------- |
+| <img src="https://github.com/paulsump/futurama_quiz/blob/5cb265aac059b56153f73e9c09201f0418134a24/images/fry.png" width="248"> | <img src="https://github.com/paulsump/futurama_quiz/blob/5cb265aac059b56153f73e9c09201f0418134a24/images/hypnotoad.png" width="248"> | <img src="https://github.com/paulsump/futurama_quiz/blob/5cb265aac059b56153f73e9c09201f0418134a24/images/zapp.png" width="248"> |
+
 ## How to build
 
 - Open the project in Android Studio, connect an Android or iOS device, run.
