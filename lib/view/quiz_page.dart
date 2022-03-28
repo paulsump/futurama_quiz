@@ -120,9 +120,9 @@ class ResultsPage extends StatelessWidget {
         child: Stack(
       children: [
         ScreenAdjust(
-          portrait: const Offset(-1, 12.5),
+          portrait: const Offset(0, 9.5),
           landscape: const Offset(1.0, 6.3),
-          width: isPortrait(context) ? 0.7 : 0.4,
+          width: isPortrait(context) ? 0.28 : 0.4,
           fromBottomUp: true,
           child: const Image(image: AssetImage('images/zapp.png')),
         ),
