@@ -4,6 +4,7 @@ import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
 import 'package:futurama_quiz/view/cage.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
+import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
 const noWarn = out;
@@ -124,7 +125,10 @@ class ResultsPage extends StatelessWidget {
           portrait: const Offset(3, 9.5),
           landscape: const Offset(11.5, 5),
           child: TextButton(
-            child: const Text('Restart Quiz'),
+            child: const Text(
+              'Restart Quiz',
+              style: TextStyle(color: Hue.text),
+            ),
             style: TextButton.styleFrom(padding: EdgeInsets.zero),
             onPressed: () {
               quizNotifier.restart();

@@ -40,7 +40,8 @@ class _App extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Futurama',
-        theme: _buildThemeData(context),
+        theme: ThemeData(
+            textTheme: Theme.of(context).textTheme.apply(bodyColor: Hue.text)),
         home: LayoutBuilder(
           builder: (
             BuildContext context,
@@ -67,16 +68,6 @@ class _App extends StatelessWidget {
           'Results': (context) => const ResultsPage(),
         },
       ),
-    );
-  }
-
-  ThemeData _buildThemeData(BuildContext context) {
-    return ThemeData(
-      textTheme: Theme.of(context).textTheme.apply(bodyColor: Hue.text),
-      // for icon buttons only atm
-      iconTheme: Theme.of(context).iconTheme.copyWith(
-            color: Hue.enabledIcon,
-          ),
     );
   }
 }
