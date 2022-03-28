@@ -72,11 +72,8 @@ class _QuizPageState extends State<QuizPage> {
                             value: Answer.values[i],
                             groupValue: _answer,
                             onChanged: (Answer? value) {
-                              // _answer = value!;
-
                               quizNotifier.setAnswer(
                                   value!.index, questions, context);
-                              // setState(() {});
                             }),
                       ),
                     ),

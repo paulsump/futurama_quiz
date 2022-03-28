@@ -25,7 +25,7 @@ class QuizNotifier extends ChangeNotifier {
 
   void setAnswer(
       int answerIndex, List<Question> questions, BuildContext context) {
-    updateScoreMessage(answerIndex, questions);
+    _updateScoreMessage(answerIndex, questions);
 
     currentQuestionIndex += 1;
 
@@ -37,7 +37,7 @@ class QuizNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateScoreMessage(int answerIndex, List<Question> questions) {
+  void _updateScoreMessage(int answerIndex, List<Question> questions) {
     final question = questions[currentQuestionIndex];
 
     if (question.correctAnswer == question.possibleAnswers[answerIndex]) {
