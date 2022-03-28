@@ -42,9 +42,9 @@ class QuizPage extends StatelessWidget {
             ),
           ),
           ScreenAdjust(
-            portrait: const Offset(0.5, 4),
+            portrait: const Offset(0.7, 4),
             landscape: const Offset(8, 0),
-            width: 0.9,
+            width: 0.85,
             child: Column(
               mainAxisAlignment: isPortrait(context)
                   ? MainAxisAlignment.start
@@ -77,15 +77,8 @@ class QuizPage extends StatelessWidget {
             portrait: const Offset(1, 10),
             landscape: const Offset(1, 4),
             width: 0.75,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Text(quizNotifier.message),
-                SizedBox(height: screenAdjust(0.03, context)),
-                Text(
-                    '${score.correct} correct out of ${fetchNotifier.questions.length}'),
-              ],
-            ),
+            child: Text(
+                '${score.correct} correct\n\nout of ${fetchNotifier.questions.length}'),
           ),
           const CancelButton(),
         ],
