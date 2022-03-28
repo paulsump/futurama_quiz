@@ -17,8 +17,6 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  Answer? _answer;
-
   @override
   Widget build(BuildContext context) {
     final quizNotifier = getQuizNotifier(context, listen: true);
@@ -70,7 +68,7 @@ class _QuizPageState extends State<QuizPage> {
                         ),
                         leading: Radio<Answer>(
                             value: Answer.values[i],
-                            groupValue: _answer,
+                            groupValue: null,
                             onChanged: (Answer? value) {
                               quizNotifier.setAnswer(
                                   value!.index, questions, context);
