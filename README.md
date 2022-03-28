@@ -8,7 +8,14 @@
 
 ## Bugs
 
-- ListView gestures don't work in landscape. Reproduce: Characters/Zoidberg.
+- ListView gestures don't work in landscape. Reproduce: Biography/Zoidberg.
+
+## To do now Quiz Layout
+
+- Stateless QuizPage
+- Always use maxquestions space
+- More params for ScreenAdjust (portrait and sizedbox)
+- Fill up bottom of screen in Biography and Quiz (maybe use a Column)
 
 ## To do now
 
@@ -20,7 +27,7 @@
 ## To do
 
 - Borders.
-- More obvious buttons.
+- More obvious Character and Quiz buttons.
 - Check all TODOs
 - Check able to run on any device
 - Running Android 7 (API 24) or greater.
@@ -30,7 +37,8 @@
 
 - Page navigation in different orientations (at least no exceptions).
 - Test exact field data after load.
-- Quiz answering widget test.
+- Quiz answer all questions widget test.
+- ResultsPage widget test.
 
 ### Ideas
 

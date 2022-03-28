@@ -23,7 +23,23 @@ class QuizNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateScoreMessage(int answerIndex, Question question) {
+  void setAnswer(
+      int answerIndex, List<Question> questions, BuildContext context) {
+    updateScoreMessage(answerIndex, questions);
+
+    currentQuestionIndex += 1;
+
+    if (currentQuestionIndex == questions.length) {
+      currentQuestionIndex = 0;
+
+      Navigator.of(context).pushReplacementNamed('Results');
+    }
+    notifyListeners();
+  }
+
+  void updateScoreMessage(int answerIndex, List<Question> questions) {
+    final question = questions[currentQuestionIndex];
+
     if (question.correctAnswer == question.possibleAnswers[answerIndex]) {
       score.correct += 1;
 
