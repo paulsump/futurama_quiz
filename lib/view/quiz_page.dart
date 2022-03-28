@@ -26,12 +26,6 @@ class QuizPage extends StatelessWidget {
       child: Stack(
         children: [
           Container(),
-          // ScreenAdjust(
-          //   portrait: const Offset(2.5, 1),
-          //   landscape: const Offset(3.0, 1),
-          //   child: Text(
-          //       'Question ${question.id} of ${fetchNotifier.questions.length}:'),
-          // ),
           ScreenAdjust(
             portrait: const Offset(1, 2.2),
             landscape: const Offset(1, 2),
@@ -78,7 +72,7 @@ class QuizPage extends StatelessWidget {
             landscape: const Offset(1, 4),
             width: 0.75,
             child: Text(
-                '${score.correct} correct\n\nout of ${fetchNotifier.questions.length}'),
+                '$score correct\n\nout of ${fetchNotifier.questions.length}'),
           ),
           const CancelButton(),
         ],
@@ -96,8 +90,8 @@ class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final quizNotifier = getQuizNotifier(context, listen: false);
-    final fetchNotifier = getFetchNotifier(context, listen: false);
 
+    final fetchNotifier = getFetchNotifier(context, listen: false);
     final score = quizNotifier.score;
 
     return Cage(
@@ -109,7 +103,7 @@ class ResultsPage extends StatelessWidget {
           portrait: const Offset(3, 3),
           landscape: const Offset(8, 2),
           child: Text(
-              'Great!\n\n\n${score.correct} correct\n\nout of ${fetchNotifier.questions.length}.'),
+              'Great!\n\n\n$score correct\n\nout of ${fetchNotifier.questions.length}.'),
         ),
         ScreenAdjust(
           portrait: const Offset(3, 6),

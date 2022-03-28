@@ -13,19 +13,21 @@ QuizNotifier getQuizNotifier(BuildContext context, {required bool listen}) =>
 class QuizNotifier extends ChangeNotifier {
   int currentQuestionIndex = 0;
 
-  var score = Score();
-  var message = '';
+  int score = 0;
 
   void restart() {
-    score.reset();
-
     currentQuestionIndex = 0;
+
+    score = 0;
     notifyListeners();
   }
 
   void setAnswer(
-      int answerIndex, List<Question> questions, BuildContext context) {
-    _updateScoreMessage(answerIndex, questions);
+    int answerIndex,
+    List<Question> questions,
+    BuildContext context,
+  ) {
+    _updateScore(answerIndex, questions);
 
     currentQuestionIndex += 1;
 
@@ -37,27 +39,11 @@ class QuizNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  void _updateScoreMessage(int answerIndex, List<Question> questions) {
+  void _updateScore(int answerIndex, List<Question> questions) {
     final question = questions[currentQuestionIndex];
 
     if (question.correctAnswer == question.possibleAnswers[answerIndex]) {
-      score.correct += 1;
-
-      message = 'Correct!';
-    } else {
-      score.incorrect += 1;
-
-      message = 'Sorry, the correct answer was\n"${question.correctAnswer}".';
+      score += 1;
     }
-  }
-}
-
-class Score {
-  int correct = 0;
-  int incorrect = 0;
-
-  void reset() {
-    correct = 0;
-    incorrect = 0;
   }
 }
