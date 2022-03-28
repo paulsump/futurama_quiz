@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/out.dart';
+import 'package:futurama_quiz/view/hue.dart';
 
 const noWarn = out;
 
@@ -47,7 +48,11 @@ class ScreenAdjust extends StatelessWidget {
       offset: (isPortrait(context) ? portrait : landscape) *
           screenAdjust(0.13, context),
       child: width != null
-          ? SizedBox(width: screenAdjust(width!, context), child: child)
+          ? Container(
+              decoration: BoxDecoration(border: Border.all(color: Hue.border)),
+              // color: Hue.lightForeground,
+              width: screenAdjust(width!, context),
+              child: child)
           : child,
     );
   }

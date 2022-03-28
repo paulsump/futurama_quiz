@@ -20,7 +20,6 @@ class QuizPage extends StatelessWidget {
     final questions = fetchNotifier.questions;
 
     final question = questions[quizNotifier.currentQuestionIndex];
-    final score = quizNotifier.score;
 
     return Cage(
       child: Stack(
@@ -94,20 +93,19 @@ class ResultsPage extends StatelessWidget {
       children: [
         const CancelButton(),
         //TODO Animate this hero onto ResultsView
-        ScreenAdjust(
-          portrait: const Offset(3, 3),
-          landscape: const Offset(8, 2),
-          child: Column(
-            children: [
-              const Text('Great!'),
-              SizedBox(height: screenAdjust(0.1, context)),
-              const _Score(),
-            ],
-          ),
+        const ScreenAdjust(
+          portrait: Offset(2, 3),
+          landscape: Offset(4.5, 2),
+          child: Text('Great!'),
+        ),
+        const ScreenAdjust(
+          portrait: Offset(3, 6),
+          landscape: Offset(8, 3),
+          child: _Score(),
         ),
         ScreenAdjust(
-          portrait: const Offset(3, 6),
-          landscape: const Offset(8, 5),
+          portrait: const Offset(4, 9.5),
+          landscape: const Offset(11.5, 5),
           child: TextButton(
             child: const Text('Restart Quiz'),
             style: TextButton.styleFrom(padding: EdgeInsets.zero),
