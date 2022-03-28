@@ -63,9 +63,10 @@ class FetchNotifier extends ChangeNotifier {
 }
 
 /// Helper class to fetch and convert json
-/// In this api, json lists are returned, so
-/// Lists of Map can be got from getList
-/// Public for tests only, including getCharacters() etc
+/// In this API, JSON lists are returned, so
+/// [List]s of [Map] can be got from [getList]
+/// It's only public for the tests,
+/// including [getInfo](), [getCharacters]() and [getQuestions]()
 class Fetcher {
   final http.Client client;
 
@@ -108,6 +109,9 @@ class Info {
                 (creator) => _Creator(creator['name'], creator['url']))
             .toList(),
         id = json['id'] {
+    // Break the long text into paragraphs.
+    // This code may seem over specific, but it won't break anything if
+    // the app changes, so it's worth it.
     synopsis = _synopsis.replaceFirst('2999. ', '2999.\n\n');
     synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');
     synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');
@@ -128,11 +132,15 @@ class Info {
   }
 
   final int id;
-
   final List<_Creator> _creators;
 }
 
+/// The actual inventors/authors/creators of Futurama
 /// for [Info]
+/// I ignore the url because I don't wish people to
+/// leave my app and get side tracked on the web!
+/// Also, because it goes to a boring website
+/// which tells you less than google would.
 class _Creator {
   _Creator(this.name, this.url);
 

@@ -39,7 +39,6 @@
 
 ### Ideas
 
-- [Dark theme](https://stackoverflow.com/questions/56304215/how-to-check-if-dark-mode-is-enabled-on-ios-android-using-flutter)
 - Click on text to choose answer too (not just radio).
 - Tool tips.
 - Fry starts big then animates small when haveInfo API. (Only worth it for when no internet)
