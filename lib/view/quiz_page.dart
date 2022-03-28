@@ -89,7 +89,6 @@ class ResultsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final quizNotifier = getQuizNotifier(context, listen: false);
 
-
     return Cage(
         child: Stack(
       children: [
@@ -131,9 +130,17 @@ class _Score extends StatelessWidget {
   Widget build(BuildContext context) {
     final fetchNotifier = getFetchNotifier(context, listen: false);
 
-    final quizNotifier = getQuizNotifier(context, listen: false);
+    final quizNotifier = getQuizNotifier(context, listen: true);
     final score = quizNotifier.score;
 
-    return Text('$score correct\n\nout of ${fetchNotifier.questions.length}.');
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('$score correct',
+            style: const TextStyle(fontWeight: FontWeight.bold)),
+        SizedBox(height: screenAdjust(0.05, context)),
+        Text('out of ${fetchNotifier.questions.length}.'),
+      ],
+    );
   }
 }
