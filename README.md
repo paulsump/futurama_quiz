@@ -12,7 +12,6 @@
 
 ## To do now Quiz Layout
 
-- Stateless QuizPage
 - Always use maxquestions space
 - More params for ScreenAdjust (portrait and sizedbox)
 - Fill up bottom of screen in Biography and Quiz (maybe use a Column)

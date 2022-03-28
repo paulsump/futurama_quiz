@@ -9,14 +9,9 @@ import 'package:futurama_quiz/view/screen_adjust.dart';
 const noWarn = out;
 
 /// Display one question, current score etc.
-class QuizPage extends StatefulWidget {
+class QuizPage extends StatelessWidget {
   const QuizPage({Key? key}) : super(key: key);
 
-  @override
-  State<QuizPage> createState() => _QuizPageState();
-}
-
-class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     final quizNotifier = getQuizNotifier(context, listen: true);
