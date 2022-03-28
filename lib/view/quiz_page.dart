@@ -70,7 +70,7 @@ class QuizPage extends StatelessWidget {
               portrait: Offset(1, 10),
               landscape: Offset(1, 4),
               width: width,
-              child: _Score()),
+              child: Hero(tag: 'scoreHero', child: _Score())),
           const CancelButton(),
         ],
       ),
@@ -107,7 +107,6 @@ class ResultsPage extends StatelessWidget {
         child: Stack(
       children: [
         const CancelButton(),
-        //TODO Animate this hero onto ResultsView
         const ScreenAdjust(
           portrait: Offset(3, 3),
           landscape: Offset(4.5, 2),
@@ -116,7 +115,7 @@ class ResultsPage extends StatelessWidget {
         const ScreenAdjust(
           portrait: Offset(3, 6),
           landscape: Offset(8, 3),
-          child: _Score(),
+          child: Hero(tag: 'scoreHero', child: _Score()),
         ),
         ScreenAdjust(
           portrait: const Offset(3, 9.5),
@@ -136,6 +135,8 @@ class ResultsPage extends StatelessWidget {
   }
 }
 
+/// 3 Correct! out of 28.
+/// TODO Hero animate
 class _Score extends StatelessWidget {
   const _Score({Key? key}) : super(key: key);
 

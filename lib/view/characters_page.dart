@@ -64,11 +64,11 @@ class _Thumbnail extends StatelessWidget {
 
     return Column(
       children: [
-        //TODO Animate this hero onto Biography
         if (!Platform.environment.containsKey('FLUTTER_TEST'))
           SizedBox(
               height: screenAdjust(isPortrait(context) ? 0.4 : 0.6, context),
-              child: Image.network(character.image)),
+              child: Hero(
+                  tag: 'biographyHero', child: Image.network(character.image))),
         padY,
         Text(
           character.name,

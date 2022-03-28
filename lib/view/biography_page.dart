@@ -62,7 +62,7 @@ class BiographyPage extends StatelessWidget {
         height: screenAdjust(0.73, context),
         child: Platform.environment.containsKey('FLUTTER_TEST')
             ? null
-            : Image.network(character.image),
+            : Hero(tag: 'biographyHero', child: Image.network(character.image)),
       ),
       padY,
       Text(
