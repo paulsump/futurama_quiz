@@ -28,7 +28,7 @@ class QuizPage extends StatelessWidget {
         children: [
           Container(),
           ScreenAdjust(
-            portrait: const Offset(1, 1.6),
+            portrait: const Offset(1.8, 0.7),
             landscape: const Offset(1, 1.5),
             width: isPortrait(context) ? width : 0.9,
             child: Text(
@@ -71,7 +71,7 @@ class QuizPage extends StatelessWidget {
           ),
           const ScreenAdjust(
             portrait: Offset(5, 5.5),
-            landscape: Offset(1, 1),
+            landscape: Offset(1, 4),
             width: width,
             fromBottomUp: true,
             // TODO Animate Score
