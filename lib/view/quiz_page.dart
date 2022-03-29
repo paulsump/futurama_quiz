@@ -37,7 +37,7 @@ class QuizPage extends StatelessWidget {
           ScreenAdjust(
             portrait: const Offset(6.5, 13.1),
             landscape: const Offset(3.5, 17.5),
-            width: 0.8,
+            width: isPortrait(context) ? 0.8 : 0.4,
             anchorBottom: true,
             anchorRight: true,
             child: Column(

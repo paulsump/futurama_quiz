@@ -81,7 +81,7 @@ class ScreenAdjust extends StatelessWidget {
               // Container(decoration: BoxDecoration(color: Hue.text.withOpacity(0.2)),
               width: (anchorBottom && !anchorRight)
                   ? width! * h
-                  : screenAdjust(width!, context),
+                  : screenAdjustX(width!, context),
               child: child)
           : child,
     );
