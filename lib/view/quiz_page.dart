@@ -34,10 +34,11 @@ class QuizPage extends StatelessWidget {
             ),
           ),
           ScreenAdjust(
-            portrait: const Offset(1, 13.0),
-            landscape: const Offset(9.5, 7.5),
+            portrait: const Offset(6.5, 13.0),
+            landscape: const Offset(6.5, 7.5),
             width: isPortrait(context) ? 0.37 : width,
             anchorBottom: true,
+            anchorRight: true,
             child: Column(
               mainAxisAlignment: isPortrait(context)
                   ? MainAxisAlignment.start

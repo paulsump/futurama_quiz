@@ -24,7 +24,7 @@ double _getScreenShortestEdge(BuildContext context) {
 }
 
 /// Device dimensions
-// double _getScreenWidth(BuildContext context) => _getScreenSize(context).width;
+double _getScreenWidth(BuildContext context) => getScreenSize(context).width;
 
 /// Device dimensions
 double _getScreenHeight(BuildContext context) => getScreenSize(context).height;
@@ -39,25 +39,29 @@ class ScreenAdjust extends StatelessWidget {
     this.width,
     required this.child,
     this.anchorBottom = false,
+    this.anchorRight = false,
   }) : super(key: key);
 
   final Offset portrait, landscape;
   final double? width;
   final Widget child;
 
-  /// anchor at the bottom instead of the default top
+  /// anchor from the bottom upwards instead of the default top downwards
   final bool anchorBottom;
 
-  // final bool anchorRight;
+  /// anchor from the right leftwards instead of the default left rightwards!
+  final bool anchorRight;
 
   @override
   Widget build(BuildContext context) {
     final offset_ = (isPortrait(context) ? portrait : landscape) *
         screenAdjust(0.13, context);
 
+    final w = _getScreenWidth(context);
     final h = _getScreenHeight(context);
-    final offset =
-        Offset(offset_.dx, anchorBottom ? h - offset_.dy : offset_.dy);
+
+    final offset = Offset(anchorRight ? w - offset_.dx : offset_.dx,
+        anchorBottom ? h - offset_.dy : offset_.dy);
 
     return Transform.translate(
       offset: offset,
