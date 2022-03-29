@@ -15,15 +15,15 @@
 - Back button gesture clip? It's area seams bigger than it should be. Reproduce: ResultsPage.
 - Or maybe that was just the bug that happens when you tap too fast after it starts to navigate to
   the ResultsPage?
-- ListView drag gesture doesn't work in landscape on Biography/Zoidberg.
+- ListView drag gesture doesn't work in landscape on Biography e.g. Zoidberg.
 
 ## To do
 
 - Multiple Stars?
-- Fetch again button
-- perhaps use backup json assets because the API has been so unstable today? I don't want it to go
-  wrong on the day.
-- use questionsErrorMessage and charactersErrorMessage in test. Maybe on ui too?
+- Fetch 'Try Again' button
+- Perhaps use backup json assets because the API has been so unstable today? I don't want it to go
+  wrong on the day. This looks too much like a cheat, also the tests would be confusing, so no.
+- Use questionsErrorMessage and charactersErrorMessage in test. Maybe on ui too?
 - More obvious Character, Quiz and Restart Quiz buttons.
 - Run on Android 7 (API 24) or greater.
 
@@ -34,7 +34,7 @@
 
 ### Tests to do
 
-- Page navigation in different orientations (at least no exceptions).
+- Page navigation in different orientations (at least no exceptions). See 'TODO Landscape tests'.
 - Test exact field data after load.
 - Quiz answer all questions widget test.
 - ResultsPage widget test.
