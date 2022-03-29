@@ -19,12 +19,9 @@ void main() {
     const base = 'GET https://api.sampleapis.com/futurama/';
     switch (url.toString()) {
       case base + 'info':
-        return http.Response(
-            '[{"synopsis":"Philip J. Fry is...","yearsAired":"1999–2013","creators":[{"name":"David X. Cohen","url":"http://www.imdb.com/name/nm0169326"},{"name":"Matt Groening","url":"http://www.imdb.com/name/nm0004981"}],"id":1}]',
-            200,
-            headers: {
-              HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
-            });
+        return http.Response(fixture('info.json'), 200, headers: {
+          HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+        });
       case base + 'characters':
         return http.Response(fixture('characters.json'), 200, headers: {
           HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
@@ -44,17 +41,17 @@ void main() {
     expect(find.byType(ListView), findsOneWidget);
 
     // before rebuild
-    expect(find.textContaining('Philip J. Fry is...'), findsNothing);
+    expect(find.textContaining('Philip J. Fry is'), findsNothing);
     await tester.pump();
     //after rebuild!
-    expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
+    expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
   });
 
   testWidgets('Navigate from Info page to Characters Page',
       (WidgetTester tester) async {
-    await tester.pumpWidget(app);
+        await tester.pumpWidget(app);
     await tester.pump();
-    expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
+    expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
     expect(find.textContaining('Characters'), findsOneWidget);
     expect(find.textContaining('Quiz'), findsOneWidget);
     expect(find.byType(TextButton), findsNWidgets(2));
@@ -69,9 +66,9 @@ void main() {
 
   testWidgets('Navigate Info => Characters => Biography Page',
       (WidgetTester tester) async {
-    await tester.pumpWidget(app);
+        await tester.pumpWidget(app);
     await tester.pump();
-    expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
+    expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
     expect(find.textContaining('Characters'), findsOneWidget);
     expect(find.textContaining('Quiz'), findsOneWidget);
     expect(find.byType(TextButton), findsNWidgets(2));
@@ -93,7 +90,7 @@ void main() {
   testWidgets('Navigate from Info to Quiz Page', (WidgetTester tester) async {
     await tester.pumpWidget(app);
     await tester.pump();
-    expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
+    expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
     expect(find.textContaining('Characters'), findsOneWidget);
     expect(find.textContaining('Quiz'), findsOneWidget);
 
@@ -123,7 +120,7 @@ void main() {
     await binding.setSurfaceSize(const Size(landscapeWidth, landscapeHeight));
     await tester.pump();
 
-    expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
+    expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
     expect(find.textContaining('Characters'), findsOneWidget);
     expect(find.textContaining('Quiz'), findsOneWidget);
 
