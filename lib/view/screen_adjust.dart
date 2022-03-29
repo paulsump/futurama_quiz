@@ -13,9 +13,17 @@ bool isPortrait(BuildContext context) {
   return screen.width < screen.height;
 }
 
-/// Widget dimensions calculated using the shortestEdge of the screen...
+/// Widget dimensions calculated using the shortestEdge of the screen.
 double screenAdjust(double length, BuildContext context) =>
     length * _getScreenShortestEdge(context);
+
+/// Widget dimensions calculated using the width of the screen.
+double screenAdjustX(double length, BuildContext context) =>
+    length * _getScreenWidth(context);
+
+/// Widget dimensions calculated using the height of the screen.
+double screenAdjustY(double length, BuildContext context) =>
+    length * _getScreenHeight(context);
 
 double _getScreenShortestEdge(BuildContext context) {
   final screen = getScreenSize(context);

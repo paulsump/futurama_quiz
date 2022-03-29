@@ -47,8 +47,8 @@ class QuizPage extends StatelessWidget {
               children: <Widget>[
                 for (int i = 0; i < question.possibleAnswers.length; ++i)
                   SizedBox(
-                    height: screenAdjust(
-                        question.possibleAnswers.length > 5 ? 0.11 : 0.12,
+                    height: screenAdjustY(
+                        question.possibleAnswers.length > 5 ? 0.6 : 0.05,
                         context),
                     child: ListTile(
                       dense: true,
