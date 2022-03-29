@@ -38,7 +38,7 @@ class ScreenAdjust extends StatelessWidget {
     required this.landscape,
     this.width,
     required this.child,
-    this.fromBottomUp = false,
+    this.anchorBottomUpwards = false,
   }) : super(key: key);
 
   final Offset portrait, landscape;
@@ -46,7 +46,7 @@ class ScreenAdjust extends StatelessWidget {
   final Widget child;
 
   /// anchor at the bottom instead of the default top
-  final bool fromBottomUp;
+  final bool anchorBottomUpwards;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +55,7 @@ class ScreenAdjust extends StatelessWidget {
 
     final h = _getScreenHeight(context);
     final offset =
-        Offset(offset_.dx, fromBottomUp ? h - offset_.dy : offset_.dy);
+        Offset(offset_.dx, anchorBottomUpwards ? h - offset_.dy : offset_.dy);
 
     return Transform.translate(
       offset: offset,
@@ -65,7 +65,9 @@ class ScreenAdjust extends StatelessWidget {
               // decoration: BoxDecoration(
               //     color: Hue.lightForeground,
               //     border: Border.all(color: Hue.border)),
-              width: fromBottomUp ? width! * h : screenAdjust(width!, context),
+              width: anchorBottomUpwards
+                  ? width! * h
+                  : screenAdjust(width!, context),
               child: child)
           : child,
     );

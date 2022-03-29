@@ -36,7 +36,7 @@ class BiographyPage extends StatelessWidget {
                 portrait: const Offset(0.9, 7.5),
                 landscape: const Offset(7, 6.8),
                 width: isPortrait(context) ? 0.3 : 1,
-                fromBottomUp: true,
+                anchorBottomUpwards: true,
                 child: _buildWords(context, character),
               ),
             ]),
