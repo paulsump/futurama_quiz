@@ -36,7 +36,7 @@ class QuizPage extends StatelessWidget {
           ),
           ScreenAdjust(
             portrait: const Offset(6.5, 13.1),
-            landscape: const Offset(6.1, 7.5),
+            landscape: const Offset(3.8, 17.5),
             width: isPortrait(context) ? 0.37 : 0.68,
             anchorBottom: true,
             anchorRight: true,
@@ -70,14 +70,14 @@ class QuizPage extends StatelessWidget {
           ),
           const ScreenAdjust(
             portrait: Offset(5, 5.5),
-            landscape: Offset(3.5, 4.5),
+            landscape: Offset(2.5, 8.5),
             width: width,
             anchorBottom: true,
             child: _Score(),
           ),
           ScreenAdjust(
             portrait: const Offset(1, 5.5),
-            landscape: const Offset(0.5, 4.3),
+            landscape: const Offset(0.5, 8.3),
             width: isPortrait(context) ? 0.3 : 0.6,
             anchorBottom: true,
             child: const Image(image: AssetImage('images/hypnotoad.png')),
@@ -120,7 +120,7 @@ class ResultsPage extends StatelessWidget {
       children: [
         ScreenAdjust(
           portrait: const Offset(0, 9.5),
-          landscape: const Offset(1.0, 6.3),
+          landscape: const Offset(1.0, 11.7),
           width: isPortrait(context) ? 0.28 : 0.4,
           anchorBottom: true,
           child: const Image(image: AssetImage('images/zapp.png')),
@@ -128,12 +128,12 @@ class ResultsPage extends StatelessWidget {
         const CancelButton(),
         const ScreenAdjust(
           portrait: Offset(3.2, 3),
-          landscape: Offset(5.6, 2.4),
+          landscape: Offset(3.6, 2.4),
           child: _Score(),
         ),
         ScreenAdjust(
           portrait: const Offset(4.5, 6.0),
-          landscape: const Offset(4.5, 4.3),
+          landscape: const Offset(2.5, 7.3),
           anchorRight: true,
           child: TextButton(
             child: const ScreenAdjustedText(
