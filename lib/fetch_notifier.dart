@@ -49,11 +49,7 @@ class FetchNotifier extends ChangeNotifier {
 
       haveInfo = true;
     } catch (error) {
-      infoErrorMessage = error.toString();
-
-      if (infoErrorMessage.startsWith('Exception: ')) {
-        infoErrorMessage = infoErrorMessage.replaceFirst('Exception: ', '');
-      }
+      infoErrorMessage = _formatError(error);
 
       // Allow app to try again later.
       fetchAllHasBeenCalled = false;
@@ -71,12 +67,7 @@ class FetchNotifier extends ChangeNotifier {
       }
       haveCharacters = true;
     } catch (error) {
-      charactersErrorMessage = error.toString();
-
-      if (charactersErrorMessage.startsWith('Exception: ')) {
-        charactersErrorMessage =
-            charactersErrorMessage.replaceFirst('Exception: ', '');
-      }
+      charactersErrorMessage = _formatError(error);
 
       // Allow app to try again later.
       fetchAllHasBeenCalled = false;
@@ -95,12 +86,7 @@ class FetchNotifier extends ChangeNotifier {
       }
       haveQuestions = true;
     } catch (error) {
-      questionsErrorMessage = error.toString();
-
-      if (questionsErrorMessage.startsWith('Exception: ')) {
-        questionsErrorMessage =
-            questionsErrorMessage.replaceFirst('Exception: ', '');
-      }
+      questionsErrorMessage = _formatError(error);
 
       // Allow app to try again later.
       fetchAllHasBeenCalled = false;
@@ -108,6 +94,16 @@ class FetchNotifier extends ChangeNotifier {
 
     notifyListeners();
     client.close();
+  }
+
+  String _formatError(Object error) {
+    var message = error.toString();
+
+    if (message.startsWith('Exception: ')) {
+      message = message.replaceFirst('Exception: ', '');
+    }
+
+    return message;
   }
 }
 

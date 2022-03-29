@@ -19,7 +19,7 @@
 
 ## To do
 
-- extract _formatError()
+- perhaps have backup json assets because the API has been so flakey today?
 - use questionsErrorMessage and charactersErrorMessage
 - More obvious Character, Quiz and Restart Quiz buttons.
 - Run on Android 7 (API 24) or greater.
