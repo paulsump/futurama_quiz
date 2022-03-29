@@ -127,6 +127,6 @@ class _InfoView extends StatelessWidget {
               for (final name in fetchNotifier.info.creatorNames) Text(name),
             ],
           )
-        : Center(child: Text(fetchNotifier.errorMessage));
+        : Center(child: Text(fetchNotifier.infoErrorMessage));
   }
 }

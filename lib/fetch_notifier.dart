@@ -30,7 +30,10 @@ class FetchNotifier extends ChangeNotifier {
   final questions = <Question>[];
   bool haveQuestions = false;
 
-  String errorMessage = 'Fetching info...';
+  String infoErrorMessage = 'Fetching info...';
+
+  String charactersErrorMessage = '';
+  String questionsErrorMessage = '';
 
   /// The main starting point for the app data.
   /// Called only once.
@@ -43,46 +46,67 @@ class FetchNotifier extends ChangeNotifier {
 
       assert(infoList.length == 1);
       info = Info.fromJson(infoList[0]);
-    } catch (error) {
-      errorMessage = error.toString();
 
-      if (errorMessage.startsWith('Exception: ')) {
-        errorMessage = errorMessage.replaceFirst('Exception: ', '');
+      haveInfo = true;
+    } catch (error) {
+      infoErrorMessage = error.toString();
+
+      if (infoErrorMessage.startsWith('Exception: ')) {
+        infoErrorMessage = infoErrorMessage.replaceFirst('Exception: ', '');
       }
-      notifyListeners();
 
       // Allow app to try again later.
       fetchAllHasBeenCalled = false;
-      return;
     }
 
-    haveInfo = true;
     notifyListeners();
-
-    final characterList = await fetcher.getCharacters();
-    for (final character in characterList) {
-      try {
-        characters.add(Character.fromJson(character));
-      } catch (error) {
-        logError('Ignoring bad character');
+    try {
+      final characterList = await fetcher.getCharacters();
+      for (final character in characterList) {
+        try {
+          characters.add(Character.fromJson(character));
+        } catch (error) {
+          logError('Ignoring bad character');
+        }
       }
-    }
+      haveCharacters = true;
+    } catch (error) {
+      charactersErrorMessage = error.toString();
 
-    haveCharacters = true;
-    notifyListeners();
-
-    final questionsList = await fetcher.getQuestions();
-    for (final question in questionsList) {
-      try {
-        questions.add(Question.fromJson(question));
-      } catch (error) {
-        logError('Ignoring bad question');
+      if (charactersErrorMessage.startsWith('Exception: ')) {
+        charactersErrorMessage =
+            charactersErrorMessage.replaceFirst('Exception: ', '');
       }
+
+      // Allow app to try again later.
+      fetchAllHasBeenCalled = false;
     }
 
-    haveQuestions = true;
     notifyListeners();
 
+    try {
+      final questionsList = await fetcher.getQuestions();
+      for (final question in questionsList) {
+        try {
+          questions.add(Question.fromJson(question));
+        } catch (error) {
+          logError('Ignoring bad question');
+        }
+      }
+      haveQuestions = true;
+    } catch (error) {
+      questionsErrorMessage = error.toString();
+
+      if (questionsErrorMessage.startsWith('Exception: ')) {
+        questionsErrorMessage =
+            questionsErrorMessage.replaceFirst('Exception: ', '');
+      }
+
+      // Allow app to try again later.
+      fetchAllHasBeenCalled = false;
+    }
+
+    notifyListeners();
     client.close();
   }
 }
