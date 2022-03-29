@@ -13,10 +13,12 @@ class SizedText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Characters',
+      text,
       style: TextStyle(
         color: Hue.text,
         fontSize: screenAdjust(0.04, context),
+        fontWeight: bold ? FontWeight.bold : FontWeight.normal,
+        fontStyle: italic ? FontStyle.italic : FontStyle.normal,
       ),
     );
   }
