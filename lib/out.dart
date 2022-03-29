@@ -23,6 +23,10 @@ void out(Object object) {
 
 /// Save errors somewhere that technical support can retrieve them later.
 void logError(String message) {
-  // TODO save messages to log file for now
+  // TODO save messages to log file for now, later it would go on the cloud.
+  // If I save a file to the app folder, I'll need to add path_provider package
+  // At the moment there aren't any hidden log errors that make the
+  // extra dependency worthwhile.
+  // So I'll just output it for now...
   out(message);
 }

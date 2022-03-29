@@ -15,18 +15,17 @@
 - Back button gesture clip? It's area seams bigger than it should be. Reproduce: ResultsPage.
 - Or maybe that was just the bug that happens when you tap too fast after it starts to navigate to
   the ResultsPage?
-- ListView gestures don't work in landscape. Reproduce: Biography/Zoidberg.
-
-## To do now
-
-- Add log for errors - see logError()
+- ListView drag gesture doesn't work in landscape on Biography/Zoidberg.
 
 ## To do
 
 - More obvious Character, Quiz and Restart Quiz buttons.
-- Check all TODOs
-- Check able to run on any device
 - Run on Android 7 (API 24) or greater.
+
+## Last minute checks
+
+- Check all TODOs
+- Check able to run on any device.
 
 ### Tests to do
 
@@ -34,9 +33,12 @@
 - Test exact field data after load.
 - Quiz answer all questions widget test.
 - ResultsPage widget test.
+- More bad data.
+- More bad internet.
 
 ### Ideas
 
+- Add log for errors - see logError() - not worth the dependency on path_provider yet.
 - Click on text to choose answer too (not just radio).
-- Tool tips.
+- Tool tips. (not worth the time?)
 - Fry starts big then animates small when haveInfo API. (Only worth it for when no internet)
