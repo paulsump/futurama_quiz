@@ -19,14 +19,14 @@ class Background extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: SafeArea(
-          left: false,
-          child: Stack(
-            children: [
-              const Star(),
-              child,
-            ],
-          ),
+        child: Stack(
+          children: [
+            const Star(),
+            SafeArea(
+              left: false,
+              child: child,
+            ),
+          ],
         ),
       ),
     );

@@ -4,24 +4,30 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-/// convenient access to screen dimensions.
-Size _getScreenSize(BuildContext context) => MediaQuery.of(context).size;
+/// Convenient access to screen dimensions.
+Size getScreenSize(BuildContext context) => MediaQuery.of(context).size;
 
+/// Device orientation access.
 bool isPortrait(BuildContext context) {
-  final screen = _getScreenSize(context);
+  final screen = getScreenSize(context);
   return screen.width < screen.height;
 }
 
-/// object dimensions calculated using the shortestEdge of the screen...
-
+/// Widget dimensions calculated using the shortestEdge of the screen...
 double screenAdjust(double length, BuildContext context) =>
     length * _getScreenShortestEdge(context);
 
 double _getScreenShortestEdge(BuildContext context) {
-  final screen = _getScreenSize(context);
+  final screen = getScreenSize(context);
 
   return min(screen.width, screen.height);
 }
+
+/// Device dimensions
+// double _getScreenWidth(BuildContext context) => _getScreenSize(context).width;
+
+/// Device dimensions
+double _getScreenHeight(BuildContext context) => getScreenSize(context).height;
 
 /// Translate a child widget by an amount relative to
 /// the length of the shortest edge of the device
@@ -45,7 +51,7 @@ class ScreenAdjust extends StatelessWidget {
     final offset_ = (isPortrait(context) ? portrait : landscape) *
         screenAdjust(0.13, context);
 
-    final h = _getScreenSize(context).height;
+    final h = _getScreenHeight(context);
     final offset =
         Offset(offset_.dx, fromBottomUp ? h - offset_.dy : offset_.dy);
 

@@ -1,6 +1,7 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
+import 'package:futurama_quiz/view/screen_adjust.dart';
 
 /// Little animated stars on the [Background]
 class Star extends StatefulWidget {
@@ -27,8 +28,19 @@ class _StarState extends State<Star> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return const Image(
-      image: AssetImage('images/star.png'),
+    final size = getScreenSize(context);
+
+    const unit = Offset(1, 1);
+    final center = unit * 0.5;
+
+    final offset = Offset(size.width * center.dx, size.height * center.dy);
+    final imageSize = unit * 128;
+
+    return Transform.translate(
+      offset: offset - imageSize / 2,
+      child: const Image(
+        image: AssetImage('images/star.png'),
+      ),
     );
   }
 }
