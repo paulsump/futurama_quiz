@@ -81,11 +81,31 @@ void main() {
     await tester.pump();
     expect(find.byType(InfoPage), findsOneWidget);
     expect(find.byType(CharactersPage), findsOneWidget);
+    expect(find.textContaining('Bender Bending Rodriguez'), findsOneWidget);
   });
 
+  testWidgets('Navigate from Info page to Characters Page - Empty List',
+      (WidgetTester tester) async {
+    await tester.pumpWidget(emptyListApp);
+    await tester.pump();
+    expect(find.textContaining('Failed'), findsOneWidget);
+    expect(find.textContaining('Characters'), findsOneWidget);
+    expect(find.textContaining('Quiz'), findsOneWidget);
+    expect(find.byType(TextButton), findsNWidgets(2));
+    await tester.tap(find.widgetWithText(TextButton, 'Characters'));
+    await tester.pump();
+    expect(find.byType(InfoPage), findsOneWidget);
+
+    await tester.pump();
+    expect(find.byType(InfoPage), findsOneWidget);
+    expect(find.byType(CharactersPage), findsOneWidget);
+    expect(find.textContaining('Bender Bending Rodriguez'), findsNothing);
+  });
+
+  // TODO add more Empty List ones from this one onwards.
   testWidgets('Navigate Info => Characters => Biography Page',
       (WidgetTester tester) async {
-        await tester.pumpWidget(app);
+    await tester.pumpWidget(app);
     await tester.pump();
     expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
     expect(find.textContaining('Characters'), findsOneWidget);
@@ -100,7 +120,7 @@ void main() {
     await tester.tap(find.widgetWithText(TextButton, 'Philip Jay Fry.'));
 
     await tester.pump();
-    //warning doesn't get to BiographyPage
+        //TODO warning doesn't get to BiographyPage
     // expect(find.byType(BiographyPage), findsOneWidget);
     // expect(find.textContaining('Human Male'), findsOneWidget);
     expect(find.textContaining('Philip Jay Fry.'), findsOneWidget);

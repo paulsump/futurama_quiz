@@ -7,6 +7,7 @@ import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
+import 'package:futurama_quiz/view/sized_text.dart';
 
 /// The home page of the app, showing a synopsis of Futurama.
 /// Allows access to the other two pages [CharactersPage] and [QuizPage]
@@ -27,10 +28,7 @@ class InfoPage extends StatelessWidget {
             children: [
               Column(children: [
                 TextButton(
-                  child: const Text(
-                    'Characters',
-                    style: TextStyle(color: Hue.text),
-                  ),
+                  child: const SizedText('Characters'),
                   onPressed: fetchNotifier.haveCharacters
                       ? () {
                           Navigator.of(context).pushNamed('Characters');

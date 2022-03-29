@@ -19,6 +19,7 @@
 
 ## To do
 
+- Fetch again button
 - perhaps use backup json assets because the API has been so unstable today? I don't want it to go
   wrong on the day.
 - use questionsErrorMessage and charactersErrorMessage in test. Maybe on ui too?
