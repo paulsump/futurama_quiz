@@ -3,8 +3,9 @@ import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 
 /// Simple [Text] with screen adjusted font size.
-class SizedText extends StatelessWidget {
-  const SizedText(this.text, {Key? key, this.bold = false, this.italic = false})
+class ScreenAdjustedText extends StatelessWidget {
+  const ScreenAdjustedText(this.text,
+      {Key? key, this.bold = false, this.italic = false})
       : super(key: key);
 
   final String text;

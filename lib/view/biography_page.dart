@@ -7,7 +7,7 @@ import 'package:futurama_quiz/character.dart';
 import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
-import 'package:futurama_quiz/view/sized_text.dart';
+import 'package:futurama_quiz/view/screen_adjusted_text.dart';
 
 /// Character Biography - Info on a person/alien
 /// including a subset of his/her famous sayings.
@@ -59,7 +59,7 @@ class BiographyPage extends StatelessWidget {
             : Image.network(character.image),
       ),
       padY,
-      SizedText(character.name, bold: true),
+      ScreenAdjustedText(character.name, bold: true),
     ]);
   }
 
@@ -74,13 +74,13 @@ class BiographyPage extends StatelessWidget {
         ),
       ),
       child: ListView(children: [
-        SizedText(character.type),
+        ScreenAdjustedText(character.type),
         padY,
-        SizedText(character.occupation),
+        ScreenAdjustedText(character.occupation),
         padY,
         padY,
         for (final saying in character.sayings)
-          SizedText(
+          ScreenAdjustedText(
             '"$saying"\n',
             italic: true,
           ),

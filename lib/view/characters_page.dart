@@ -7,8 +7,8 @@ import 'package:futurama_quiz/character.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
-import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
+import 'package:futurama_quiz/view/screen_adjusted_text.dart';
 
 /// List of people/aliens with name and thumbnail.
 /// Click on a character to view his/her full biography.
@@ -69,10 +69,7 @@ class _Thumbnail extends StatelessWidget {
               height: screenAdjust(isPortrait(context) ? 0.4 : 0.6, context),
               child: Image.network(character.image)),
         padY,
-        Text(
-          character.name,
-          style: const TextStyle(color: Hue.text),
-        ),
+        ScreenAdjustedText(character.name),
         padY,
       ],
     );
