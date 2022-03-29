@@ -62,8 +62,9 @@ class ScreenAdjust extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final offset_ = (isPortrait(context) ? portrait : landscape) *
-        screenAdjust(0.13, context);
+    final offset1 = (isPortrait(context) ? portrait : landscape);
+    final offset_ = Offset(offset1.dx * screenAdjustX(0.13, context),
+        offset1.dy * screenAdjustY(0.06, context));
 
     final w = _getScreenWidth(context);
     final h = _getScreenHeight(context);

@@ -35,7 +35,7 @@ class QuizPage extends StatelessWidget {
             ),
           ),
           ScreenAdjust(
-            portrait: const Offset(6.5, 11.1),
+            portrait: const Offset(6.5, 13.1),
             landscape: const Offset(6.1, 7.5),
             width: isPortrait(context) ? 0.37 : 0.68,
             anchorBottom: true,
@@ -48,7 +48,7 @@ class QuizPage extends StatelessWidget {
                 for (int i = 0; i < question.possibleAnswers.length; ++i)
                   SizedBox(
                     height: screenAdjustY(
-                        question.possibleAnswers.length > 5 ? 0.6 : 0.05,
+                        question.possibleAnswers.length > 5 ? 0.06 : 0.07,
                         context),
                     child: ListTile(
                       dense: true,

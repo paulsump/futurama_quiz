@@ -19,6 +19,7 @@
 
 ## To do
 
+- replace screenAdjust with screenAdjustX and Y
 - Animate text and image positions to illustrate the point in Stacking them rather than in
   Row/Columns.
 - Fetch 'Try Again' button

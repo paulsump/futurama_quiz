@@ -33,7 +33,7 @@ class BiographyPage extends StatelessWidget {
                 child: _buildThumbnail(context, character),
               ),
               ScreenAdjust(
-                portrait: const Offset(6.5, 7.5),
+                portrait: const Offset(6.5, 8.5),
                 landscape: const Offset(7, 6.8),
                 width: isPortrait(context) ? 0.3 : 0.7,
                 anchorBottom: true,
@@ -48,13 +48,13 @@ class BiographyPage extends StatelessWidget {
   }
 
   Widget _buildThumbnail(BuildContext context, Character character) {
-    final padY = SizedBox(height: screenAdjust(0.06, context));
+    final padY = SizedBox(height: screenAdjustY(0.005, context));
 
     return Column(children: [
       Container(
         constraints: BoxConstraints(
             maxWidth: screenAdjust(isPortrait(context) ? 0.53 : 0.63, context)),
-        height: screenAdjust(0.73, context),
+        height: screenAdjustY(0.4, context),
         child: Platform.environment.containsKey('FLUTTER_TEST')
             ? null
             : Image.network(character.image),
