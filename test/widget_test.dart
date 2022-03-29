@@ -42,7 +42,6 @@ void main() {
 
     expect(find.byType(Background), findsOneWidget);
     expect(find.byType(ListView), findsOneWidget);
-    expect(find.text('Please connect to the internet.'), findsOneWidget);
 
     // before rebuild
     expect(find.textContaining('Philip J. Fry is...'), findsNothing);

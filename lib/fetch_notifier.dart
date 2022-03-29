@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/character.dart';
+import 'package:futurama_quiz/out.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
@@ -29,16 +30,31 @@ class FetchNotifier extends ChangeNotifier {
   late List<Question> questions;
   bool haveQuestions = false;
 
+  String errorMessage = 'Fetching info...';
+
   /// The main starting point for the app data.
   /// Called only once.
   Future<void> fetchAll(BuildContext context, http.Client client) async {
     fetchAllHasBeenCalled = true;
 
     final fetcher = Fetcher(client);
-    final infoList = await fetcher.getInfo();
+    try {
+      final infoList = await fetcher.getInfo();
 
-    assert(infoList.length == 1);
-    info = Info.fromJson(infoList[0]);
+      assert(infoList.length == 1);
+      info = Info.fromJson(infoList[0]);
+    } catch (error) {
+      errorMessage = error.toString();
+
+      if (errorMessage.startsWith('Exception: ')) {
+        errorMessage = errorMessage.replaceFirst('Exception: ', '');
+      }
+      notifyListeners();
+
+      // Allow app to try again later.
+      fetchAllHasBeenCalled = false;
+      return;
+    }
 
     haveInfo = true;
     notifyListeners();
@@ -94,16 +110,68 @@ class Fetcher {
     if (response.statusCode == 200) {
       return response.body;
     } else {
-      throw Exception('Fetch failed. (${response.statusCode})($url)');
+      final n = response.statusCode;
+      var message = 'Failed to fetch $url from the API. ($n';
+
+      if (friendlyHttpStatus.containsKey(n)) {
+        message += friendlyHttpStatus[n]!;
+      } else {
+        message += ')';
+        out('Unknown code $n');
+      }
+      throw Exception(message);
     }
   }
 }
 
+const friendlyHttpStatus = {
+  200: 'OK',
+  201: 'Created',
+  202: 'Accepted',
+  203: 'Non-Authoritative Information',
+  204: 'No Content',
+  205: 'Reset Content',
+  206: 'Partial Content',
+  300: 'Multiple Choices',
+  301: 'Moved Permanently',
+  302: 'Found',
+  303: 'See Other',
+  304: 'Not Modified',
+  305: 'Use Proxy',
+  306: 'Unused',
+  307: 'Temporary Redirect',
+  400: 'Bad Request',
+  401: 'Unauthorized',
+  402: 'Payment Required',
+  403: 'Forbidden',
+  404: 'Not Found',
+  405: 'Method Not Allowed',
+  406: 'Not Acceptable',
+  407: 'Proxy Authentication Required',
+  408: 'Request Timeout',
+  409: 'Conflict',
+  410: 'Gone',
+  411: 'Length Required',
+  412: 'Precondition Required',
+  413: 'Request Entry Too Large',
+  414: 'Request-URI Too Long',
+  415: 'Unsupported Media Type',
+  416: 'Requested Range Not Satisfiable',
+  417: 'Expectation Failed',
+  418: 'I\'m a teapot',
+  429: 'Too Many Requests',
+  500: 'Internal Server Error',
+  501: 'Not Implemented',
+  502: 'Bad Gateway',
+  503: 'Service Unavailable',
+  504: 'Gateway Timeout',
+  505: 'HTTP Version Not Supported',
+};
+
 /// General Futurama information for the homepage.
 class Info {
   Info.fromJson(Map<String, dynamic> json)
-      : _synopsis = json['synopsis'],
-        yearsAired = json['yearsAired'],
+      : yearsAired = json['yearsAired'],
         _creators = json['creators']
             .map<_Creator>(
                 (creator) => _Creator(creator['name'], creator['url']))
@@ -112,7 +180,8 @@ class Info {
     // Break the long text into paragraphs.
     // This code may seem over specific, but it won't break anything if
     // the app changes, so it's worth it.
-    synopsis = _synopsis.replaceFirst('2999. T', '2999.\n\nT');
+    synopsis = json['synopsis'];
+    synopsis = synopsis.replaceFirst('2999. T', '2999.\n\nT');
     synopsis = synopsis.replaceFirst('things. E', 'things.\n\nE');
     synopsis = synopsis.replaceFirst('forgetful. F', 'forgetful.\n\nF');
     synopsis = synopsis.replaceFirst('hip. A', 'hip.\n\nA');
@@ -120,7 +189,6 @@ class Info {
     synopsis = synopsis.replaceFirst('humans. F', 'humans.\n\nF');
   }
 
-  final String _synopsis;
   late String synopsis;
   final String yearsAired;
 

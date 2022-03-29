@@ -79,6 +79,8 @@ class InfoPage extends StatelessWidget {
     );
   }
 
+  /// This make the images on the character list page pop up immediately
+  /// instead of gradually when they are ready.
   Widget _precacheImages(BuildContext context) {
     if (Platform.environment.containsKey('FLUTTER_TEST')) {
       return Container();
@@ -124,6 +126,6 @@ class _InfoView extends StatelessWidget {
               for (final name in fetchNotifier.info.creatorNames) Text(name),
             ],
           )
-        : const Center(child: Text('Please connect to the internet.'));
+        : Center(child: Text(fetchNotifier.errorMessage));
   }
 }
