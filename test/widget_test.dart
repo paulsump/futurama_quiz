@@ -32,8 +32,13 @@ Future<http.Response> _getGoodResponse(http.Request url) async {
   throw 'huh?';
 }
 
+Future<http.Response> _getEmptyListResponse(http.Request url) async {
+  return http.Response('[]', 200);
+}
+
 void main() {
   final app = createApp(client: MockClient(_getGoodResponse));
+  final emptyListApp = createApp(client: MockClient(_getEmptyListResponse));
 
   testWidgets('Info page', (WidgetTester tester) async {
     await tester.pumpWidget(app);
@@ -48,9 +53,22 @@ void main() {
     expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
   });
 
+  testWidgets('Info page - Empty list', (WidgetTester tester) async {
+    await tester.pumpWidget(emptyListApp);
+
+    expect(find.byType(Background), findsOneWidget);
+    expect(find.byType(ListView), findsOneWidget);
+
+    // before rebuild
+    expect(find.textContaining('Failed'), findsNothing);
+    await tester.pump();
+    //after rebuild!
+    expect(find.textContaining('Failed'), findsOneWidget);
+  });
+
   testWidgets('Navigate from Info page to Characters Page',
       (WidgetTester tester) async {
-        await tester.pumpWidget(app);
+    await tester.pumpWidget(app);
     await tester.pump();
     expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
     expect(find.textContaining('Characters'), findsOneWidget);

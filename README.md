@@ -21,7 +21,7 @@
 
 - perhaps use backup json assets because the API has been so unstable today? I don't want it to go
   wrong on the day.
-- use questionsErrorMessage and charactersErrorMessage in test.
+- use questionsErrorMessage and charactersErrorMessage in test. Maybe on ui too?
 - More obvious Character, Quiz and Restart Quiz buttons.
 - Run on Android 7 (API 24) or greater.
 
