@@ -1,6 +1,7 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
 import 'package:flutter/material.dart';
+import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/star.dart';
 
 /// A container frame / scaffold for all pages.
@@ -13,6 +14,7 @@ class Background extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        color: Hue.background,
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('images/background.png'),
