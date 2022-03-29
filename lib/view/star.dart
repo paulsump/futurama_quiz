@@ -46,7 +46,7 @@ class _StarState extends State<Star> with SingleTickerProviderStateMixin {
 
     return Transform.translate(
       offset: offset - imageSize / 2,
-      child: const Image(image: AssetImage('images/star.png')),
+      child: const Pulsate(child: Image(image: AssetImage('images/star.png'))),
     );
   }
 }

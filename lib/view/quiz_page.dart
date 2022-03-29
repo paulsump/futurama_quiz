@@ -4,6 +4,7 @@ import 'package:futurama_quiz/quiz_notifier.dart';
 import 'package:futurama_quiz/strings.dart';
 import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
+import 'package:futurama_quiz/view/pulsate.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 import 'package:futurama_quiz/view/screen_adjusted_text.dart';
 
@@ -79,7 +80,8 @@ class QuizPage extends StatelessWidget {
             landscape: const Offset(0.5, 8.8),
             width: isPortrait(context) ? 0.3 : 0.6,
             anchorBottom: true,
-            child: const Image(image: AssetImage('images/hypnotoad.png')),
+            child: const Pulsate(
+                child: Image(image: AssetImage('images/hypnotoad.png'))),
           ),
           const CancelButton(),
         ],
@@ -122,7 +124,8 @@ class ResultsPage extends StatelessWidget {
           landscape: const Offset(1.0, 13.5),
           width: isPortrait(context) ? 0.28 : 0.4,
           anchorBottom: true,
-          child: const Image(image: AssetImage('images/zapp.png')),
+          child:
+              const Pulsate(child: Image(image: AssetImage('images/zapp.png'))),
         ),
         const CancelButton(),
         const ScreenAdjust(
