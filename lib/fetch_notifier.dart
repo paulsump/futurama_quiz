@@ -105,6 +105,7 @@ class FetchNotifier extends ChangeNotifier {
       message = message.replaceFirst('Exception: ', '');
     }
 
+    out(message);
     return message;
   }
 }
