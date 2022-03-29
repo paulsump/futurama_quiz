@@ -31,7 +31,6 @@ void main() {
   if (!kReleaseMode) {
     // TODO remove this for release
     // This removes the CERTIFICATE_VERIFY_FAILED when running certain emulators.
-    // In release, might see "SocketException: Failed host lookup: 'api.sampleapis.com' (OS Error: No address associated with hostname, errno = 7)"
     out('TODO REMOVE THIS FOR PRODUCTION CODE!');
     // HttpOverrides.global = MyHttpOverrides();
   }

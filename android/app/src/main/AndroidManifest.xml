@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.futurama_quiz">
-   <application
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
         android:label="futurama_quiz"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
