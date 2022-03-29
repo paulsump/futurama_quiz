@@ -69,14 +69,14 @@ class QuizPage extends StatelessWidget {
           ),
           const ScreenAdjust(
             portrait: Offset(5, 5.5),
-            landscape: Offset(1, 4),
+            landscape: Offset(4, 4.5),
             width: width,
             anchorBottom: true,
             child: _Score(),
           ),
           ScreenAdjust(
             portrait: const Offset(1, 5.5),
-            landscape: const Offset(3.5, 4.3),
+            landscape: const Offset(0.5, 4.3),
             width: isPortrait(context) ? 0.3 : 0.6,
             anchorBottom: true,
             child: const Image(image: AssetImage('images/hypnotoad.png')),
