@@ -7,6 +7,7 @@ import 'package:futurama_quiz/character.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
+import 'package:futurama_quiz/view/pulsate.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 import 'package:futurama_quiz/view/screen_adjusted_text.dart';
 
@@ -67,7 +68,7 @@ class _Thumbnail extends StatelessWidget {
         if (!Platform.environment.containsKey('FLUTTER_TEST'))
           SizedBox(
               height: screenAdjust(isPortrait(context) ? 0.4 : 0.6, context),
-              child: Image.network(character.image)),
+              child: Pulsate(child: Image.network(character.image))),
         padY,
         ScreenAdjustedText(character.name),
         padY,

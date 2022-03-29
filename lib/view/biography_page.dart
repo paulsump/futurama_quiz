@@ -48,7 +48,7 @@ class BiographyPage extends StatelessWidget {
   }
 
   Widget _buildThumbnail(BuildContext context, Character character) {
-    final padY = SizedBox(height: screenAdjustY(0.005, context));
+    final padY = SizedBox(height: screenAdjustY(0.015, context));
 
     return Column(children: [
       SizedBox(

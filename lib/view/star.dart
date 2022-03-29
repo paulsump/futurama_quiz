@@ -1,12 +1,9 @@
 // © 2022, Paul Sumpner <sumpner@hotmail.com>
 
-import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:futurama_quiz/view/pulsate.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
-
-/// Calculate a value between 0 and 1 but goes up and down like a sine wave.
-double _calcUnitPingPong(double unitValue) => (1 + sin(2 * pi * unitValue)) / 2;
 
 /// Little animated stars on the [Background]
 class Star extends StatefulWidget {
@@ -42,7 +39,7 @@ class _StarState extends State<Star> with SingleTickerProviderStateMixin {
     final size = getScreenSize(context);
 
     const unit = Offset(1, 1);
-    final center = unit * _calcUnitPingPong(_controller.value);
+    final center = unit * calcUnitPingPong(_controller.value);
 
     final offset = Offset(size.width * center.dx, size.height * center.dy);
     final imageSize = unit * 128;
