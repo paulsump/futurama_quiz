@@ -44,6 +44,8 @@ class ScreenAdjust extends StatelessWidget {
   final Offset portrait, landscape;
   final double? width;
   final Widget child;
+
+  /// anchor at the bottom instead of the default top
   final bool fromBottomUp;
 
   @override

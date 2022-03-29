@@ -26,7 +26,7 @@ class QuizPage extends StatelessWidget {
           Container(),
           ScreenAdjust(
             portrait: const Offset(1.8, 0.7),
-            landscape: const Offset(1, 1.5),
+            landscape: const Offset(1.8, 0.7),
             width: isPortrait(context) ? width : 0.9,
             child: ScreenAdjustedText(
               question.question,
@@ -34,9 +34,10 @@ class QuizPage extends StatelessWidget {
             ),
           ),
           ScreenAdjust(
-            portrait: const Offset(1, 2.5),
-            landscape: const Offset(9, 0),
-            width: width,
+            portrait: const Offset(1, 13.0),
+            landscape: const Offset(9.5, 7.5),
+            width: isPortrait(context) ? 0.37 : width,
+            fromBottomUp: true,
             child: Column(
               mainAxisAlignment: isPortrait(context)
                   ? MainAxisAlignment.start
