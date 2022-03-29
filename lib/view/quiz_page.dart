@@ -34,9 +34,9 @@ class QuizPage extends StatelessWidget {
             ),
           ),
           ScreenAdjust(
-            portrait: const Offset(6.5, 13.0),
-            landscape: const Offset(6.5, 7.5),
-            width: isPortrait(context) ? 0.37 : width,
+            portrait: const Offset(6.5, 11.1),
+            landscape: const Offset(5.2, 7.5),
+            width: isPortrait(context) ? 0.37 : 0.6,
             anchorBottom: true,
             anchorRight: true,
             child: Column(
@@ -127,12 +127,13 @@ class ResultsPage extends StatelessWidget {
         const CancelButton(),
         const ScreenAdjust(
           portrait: Offset(3.2, 3),
-          landscape: Offset(7, 2.4),
+          landscape: Offset(5.6, 2.4),
           child: _Score(),
         ),
         ScreenAdjust(
           portrait: const Offset(4.5, 6.0),
-          landscape: const Offset(11, 4.3),
+          landscape: const Offset(3, 4.3),
+          anchorRight: true,
           child: TextButton(
             child: const ScreenAdjustedText(
               'Restart Quiz',
