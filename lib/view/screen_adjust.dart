@@ -65,12 +65,11 @@ class ScreenAdjust extends StatelessWidget {
 
     return Transform.translate(
       offset: offset,
+      // offset: Offset(anchorRight ?w:0, anchorBottom ? h : 0),
+      // offset: Offset(anchorRight ?w:0, anchorBottom ? h : 0)+ offset/2,
       child: width != null
           ? SizedBox(
-              // Container(
-              // decoration: BoxDecoration(
-              //     color: Hue.lightForeground,
-              //     border: Border.all(color: Hue.border)),
+              // Container(decoration: BoxDecoration(color: Hue.text.withOpacity(0.2)),
               width: anchorBottom ? width! * h : screenAdjust(width!, context),
               child: child)
           : child,
