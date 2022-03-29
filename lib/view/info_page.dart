@@ -5,7 +5,6 @@ import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/view/background.dart';
-import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 import 'package:futurama_quiz/view/screen_adjusted_text.dart';
 
@@ -40,10 +39,7 @@ class InfoPage extends StatelessWidget {
                 if (fetchNotifier.haveCharacters) _precacheImages(context),
               ]),
               TextButton(
-                child: const Text(
-                  'Quiz',
-                  style: TextStyle(color: Hue.text),
-                ),
+                child: const ScreenAdjustedText('Quiz'),
                 onPressed: fetchNotifier.haveQuestions
                     ? () {
                         Navigator.of(context).pushNamed('Quiz');
@@ -118,11 +114,12 @@ class _InfoView extends StatelessWidget {
     return fetchNotifier.haveInfo
         ? Column(
             children: [
-              Text(fetchNotifier.info.synopsis),
+              ScreenAdjustedText(fetchNotifier.info.synopsis),
               SizedBox(height: screenAdjust(0.1, context)),
-              Text(fetchNotifier.info.yearsAired),
+              ScreenAdjustedText(fetchNotifier.info.yearsAired),
               SizedBox(height: screenAdjust(0.04, context)),
-              for (final name in fetchNotifier.info.creatorNames) Text(name),
+              for (final name in fetchNotifier.info.creatorNames)
+                ScreenAdjustedText(name),
             ],
           )
         : Center(child: Text(fetchNotifier.infoErrorMessage));
