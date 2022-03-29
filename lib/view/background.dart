@@ -14,8 +14,8 @@ class Background extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Hue.background,
         decoration: const BoxDecoration(
+          color: Hue.background,
           image: DecorationImage(
             image: AssetImage('images/background.png'),
             fit: BoxFit.cover,
