@@ -33,9 +33,9 @@ class BiographyPage extends StatelessWidget {
                 child: _buildThumbnail(context, character),
               ),
               ScreenAdjust(
-                portrait: const Offset(6.5, 9.5),
-                landscape: const Offset(6, 6.8),
-                width: isPortrait(context) ? 0.3 : 0.6,
+                portrait: const Offset(6.5, 7.5),
+                landscape: const Offset(7, 6.8),
+                width: isPortrait(context) ? 0.3 : 0.7,
                 anchorBottom: true,
                 anchorRight: true,
                 child: _buildWords(context, character),
