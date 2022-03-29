@@ -21,9 +21,8 @@ class _StarState extends State<Star> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-    const Duration pingPongDuration = Duration(milliseconds: 80000);
-
-    _controller = AnimationController(duration: pingPongDuration, vsync: this)
+    _controller = AnimationController(
+        duration: const Duration(milliseconds: 80000), vsync: this)
       ..addListener(() {
         setState(() {});
       });
@@ -50,9 +49,7 @@ class _StarState extends State<Star> with SingleTickerProviderStateMixin {
 
     return Transform.translate(
       offset: offset - imageSize / 2,
-      child: const Image(
-        image: AssetImage('images/star.png'),
-      ),
+      child: const Image(image: AssetImage('images/star.png')),
     );
   }
 }

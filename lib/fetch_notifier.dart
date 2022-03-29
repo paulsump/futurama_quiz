@@ -120,10 +120,10 @@ class Fetcher {
       return response.body;
     } else {
       final n = response.statusCode;
-      var message = 'Failed to fetch $url from the API. ($n';
+      var message = 'Failed to fetch $url from the API.\n($n';
 
       if (friendlyHttpStatus.containsKey(n)) {
-        message += friendlyHttpStatus[n]!;
+        message += ' -  ${friendlyHttpStatus[n]!}.)';
       } else {
         message += ')';
         logError('Unknown http status code $n');
