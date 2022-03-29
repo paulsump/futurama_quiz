@@ -121,7 +121,7 @@ void main() {
     await tester.pump();
 
     await binding.setSurfaceSize(const Size(landscapeWidth, landscapeHeight));
-    await tester.pumpAndSettle();
+    await tester.pump();
 
     expect(find.textContaining('Philip J. Fry is...'), findsOneWidget);
     expect(find.textContaining('Characters'), findsOneWidget);

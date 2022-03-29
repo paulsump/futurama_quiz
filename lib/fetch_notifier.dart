@@ -58,6 +58,7 @@ class FetchNotifier extends ChangeNotifier {
     notifyListeners();
     try {
       final characterList = await fetcher.getCharacters();
+
       for (final character in characterList) {
         try {
           characters.add(Character.fromJson(character));
@@ -77,6 +78,7 @@ class FetchNotifier extends ChangeNotifier {
 
     try {
       final questionsList = await fetcher.getQuestions();
+
       for (final question in questionsList) {
         try {
           questions.add(Question.fromJson(question));
