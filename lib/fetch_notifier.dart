@@ -112,13 +112,12 @@ class Info {
     // Break the long text into paragraphs.
     // This code may seem over specific, but it won't break anything if
     // the app changes, so it's worth it.
-    synopsis = _synopsis.replaceFirst('2999. ', '2999.\n\n');
-    synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');
-    synopsis = synopsis.replaceFirst('things. ', 'things.\n\n');
-    synopsis = synopsis.replaceFirst('forgetful. ', 'forgetful.\n\n');
-    synopsis = synopsis.replaceFirst('hip. ', 'hip.\n\n');
-    synopsis = synopsis.replaceFirst('look. ', 'look.\n\n');
-    synopsis = synopsis.replaceFirst('humans. ', 'humans.\n\n');
+    synopsis = _synopsis.replaceFirst('2999. T', '2999.\n\nT');
+    synopsis = synopsis.replaceFirst('things. E', 'things.\n\nE');
+    synopsis = synopsis.replaceFirst('forgetful. F', 'forgetful.\n\nF');
+    synopsis = synopsis.replaceFirst('hip. A', 'hip.\n\nA');
+    synopsis = synopsis.replaceFirst('look. A', 'look.\n\nA');
+    synopsis = synopsis.replaceFirst('humans. F', 'humans.\n\nF');
   }
 
   final String _synopsis;
