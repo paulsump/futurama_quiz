@@ -8,7 +8,7 @@
 
 ## How to build
 
-- Open the project in Android Studio, connect an Android or iOS device, run.
+- Open the project in Android Studio, connect an Android or iOS device, pub get, run.
 
 ## Bugs
 
@@ -19,16 +19,14 @@
 
 ## To do now
 
-- Handle exceptions (at least with http) e.g. Display proper error, not just "Please connect to the
-  internet" on screen if request failed. Modify the test if appropriate.
-- Don't add any info, characters or questions that have bad data (try/catch each one).
+- Add log for errors - see logError()
 
 ## To do
 
 - More obvious Character, Quiz and Restart Quiz buttons.
 - Check all TODOs
 - Check able to run on any device
-- Running Android 7 (API 24) or greater.
+- Run on Android 7 (API 24) or greater.
 
 ### Tests to do
 

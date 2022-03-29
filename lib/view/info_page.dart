@@ -123,6 +123,7 @@ class _InfoView extends StatelessWidget {
               Text(fetchNotifier.info.synopsis),
               SizedBox(height: screenAdjust(0.1, context)),
               Text(fetchNotifier.info.yearsAired),
+              SizedBox(height: screenAdjust(0.04, context)),
               for (final name in fetchNotifier.info.creatorNames) Text(name),
             ],
           )

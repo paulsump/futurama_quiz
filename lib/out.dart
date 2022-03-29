@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 // const _out = log;
 final _out = debugPrint; // for tests
+
 /// log any type of object, using toString()
 /// or special case for a couple of types like List<Offset>
-
 void out(Object object) {
   if (object is List<Offset>) {
     _out('n = ${object.length}\nconst [');
@@ -19,4 +19,10 @@ void out(Object object) {
   } else {
     _out(object.toString());
   }
+}
+
+/// Save errors somewhere that technical support can retrieve them later.
+void logError(String message) {
+  // TODO save messages to log file for now
+  out(message);
 }

@@ -24,10 +24,10 @@ class FetchNotifier extends ChangeNotifier {
   late Info info;
   bool haveInfo = false;
 
-  late List<Character> characters;
+  final characters = <Character>[];
   bool haveCharacters = false;
 
-  late List<Question> questions;
+  final questions = <Question>[];
   bool haveQuestions = false;
 
   String errorMessage = 'Fetching info...';
@@ -60,16 +60,25 @@ class FetchNotifier extends ChangeNotifier {
     notifyListeners();
 
     final characterList = await fetcher.getCharacters();
-    characters = characterList
-        .map((character) => Character.fromJson(character))
-        .toList();
+    for (final character in characterList) {
+      try {
+        characters.add(Character.fromJson(character));
+      } catch (error) {
+        logError('Ignoring bad character');
+      }
+    }
 
     haveCharacters = true;
     notifyListeners();
 
     final questionsList = await fetcher.getQuestions();
-    questions =
-        questionsList.map((character) => Question.fromJson(character)).toList();
+    for (final question in questionsList) {
+      try {
+        questions.add(Question.fromJson(question));
+      } catch (error) {
+        logError('Ignoring bad question');
+      }
+    }
 
     haveQuestions = true;
     notifyListeners();
@@ -117,7 +126,7 @@ class Fetcher {
         message += friendlyHttpStatus[n]!;
       } else {
         message += ')';
-        out('Unknown code $n');
+        logError('Unknown http status code $n');
       }
       throw Exception(message);
     }
