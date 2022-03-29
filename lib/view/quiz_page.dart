@@ -37,7 +37,7 @@ class QuizPage extends StatelessWidget {
             portrait: const Offset(1, 13.0),
             landscape: const Offset(9.5, 7.5),
             width: isPortrait(context) ? 0.37 : width,
-            anchorBottomUpwards: true,
+            anchorBottom: true,
             child: Column(
               mainAxisAlignment: isPortrait(context)
                   ? MainAxisAlignment.start
@@ -70,14 +70,14 @@ class QuizPage extends StatelessWidget {
             portrait: Offset(5, 5.5),
             landscape: Offset(1, 4),
             width: width,
-            anchorBottomUpwards: true,
+            anchorBottom: true,
             child: _Score(),
           ),
           ScreenAdjust(
             portrait: const Offset(1, 5.5),
             landscape: const Offset(3.5, 4.3),
             width: isPortrait(context) ? 0.3 : 0.6,
-            anchorBottomUpwards: true,
+            anchorBottom: true,
             child: const Image(image: AssetImage('images/hypnotoad.png')),
           ),
           const CancelButton(),
@@ -120,7 +120,7 @@ class ResultsPage extends StatelessWidget {
           portrait: const Offset(0, 9.5),
           landscape: const Offset(1.0, 6.3),
           width: isPortrait(context) ? 0.28 : 0.4,
-          anchorBottomUpwards: true,
+          anchorBottom: true,
           child: const Image(image: AssetImage('images/zapp.png')),
         ),
         const CancelButton(),
