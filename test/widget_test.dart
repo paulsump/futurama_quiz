@@ -12,27 +12,28 @@ import 'package:futurama_quiz/view/quiz_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
-void main() {
+Future<http.Response> _getGoodResponse(http.Request url) async {
   String fixture(String name) => File('test_data/$name').readAsStringSync();
 
-  final app = createApp(client: MockClient((url) async {
-    const base = 'GET https://api.sampleapis.com/futurama/';
-    switch (url.toString()) {
-      case base + 'info':
-        return http.Response(fixture('info.json'), 200, headers: {
-          HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
-        });
-      case base + 'characters':
-        return http.Response(fixture('characters.json'), 200, headers: {
-          HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
-        });
-      case base + 'questions':
-        return http.Response(fixture('questions.json'), 200, headers: {
-          HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
-        });
-    }
-    throw 'huh?';
-  }));
+  const base = 'GET https://api.sampleapis.com/futurama/';
+
+  final headers = {
+    HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
+  };
+
+  switch (url.toString()) {
+    case base + 'info':
+      return http.Response(fixture('info.json'), 200, headers: headers);
+    case base + 'characters':
+      return http.Response(fixture('characters.json'), 200, headers: headers);
+    case base + 'questions':
+      return http.Response(fixture('questions.json'), 200, headers: headers);
+  }
+  throw 'huh?';
+}
+
+void main() {
+  final app = createApp(client: MockClient(_getGoodResponse));
 
   testWidgets('Info page', (WidgetTester tester) async {
     await tester.pumpWidget(app);
