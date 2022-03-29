@@ -5,7 +5,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
-import 'package:futurama_quiz/out.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
 import 'package:futurama_quiz/view/biography_page.dart';
 import 'package:futurama_quiz/view/characters_page.dart';
@@ -31,7 +30,7 @@ void main() {
   if (!kReleaseMode) {
     // TODO remove this for release
     // This removes the CERTIFICATE_VERIFY_FAILED when running certain emulators.
-    out('TODO REMOVE THIS FOR PRODUCTION CODE!');
+    // out('TODO REMOVE THIS FOR PRODUCTION CODE!');
     // HttpOverrides.global = MyHttpOverrides();
   }
   runApp(createApp(client: http.Client()));
