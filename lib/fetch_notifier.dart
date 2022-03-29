@@ -30,7 +30,7 @@ class FetchNotifier extends ChangeNotifier {
   final questions = <Question>[];
   bool haveQuestions = false;
 
-  String infoErrorMessage = 'Fetching info...';
+  String infoErrorMessage = 'Fetching Futurama info...';
 
   String charactersErrorMessage = '';
   String questionsErrorMessage = '';

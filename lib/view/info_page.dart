@@ -4,6 +4,7 @@ import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
+import 'package:futurama_quiz/strings.dart';
 import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 import 'package:futurama_quiz/view/screen_adjusted_text.dart';
@@ -28,7 +29,7 @@ class InfoPage extends StatelessWidget {
               Column(children: [
                 TextButton(
                   child: const ScreenAdjustedText(
-                    'Characters',
+                    Strings.characters,
                     bold: true,
                   ),
                   onPressed: fetchNotifier.haveCharacters
@@ -43,7 +44,7 @@ class InfoPage extends StatelessWidget {
               ]),
               TextButton(
                 child: const ScreenAdjustedText(
-                  'Quiz',
+                  Strings.quiz,
                   bold: true,
                 ),
                 onPressed: fetchNotifier.haveQuestions

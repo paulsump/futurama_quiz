@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:futurama_quiz/main.dart';
+import 'package:futurama_quiz/strings.dart';
 import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/characters_page.dart';
 import 'package:futurama_quiz/view/info_page.dart';
@@ -68,13 +69,13 @@ void main() {
 
   testWidgets('Navigate from Info page to Characters Page',
       (WidgetTester tester) async {
-    await tester.pumpWidget(app);
+        await tester.pumpWidget(app);
     await tester.pump();
     expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
-    expect(find.textContaining('Characters'), findsOneWidget);
-    expect(find.textContaining('Quiz'), findsOneWidget);
+    expect(find.textContaining(Strings.characters), findsOneWidget);
+    expect(find.textContaining(Strings.quiz), findsOneWidget);
     expect(find.byType(TextButton), findsNWidgets(2));
-    await tester.tap(find.widgetWithText(TextButton, 'Characters'));
+    await tester.tap(find.widgetWithText(TextButton, Strings.characters));
     await tester.pump();
     expect(find.byType(InfoPage), findsOneWidget);
 
@@ -86,13 +87,13 @@ void main() {
 
   testWidgets('Navigate from Info page to Characters Page - Empty List',
       (WidgetTester tester) async {
-    await tester.pumpWidget(emptyListApp);
+        await tester.pumpWidget(emptyListApp);
     await tester.pump();
     expect(find.textContaining('Failed'), findsOneWidget);
-    expect(find.textContaining('Characters'), findsOneWidget);
-    expect(find.textContaining('Quiz'), findsOneWidget);
+    expect(find.textContaining(Strings.characters), findsOneWidget);
+    expect(find.textContaining(Strings.quiz), findsOneWidget);
     expect(find.byType(TextButton), findsNWidgets(2));
-    await tester.tap(find.widgetWithText(TextButton, 'Characters'));
+    await tester.tap(find.widgetWithText(TextButton, Strings.characters));
     await tester.pump();
     expect(find.byType(InfoPage), findsOneWidget);
 
@@ -105,13 +106,13 @@ void main() {
   // TODO add more Empty List ones from this one onwards.
   testWidgets('Navigate Info => Characters => Biography Page',
       (WidgetTester tester) async {
-    await tester.pumpWidget(app);
+        await tester.pumpWidget(app);
     await tester.pump();
     expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
-    expect(find.textContaining('Characters'), findsOneWidget);
-    expect(find.textContaining('Quiz'), findsOneWidget);
+    expect(find.textContaining(Strings.characters), findsOneWidget);
+    expect(find.textContaining(Strings.quiz), findsOneWidget);
     expect(find.byType(TextButton), findsNWidgets(2));
-    await tester.tap(find.widgetWithText(TextButton, 'Characters'));
+    await tester.tap(find.widgetWithText(TextButton, Strings.characters));
     await tester.pump();
     expect(find.byType(InfoPage), findsOneWidget);
 
@@ -120,7 +121,7 @@ void main() {
     await tester.tap(find.widgetWithText(TextButton, 'Philip Jay Fry.'));
 
     await tester.pump();
-        //TODO warning doesn't get to BiographyPage
+    //TODO warning doesn't get to BiographyPage
     // expect(find.byType(BiographyPage), findsOneWidget);
     // expect(find.textContaining('Human Male'), findsOneWidget);
     expect(find.textContaining('Philip Jay Fry.'), findsOneWidget);
@@ -130,11 +131,11 @@ void main() {
     await tester.pumpWidget(app);
     await tester.pump();
     expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
-    expect(find.textContaining('Characters'), findsOneWidget);
-    expect(find.textContaining('Quiz'), findsOneWidget);
+    expect(find.textContaining(Strings.characters), findsOneWidget);
+    expect(find.textContaining(Strings.quiz), findsOneWidget);
 
     expect(find.byType(TextButton), findsNWidgets(2));
-    await tester.tap(find.widgetWithText(TextButton, 'Quiz'));
+    await tester.tap(find.widgetWithText(TextButton, Strings.quiz));
     await tester.pump();
     expect(find.byType(InfoPage), findsOneWidget);
 
@@ -161,11 +162,11 @@ void main() {
     await tester.pump();
 
     expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
-    expect(find.textContaining('Characters'), findsOneWidget);
-    expect(find.textContaining('Quiz'), findsOneWidget);
+    expect(find.textContaining(Strings.characters), findsOneWidget);
+    expect(find.textContaining(Strings.quiz), findsOneWidget);
 
     expect(find.byType(TextButton), findsNWidgets(2));
-    await tester.tap(find.widgetWithText(TextButton, 'Quiz'));
+    await tester.tap(find.widgetWithText(TextButton, Strings.quiz));
     await tester.pump();
     expect(find.byType(InfoPage), findsOneWidget);
 

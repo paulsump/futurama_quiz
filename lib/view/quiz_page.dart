@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
+import 'package:futurama_quiz/strings.dart';
 import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
@@ -136,7 +137,7 @@ class ResultsPage extends StatelessWidget {
           anchorRight: true,
           child: TextButton(
             child: const ScreenAdjustedText(
-              'Restart Quiz',
+              Strings.restartQuiz,
               bold: true,
             ),
             style: TextButton.styleFrom(padding: EdgeInsets.zero),
@@ -163,7 +164,7 @@ class _Score extends StatelessWidget {
     final quizNotifier = getQuizNotifier(context, listen: true);
     final score = quizNotifier.score;
 
-    var scoreMessage = '$score correct';
+    var scoreMessage = '$score ${Strings.correct}';
     if (score > 0) {
       scoreMessage += '!';
     }
@@ -172,7 +173,8 @@ class _Score extends StatelessWidget {
       children: [
         ScreenAdjustedText(scoreMessage, bold: true),
         SizedBox(height: screenAdjust(0.05, context)),
-        ScreenAdjustedText('(out of ${fetchNotifier.questions.length}).'),
+        ScreenAdjustedText(
+            '(${Strings.outOf} ${fetchNotifier.questions.length}).'),
       ],
     );
   }
