@@ -1,3 +1,4 @@
+import 'package:futurama_quiz/strings.dart';
 
 /// Biography from API
 class Character {
@@ -24,7 +25,7 @@ class Character {
 
   String get image => _images.image;
 
-  String get occupation => '$_occupation.';
+  String get occupation => _occupation.isEmpty ? '' : '$_occupation.';
 
   List<String> get sayings => _sayings.sayings;
 
@@ -32,7 +33,9 @@ class Character {
     var s = '$_species $_gender';
 
     if (_homePlanet.isNotEmpty) {
-      s += ' from $_homePlanet.';
+      s += ' ${Strings.from} $_homePlanet.';
+    } else {
+      s += '.';
     }
     return s;
   }

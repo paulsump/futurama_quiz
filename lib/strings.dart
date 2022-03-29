@@ -8,4 +8,5 @@ class Strings {
   static const correct = 'correct';
 
   static const outOf = 'out of';
+  static const from = 'from';
 }

@@ -76,8 +76,9 @@ class BiographyPage extends StatelessWidget {
       ),
       child: ListView(children: [
         ScreenAdjustedText(character.type),
-        padY,
-        ScreenAdjustedText(character.occupation),
+        if (character.occupation.isNotEmpty) padY,
+        if (character.occupation.isNotEmpty)
+          ScreenAdjustedText(character.occupation),
         padY,
         padY,
         for (final saying in character.sayings)
