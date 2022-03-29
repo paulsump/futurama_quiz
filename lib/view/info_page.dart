@@ -27,7 +27,10 @@ class InfoPage extends StatelessWidget {
             children: [
               Column(children: [
                 TextButton(
-                  child: const ScreenAdjustedText('Characters'),
+                  child: const ScreenAdjustedText(
+                    'Characters',
+                    bold: true,
+                  ),
                   onPressed: fetchNotifier.haveCharacters
                       ? () {
                           Navigator.of(context).pushNamed('Characters');
@@ -39,11 +42,14 @@ class InfoPage extends StatelessWidget {
                 if (fetchNotifier.haveCharacters) _precacheImages(context),
               ]),
               TextButton(
-                child: const ScreenAdjustedText('Quiz'),
+                child: const ScreenAdjustedText(
+                  'Quiz',
+                  bold: true,
+                ),
                 onPressed: fetchNotifier.haveQuestions
                     ? () {
-                        Navigator.of(context).pushNamed('Quiz');
-                      }
+                  Navigator.of(context).pushNamed('Quiz');
+                }
                     : null,
               )
             ],
@@ -113,15 +119,15 @@ class _InfoView extends StatelessWidget {
 
     return fetchNotifier.haveInfo
         ? Column(
-            children: [
-              ScreenAdjustedText(fetchNotifier.info.synopsis),
-              SizedBox(height: screenAdjust(0.1, context)),
-              ScreenAdjustedText(fetchNotifier.info.yearsAired),
-              SizedBox(height: screenAdjust(0.04, context)),
-              for (final name in fetchNotifier.info.creatorNames)
-                ScreenAdjustedText(name),
-            ],
-          )
-        : Center(child: Text(fetchNotifier.infoErrorMessage));
+      children: [
+        ScreenAdjustedText(fetchNotifier.info.synopsis),
+        SizedBox(height: screenAdjust(0.1, context)),
+        ScreenAdjustedText(fetchNotifier.info.yearsAired),
+        SizedBox(height: screenAdjust(0.04, context)),
+        for (final name in fetchNotifier.info.creatorNames)
+          ScreenAdjustedText(name),
+      ],
+    )
+        : Center(child: ScreenAdjustedText(fetchNotifier.infoErrorMessage));
   }
 }

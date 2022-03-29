@@ -4,12 +4,18 @@ import 'package:futurama_quiz/view/screen_adjust.dart';
 
 /// Simple [Text] with screen adjusted font size.
 class ScreenAdjustedText extends StatelessWidget {
-  const ScreenAdjustedText(this.text,
-      {Key? key, this.bold = false, this.italic = false})
-      : super(key: key);
+  const ScreenAdjustedText(
+    this.text, {
+    Key? key,
+    this.bold = false,
+    this.italic = false,
+    this.size = 0.04,
+  }) : super(key: key);
 
   final String text;
+
   final bool bold, italic;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,7 @@ class ScreenAdjustedText extends StatelessWidget {
       text,
       style: TextStyle(
         color: Hue.text,
-        fontSize: screenAdjust(0.04, context),
+        fontSize: screenAdjust(size, context),
         fontWeight: bold ? FontWeight.bold : FontWeight.normal,
         fontStyle: italic ? FontStyle.italic : FontStyle.normal,
       ),

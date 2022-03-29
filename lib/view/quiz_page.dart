@@ -3,8 +3,8 @@ import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
 import 'package:futurama_quiz/view/background.dart';
 import 'package:futurama_quiz/view/cancel_button.dart';
-import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
+import 'package:futurama_quiz/view/screen_adjusted_text.dart';
 
 /// Display one question, current score etc.
 class QuizPage extends StatelessWidget {
@@ -28,9 +28,9 @@ class QuizPage extends StatelessWidget {
             portrait: const Offset(1.8, 0.7),
             landscape: const Offset(1, 1.5),
             width: isPortrait(context) ? width : 0.9,
-            child: Text(
+            child: ScreenAdjustedText(
               question.question,
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              bold: true,
             ),
           ),
           ScreenAdjust(
@@ -51,11 +51,10 @@ class QuizPage extends StatelessWidget {
                       dense: true,
                       contentPadding:
                           const EdgeInsets.only(left: 0.0, right: 0.0),
-                      title: Text(
+                      title: ScreenAdjustedText(
                         question.possibleAnswers[i],
-                        style: TextStyle(
-                          fontSize: screenAdjust(0.032, context),
-                        ),
+                        size: 0.032,
+                        bold: true,
                       ),
                       leading:
                           isPortrait(context) ? _buildRadio(i, context) : null,
@@ -133,9 +132,9 @@ class ResultsPage extends StatelessWidget {
           portrait: const Offset(4.5, 6.0),
           landscape: const Offset(11, 4.3),
           child: TextButton(
-            child: const Text(
+            child: const ScreenAdjustedText(
               'Restart Quiz',
-              style: TextStyle(color: Hue.text),
+              bold: true,
             ),
             style: TextButton.styleFrom(padding: EdgeInsets.zero),
             onPressed: () {
@@ -168,9 +167,9 @@ class _Score extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(scoreMessage, style: const TextStyle(fontWeight: FontWeight.bold)),
+        ScreenAdjustedText(scoreMessage, bold: true),
         SizedBox(height: screenAdjust(0.05, context)),
-        Text('(out of ${fetchNotifier.questions.length}).'),
+        ScreenAdjustedText('(out of ${fetchNotifier.questions.length}).'),
       ],
     );
   }
