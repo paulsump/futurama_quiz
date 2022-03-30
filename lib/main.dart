@@ -13,28 +13,8 @@ import 'package:futurama_quiz/view/quiz_page.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
-// For setting HttpOverrides.global = MyHttpOverrides();
-// This removes the CERTIFICATE_VERIFY_FAILED when running certain emulators.
-// TODO remove this for release
-// class MyHttpOverrides extends HttpOverrides {
-//   @override
-//   HttpClient createHttpClient(SecurityContext? context) {
-//     return super.createHttpClient(context)
-//       ..badCertificateCallback =
-//           (X509Certificate cert, String host, int port) => true;
-//   }
-// }
-
 /// The main entry point for the flutter app
-void main() {
-  if (!kReleaseMode) {
-    // TODO remove this for release
-    // This removes the CERTIFICATE_VERIFY_FAILED when running certain emulators.
-    // out('TODO REMOVE THIS FOR PRODUCTION CODE!');
-    // HttpOverrides.global = MyHttpOverrides();
-  }
-  runApp(createApp(client: http.Client()));
-}
+void main() => runApp(createApp(client: http.Client()));
 
 /// Create the app instance (uses in tests too)
 /// This allow the app to be private
