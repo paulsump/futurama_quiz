@@ -11,9 +11,9 @@ class CancelButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Transform.translate(
-      offset:
-          Offset(screenAdjustX(0.04, context), screenAdjustY(0.05, context)),
+    return ScreenAdjust(
+      portrait: const Offset(0.4, 0.4),
+      landscape: const Offset(0.2, 0.86),
       child: Transform.scale(
         scale: screenAdjust(0.006, context),
         child: IconButton(
