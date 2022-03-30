@@ -70,7 +70,7 @@ class QuizPage extends StatelessWidget {
           ),
           const ScreenAdjust(
             portrait: Offset(4.5, 6.5),
-            landscape: Offset(2.0, 9.9),
+            landscape: Offset(2.2, 10.5),
             width: width,
             anchorBottom: true,
             child: _Score(),
