@@ -37,6 +37,12 @@ supposed be compiled from source.
 
 You can run dartdoc on the code.
 
+I tested out a dark mode at the last minute, but bottled it 'cause it just started to look a bit to
+gamey!  I'd need a bit more time to get that looking 'right' (as in like Futurama).
+
+I never got around to adding a more Futurama like font. I always try to reduce dependencies, it
+wasn't worth the risk.
+
 ## Bugs
 
 - ListView drag gesture doesn't work in landscape on Biography e.g. Zoidberg.
