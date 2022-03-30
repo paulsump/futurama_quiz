@@ -1,3 +1,5 @@
+// © 2022, Paul Sumpner <sumpner@hotmail.com>
+
 import 'package:futurama_quiz/strings.dart';
 
 /// Biography info adapted from API

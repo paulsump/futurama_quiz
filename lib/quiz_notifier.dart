@@ -1,3 +1,5 @@
+// © 2022, Paul Sumpner <sumpner@hotmail.com>
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,11 +23,9 @@ class QuizNotifier extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setAnswer(
-    int answerIndex,
-    List<Question> questions,
-    BuildContext context,
-  ) {
+  void setAnswer(int answerIndex,
+      List<Question> questions,
+      BuildContext context,) {
     _updateScore(answerIndex, questions);
 
     currentQuestionIndex += 1;
