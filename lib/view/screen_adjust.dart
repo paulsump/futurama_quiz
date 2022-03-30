@@ -63,6 +63,7 @@ class ScreenAdjust extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final offset1 = (isPortrait(context) ? portrait : landscape);
+
     final offset_ = Offset(offset1.dx * screenAdjustX(0.13, context),
         offset1.dy * screenAdjustY(0.06, context));
 
@@ -74,13 +75,8 @@ class ScreenAdjust extends StatelessWidget {
 
     return Transform.translate(
       offset: offset,
-      //TODO Animate from anchor to desired position in this way...
-      // offset: Offset(anchorRight ?w:0, anchorBottom ? h : 0)+ offset/2,
-      // offset: Offset(anchorRight ?w:0, anchorBottom ? h : 0),
       child: width != null
           ? SizedBox(
-        // For debugging
-              // Container(decoration: BoxDecoration(color: Hue.text.withOpacity(0.2)),
               width: (anchorBottom && !anchorRight)
                   ? width! * h
                   : screenAdjustX(width!, context),
