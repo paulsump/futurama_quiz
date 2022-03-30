@@ -10,6 +10,26 @@
 
 - Open the project in Android Studio, connect an Android or iOS device, pub get, run.
 
+## UI
+
+This isn't supposed to be a serious, professional looking app!  
+The animated image are deliberately silly, inspired by certain pulsating/throbbing animations on the
+cartoon.  
+I'm trying to go along wth the whole Futurama philosophy ;)  
+Since the images come randomly from the API, I didn't try to keep to a color palette or even '
+ColorFiltered' the images since it would detract from the bold cartoon-like feel.
+
+## Implementation
+
+Rather than Rows and Columns, I opted for positioning everything using Stack.  
+I would be more cautious of doing this in a professional app since it involves a lot of tweaking. I
+have all the time in the world at the moment, so I had fun and enjoyed the freedom to feel like an
+artist, but in order to ensure it works on all device sizes, it would be less work to rely on more
+conventional methods e.g. Column and Flex. My other reason for using Stack is the complete freedom
+to animate the widgets on it.  
+Sadly I've not had time to do this final step. I could throw something in, but it's too risky on the
+last day.
+
 ## Bugs
 
 - ListView drag gesture doesn't work in landscape on Biography e.g. Zoidberg.
@@ -25,8 +45,8 @@
 
 ## Last minute checks
 
-- Check all TODOs
-- Check able to run on any device.
+- //Check all TODOs
+- //Check able to run on any device.
 
 ### Tests to do
 
