@@ -11,7 +11,10 @@ double calcUnitPingPong(double unitValue) => (1 + sin(2 * pi * unitValue)) / 2;
 /// Animates a child (e.g. an image) to throb / scale in and out
 /// with a sinusoidal ping pong / resonant oscillation.
 class Pulsate extends StatefulWidget {
-  const Pulsate({Key? key, required this.child}) : super(key: key);
+  const Pulsate({
+    Key? key,
+    required this.child,
+  }) : super(key: key);
 
   final Widget child;
 

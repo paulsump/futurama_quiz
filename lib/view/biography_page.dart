@@ -29,14 +29,14 @@ class BiographyPage extends StatelessWidget {
             landscape: const Offset(0.5, 0.0),
             child: Stack(children: [
               ScreenAdjust(
-                portrait: const Offset(1.5, -1),
+                portrait: const Offset(1.0, -1),
                 landscape: const Offset(1.0, 3.25),
                 child: _buildThumbnail(context, character),
               ),
               ScreenAdjust(
                 portrait: const Offset(6.5, 8.5),
                 landscape: const Offset(4, 15),
-                width: 0.7,
+                width: isPortrait(context) ? 0.7 : 0.44,
                 anchorBottom: true,
                 anchorRight: true,
                 child: _buildWords(context, character),
@@ -52,9 +52,10 @@ class BiographyPage extends StatelessWidget {
     final padY = SizedBox(height: screenAdjustY(0.015, context));
 
     return Column(children: [
-      SizedBox(
-        // constraints: BoxConstraints(
-        //     maxWidth: screenAdjustX(isPortrait(context) ? 0.53 : 0.93, context)),
+      Container(
+        constraints: BoxConstraints(
+            maxWidth:
+                screenAdjustX(isPortrait(context) ? 0.66 : 0.29, context)),
         height: screenAdjustY(isPortrait(context) ? 0.4 : 0.5, context),
         child: Platform.environment.containsKey('FLUTTER_TEST')
             ? null
