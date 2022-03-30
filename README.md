@@ -21,14 +21,20 @@ ColorFiltered' the images since it would detract from the bold cartoon-like feel
 
 ## Implementation
 
-Rather than Rows and Columns, I opted for positioning everything using Stack.  
+Rather than Rows and Columns, I opted for positioning everything using Stack.
+
 I would be more cautious of doing this in a professional app since it involves a lot of tweaking. I
 have all the time in the world at the moment, so I had fun and enjoyed the freedom to feel like an
 artist, but in order to ensure it works on all device sizes, it would be less work to rely on more
-conventional methods e.g. Column and Flex. My other reason for using Stack is the complete freedom
-to animate the widgets on it.  
+conventional methods e.g. Column and flex.
+
+My other reason for using Stack is the complete freedom it gives you to animate the widgets on it.  
 Sadly I've not had time to do this final step. I could throw something in, but it's too risky on the
 last day.
+
+I've left things like app icons and publishing, since this is supposed be compiled from source.
+
+You can run dartdoc on the code.
 
 ## Bugs
 
@@ -41,12 +47,8 @@ last day.
   Row/Columns.
 - Fetch 'Try Again' button
 - Use questionsErrorMessage and charactersErrorMessage in test. Maybe on ui too?
-- Run on Android 7 (API 24) or greater.
-
-## Last minute checks
-
-- //Check all TODOs
-- //Check able to run on any device.
+- Run on Android 7 (API 24) or greater. I can't seem to change back to Android 7, so fingers
+  crossed. I'm using API 30/31
 
 ### Tests to do
 
@@ -54,12 +56,15 @@ last day.
 - Test exact field data after load.
 - Quiz answer all questions widget test.
 - ResultsPage widget test.
-- More bad data.
-- More bad internet.
+- More Empty List tests.
+- More bad data tests.
+- More bad internet tests.
 
 ### Ideas
 
-- Add log for errors - see logError() - not worth the dependency on path_provider yet.
-- Click on text to choose answer too (not just radio).
+- Add log for errors - see logError() - not worth the dependency on path_provider yet, let alone a
+  cloud based solution.
+- Click on text to choose answer too (not just radio). This might involved a Gesture handler which
+  could cause more problems than it's worth.
 - Tool tips. (not worth the time?)
 - Fry starts big then animates small when haveInfo API. (Only worth it for when no internet)

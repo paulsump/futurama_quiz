@@ -11,7 +11,7 @@ import 'package:futurama_quiz/view/pulsate.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
 import 'package:futurama_quiz/view/screen_adjusted_text.dart';
 
-/// List of people/aliens with name and thumbnail.
+/// List of people / aliens with name and thumbnail.
 /// Click on a character to view his/her full biography.
 class CharactersPage extends StatelessWidget {
   const CharactersPage({Key? key}) : super(key: key);

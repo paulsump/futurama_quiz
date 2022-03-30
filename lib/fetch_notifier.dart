@@ -6,6 +6,7 @@ import 'package:futurama_quiz/out.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
+/// Convenience function to get the [FetchNotifier] '[Provider]'.
 FetchNotifier getFetchNotifier(BuildContext context, {required bool listen}) =>
     Provider.of<FetchNotifier>(context, listen: listen);
 
@@ -14,10 +15,10 @@ FetchNotifier getFetchNotifier(BuildContext context, {required bool listen}) =>
 /// the characters are fetched and an image [Precacher] preloads the
 /// character thumbnails.  Then the
 /// questions are fetched.
-/// The buttons to get to the characters and quiz pages only appear
+/// The buttons to get to the characters and quiz pages only become enabled
 /// when the characters and/or quiz have been fetched.
-/// The HttpClient is closed when everything has been fetched.
-/// This is all done in the fetchAll() function.
+/// The [HttpClient] is closed when everything has been fetched.
+/// This is all done in the [fetchAll]() function.
 class FetchNotifier extends ChangeNotifier {
   bool fetchAllHasBeenCalled = false;
 
@@ -156,6 +157,7 @@ class Fetcher {
   }
 }
 
+/// [Map] for converting HTTP status codes to user 'friendly' messages.
 const friendlyHttpStatus = {
   200: 'OK',
   201: 'Created',
@@ -201,6 +203,7 @@ const friendlyHttpStatus = {
 };
 
 /// General Futurama information for the homepage.
+/// Adapted from the API.
 class Info {
   Info.fromJson(Map<String, dynamic> json)
       : yearsAired = json['yearsAired'],
@@ -236,6 +239,7 @@ class Info {
 
 /// The actual inventors/authors/creators of Futurama
 /// for [Info]
+/// Adapted from the API...
 /// I ignore the url because I don't wish people to
 /// leave my app and get side tracked on the web!
 /// Also, because it goes to a boring website
@@ -261,6 +265,7 @@ class Question {
 
   final int id;
   final String question;
+
   final List<String> possibleAnswers;
   final String correctAnswer;
 }

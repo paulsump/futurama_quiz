@@ -2,10 +2,12 @@
 
 import 'package:flutter/material.dart';
 
+// for longer out put
 // const _out = log;
+
 final _out = debugPrint; // for tests
 
-/// log any type of object, using toString()
+/// output any type of object, using toString()
 /// or special case for a couple of types like List<Offset>
 void out(Object object) {
   if (object is List<Offset>) {
@@ -22,11 +24,11 @@ void out(Object object) {
 }
 
 /// Save errors somewhere that technical support can retrieve them later.
-void logError(String message) {
-  // TODO save messages to log file for now, later it would go on the cloud.
-  // If I save a file to the app folder, I'll need to add path_provider package
-  // At the moment there aren't any hidden log errors that make the
-  // extra dependency worthwhile.
-  // So I'll just output it for now...
-  out(message);
-}
+/// Currently this just passes the message to [out]()
+///
+/// TODO save messages to log file for now, later it would go on the cloud.
+/// If I save a file to the app folder, I'll need to add path_provider package
+/// At the moment there aren't any hidden log errors that make the
+/// extra dependency worthwhile.
+/// So I'll just output it for now...
+void logError(String message) => out(message);

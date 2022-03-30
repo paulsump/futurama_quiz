@@ -38,7 +38,7 @@ double _getScreenWidth(BuildContext context) => getScreenSize(context).width;
 double _getScreenHeight(BuildContext context) => getScreenSize(context).height;
 
 /// Translate a child widget by an amount relative to
-/// the length of the shortest edge of the device
+/// the dimensions of the device.
 class ScreenAdjust extends StatelessWidget {
   const ScreenAdjust({
     Key? key,
@@ -74,10 +74,12 @@ class ScreenAdjust extends StatelessWidget {
 
     return Transform.translate(
       offset: offset,
-      // offset: Offset(anchorRight ?w:0, anchorBottom ? h : 0),
+      //TODO Animate from anchor to desired position in this way...
       // offset: Offset(anchorRight ?w:0, anchorBottom ? h : 0)+ offset/2,
+      // offset: Offset(anchorRight ?w:0, anchorBottom ? h : 0),
       child: width != null
           ? SizedBox(
+        // For debugging
               // Container(decoration: BoxDecoration(color: Hue.text.withOpacity(0.2)),
               width: (anchorBottom && !anchorRight)
                   ? width! * h

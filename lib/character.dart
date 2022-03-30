@@ -1,6 +1,6 @@
 import 'package:futurama_quiz/strings.dart';
 
-/// Biography from API
+/// Biography info adapted from API
 class Character {
   Character.fromJson(Map<String, dynamic> json)
       : _name = _Name.fromJson(json['name']),

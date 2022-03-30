@@ -48,14 +48,7 @@ class _PulsateState extends State<Pulsate> with SingleTickerProviderStateMixin {
     return Transform.scale(
       origin: Offset(0, screenAdjustY(0.1, context)),
       scale: lerpDouble(0.9, 1.0, calcUnitPingPong(_controller.value))!,
-      child:
-          // ColorFiltered(
-          //     colorFilter: const ColorFilter.mode(
-          //       Hue.background,
-          //       BlendMode.modulate,
-          //     ),
-          //     child:
-          widget.child,
+      child: widget.child,
     );
   }
 }

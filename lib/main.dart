@@ -16,7 +16,7 @@ import 'package:provider/provider.dart';
 void main() => runApp(createApp(client: http.Client()));
 
 /// Create the app instance (uses in tests too)
-/// This allow the app to be private
+/// This function allows the app to be private so that I can call it what I like.
 Widget createApp({required http.Client client}) => _App(client: client);
 
 /// The only app.  Has all the notifiers and navigator routes.

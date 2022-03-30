@@ -5,6 +5,7 @@ import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/star.dart';
 
 /// A container frame / scaffold for all pages.
+/// It has the background color and image and a silly little [Star] animation.
 class Background extends StatelessWidget {
   final Widget child;
 

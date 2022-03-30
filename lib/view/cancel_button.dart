@@ -4,7 +4,7 @@ import 'package:futurama_quiz/view/screen_adjust.dart';
 
 /// Mostly used as a sort of back button
 /// pop off the current screen.
-/// It's not a back button because that would be
+/// It's not displayed as a [BackButton] because that would be
 /// misleading on the quiz - you can't go back to the previous question.
 class CancelButton extends StatelessWidget {
   const CancelButton({Key? key}) : super(key: key);

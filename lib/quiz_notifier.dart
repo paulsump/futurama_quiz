@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'fetch_notifier.dart';
 
+/// Convenience function to get the [QuizNotifier] '[Provider]'.
 QuizNotifier getQuizNotifier(BuildContext context, {required bool listen}) =>
     Provider.of<QuizNotifier>(context, listen: listen);
 
