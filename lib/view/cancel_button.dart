@@ -11,18 +11,18 @@ class CancelButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Transform.scale(
-      scale: screenAdjust(0.006, context),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: screenAdjust(0.05, context),
-          horizontal: screenAdjust(0.03, context),
-        ),
-        child: TextButton(
+    return Transform.translate(
+      offset:
+          Offset(screenAdjustX(0.06, context), screenAdjustY(0.04, context)),
+      child: Transform.scale(
+        scale: screenAdjust(0.006, context),
+        child: IconButton(
+            padding: EdgeInsets.zero,
+            constraints: const BoxConstraints(),
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: const Icon(
+            icon: const Icon(
               Icons.cancel_outlined,
               color: Hue.enabledIcon,
             )),

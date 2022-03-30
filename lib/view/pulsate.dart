@@ -28,7 +28,7 @@ class _PulsateState extends State<Pulsate> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     _controller = AnimationController(
-        duration: const Duration(milliseconds: 2000), vsync: this)
+        duration: const Duration(milliseconds: 3000), vsync: this)
       ..addListener(() {
         setState(() {});
       });
@@ -47,7 +47,7 @@ class _PulsateState extends State<Pulsate> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Transform.scale(
       origin: Offset(0, screenAdjustY(0.1, context)),
-      scale: lerpDouble(0.8, 1.0, calcUnitPingPong(_controller.value))!,
+      scale: lerpDouble(0.9, 1.0, calcUnitPingPong(_controller.value))!,
       child: widget.child,
     );
   }

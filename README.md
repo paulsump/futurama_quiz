@@ -12,9 +12,6 @@
 
 ## Bugs
 
-- Back button gesture clip? It's area seams bigger than it should be. Reproduce: ResultsPage.
-- Or maybe that was just the bug that happens when you tap too fast after it starts to navigate to
-  the ResultsPage?
 - ListView drag gesture doesn't work in landscape on Biography e.g. Zoidberg.
 
 ## To do
