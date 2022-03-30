@@ -32,7 +32,8 @@ My other reason for using Stack is the complete freedom it gives you to animate 
 Sadly I've not had time to do this final step. I could throw something in, but it's too risky on the
 last day.
 
-I've left things like app icons and publishing, since this is supposed be compiled from source.
+I've left things like app icons, asset image optimization (for size) and publishing, since this is
+supposed be compiled from source.
 
 You can run dartdoc on the code.
 

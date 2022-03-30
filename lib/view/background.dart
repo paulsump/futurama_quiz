@@ -18,7 +18,7 @@ class Background extends StatelessWidget {
         decoration: const BoxDecoration(
           color: Hue.background,
           image: DecorationImage(
-            image: AssetImage('images/background.png'),
+            image: AssetImage('images/dark_background.png'),
             fit: BoxFit.cover,
           ),
         ),

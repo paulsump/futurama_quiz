@@ -39,6 +39,8 @@ class _App extends StatelessWidget {
         title: 'Futurama',
         // theme: ThemeData(
         //     textTheme: Theme.of(context).textTheme.apply(bodyColor: Hue.text)),
+        theme: ThemeData(
+            brightness: Brightness.dark, unselectedWidgetColor: Colors.white),
         home: LayoutBuilder(
           builder: (
             BuildContext context,
