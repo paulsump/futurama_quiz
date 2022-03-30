@@ -16,14 +16,11 @@
 
 ## To do
 
-- replace screenAdjust with screenAdjustX and Y
+- Replace screenAdjust with screenAdjustX and Y
 - Animate text and image positions to illustrate the point in Stacking them rather than in
   Row/Columns.
 - Fetch 'Try Again' button
-- Perhaps use backup json assets because the API has been so unstable today? I don't want it to go
-  wrong on the day. This looks too much like a cheat, also the tests would be confusing, so no.
 - Use questionsErrorMessage and charactersErrorMessage in test. Maybe on ui too?
-- More obvious Character, Quiz and Restart Quiz buttons.
 - Run on Android 7 (API 24) or greater.
 
 ## Last minute checks
