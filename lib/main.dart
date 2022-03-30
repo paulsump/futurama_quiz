@@ -7,6 +7,7 @@ import 'package:futurama_quiz/fetch_notifier.dart';
 import 'package:futurama_quiz/quiz_notifier.dart';
 import 'package:futurama_quiz/view/biography_page.dart';
 import 'package:futurama_quiz/view/characters_page.dart';
+import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/info_page.dart';
 import 'package:futurama_quiz/view/quiz_page.dart';
 import 'package:http/http.dart' as http;
@@ -40,7 +41,7 @@ class _App extends StatelessWidget {
         // theme: ThemeData(
         //     textTheme: Theme.of(context).textTheme.apply(bodyColor: Hue.text)),
         theme: ThemeData(
-            brightness: Brightness.dark, unselectedWidgetColor: Colors.white),
+            brightness: Brightness.dark, unselectedWidgetColor: Hue.radio),
         home: LayoutBuilder(
           builder: (
             BuildContext context,
