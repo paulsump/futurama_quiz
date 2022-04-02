@@ -146,8 +146,8 @@ class Fetcher {
       final n = response.statusCode;
       var message = 'Failed to fetch $url from the API.\n($n';
 
-      if (friendlyHttpStatus.containsKey(n)) {
-        message += ' -  ${friendlyHttpStatus[n]!}.)';
+      if (_friendlyHttpStatus.containsKey(n)) {
+        message += ' -  ${_friendlyHttpStatus[n]!}.)';
       } else {
         message += ')';
         logError('Unknown http status code $n');
@@ -158,7 +158,7 @@ class Fetcher {
 }
 
 /// [Map] for converting HTTP status codes to user 'friendly' messages.
-const friendlyHttpStatus = {
+const _friendlyHttpStatus = {
   200: 'OK',
   201: 'Created',
   202: 'Accepted',

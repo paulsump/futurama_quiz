@@ -26,13 +26,15 @@ class QuizPage extends StatelessWidget {
       child: Stack(
         children: [
           Container(),
-          ScreenAdjust(
-            portrait: const Offset(1.8, 0.7),
-            landscape: const Offset(1.0, 0.7),
-            width: isPortrait(context) ? width : 0.8,
-            child: ScreenAdjustedText(
-              question.question,
-              bold: true,
+          Pulsate(
+            child: ScreenAdjust(
+              portrait: const Offset(1.8, 0.7),
+              landscape: const Offset(1.0, 0.7),
+              width: isPortrait(context) ? width : 0.8,
+              child: ScreenAdjustedText(
+                question.question,
+                bold: true,
+              ),
             ),
           ),
           ScreenAdjust(
