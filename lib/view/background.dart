@@ -25,10 +25,7 @@ class Background extends StatelessWidget {
         child: Stack(
           children: [
             const Star(),
-            SafeArea(
-              left: false,
-              child: child,
-            ),
+            SafeArea(left: false, child: child),
           ],
         ),
       ),

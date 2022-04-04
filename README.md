@@ -32,13 +32,13 @@ My other reason for using Stack is the complete freedom it gives you to animate 
 Sadly I've not had time to do this final step. I could throw something in, but it's too risky on the
 last day.
 
-I've left things like app icons, asset image optimization (for size) and publishing, since this is
-supposed be compiled from source.
+I've left things like app icons, asset image optimization (for file size) and publishing, since this
+app is supposed be compiled from source.
 
 You can run dartdoc on the code.
 
 I tested out a dark mode at the last minute, but bottled it 'cause it just started to look a bit to
-gamey!  I'd need a bit more time to get that looking 'right' (as in like Futurama).
+gamey!  I'd need a bit more time to get that looking 'right' (as in, like Futurama).
 
 I never got around to adding a more Futurama like font. I always try to reduce dependencies, it
 wasn't worth the risk.
@@ -55,7 +55,7 @@ wasn't worth the risk.
 - Fetch 'Try Again' button
 - Use questionsErrorMessage and charactersErrorMessage in test. Maybe on ui too?
 - Run on Android 7 (API 24) or greater. I can't seem to change back to Android 7, so fingers
-  crossed. I'm using API 30/31
+  crossed. I'm using API 30/31.
 
 ### Tests to do
 
@@ -63,7 +63,7 @@ wasn't worth the risk.
 - Test exact field data after load.
 - Quiz answer all questions widget test.
 - ResultsPage widget test.
-- More Empty List tests.
+- More 'Empty List' tests.
 - More bad data tests.
 - More bad internet tests.
 

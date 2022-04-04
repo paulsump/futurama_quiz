@@ -157,7 +157,7 @@ class ResultsPage extends StatelessWidget {
   }
 }
 
-/// 3 Correct! out of 28.
+/// e.g. '3 Correct! out of 28.'
 class _Score extends StatelessWidget {
   const _Score({Key? key}) : super(key: key);
 
