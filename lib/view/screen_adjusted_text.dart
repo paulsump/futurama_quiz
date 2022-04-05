@@ -1,3 +1,5 @@
+// © 2022, Paul Sumpner <sumpner@hotmail.com>
+
 import 'package:flutter/material.dart';
 import 'package:futurama_quiz/view/hue.dart';
 import 'package:futurama_quiz/view/screen_adjust.dart';
@@ -23,6 +25,7 @@ class ScreenAdjustedText extends StatelessWidget {
       text,
       style: TextStyle(
         color: Hue.text,
+        //TODO CHANge to screenAdjustY()
         fontSize: screenAdjust(size, context),
         fontWeight: bold ? FontWeight.bold : FontWeight.normal,
         fontStyle: italic ? FontStyle.italic : FontStyle.normal,

@@ -41,6 +41,7 @@ class _App extends StatelessWidget {
         // theme: ThemeData(
         //     textTheme: Theme.of(context).textTheme.apply(bodyColor: Hue.text)),
         theme: ThemeData(
+          //TODO this is 'wrong' (no dark theme atm)
             brightness: Brightness.dark, unselectedWidgetColor: Hue.radio),
         home: LayoutBuilder(
           builder: (
