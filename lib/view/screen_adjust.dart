@@ -10,6 +10,7 @@ Size getScreenSize(BuildContext context) => MediaQuery.of(context).size;
 /// Device orientation access.
 bool isPortrait(BuildContext context) {
   final screen = getScreenSize(context);
+  // TODO consider using MediaQuery.of(context).orientation instead
   return screen.width < screen.height;
 }
 
