@@ -18,9 +18,7 @@ Future<http.Response> _getGoodResponse(http.Request url) async {
 
   const base = 'GET https://api.sampleapis.com/futurama/';
 
-  final headers = {
-    HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'
-  };
+  final headers = {HttpHeaders.contentTypeHeader: 'application/json; charset=utf-8'};
 
   switch (url.toString()) {
     case base + 'info':
@@ -67,9 +65,8 @@ void main() {
     expect(find.textContaining('Failed'), findsOneWidget);
   });
 
-  testWidgets('Navigate from Info page to Characters Page',
-      (WidgetTester tester) async {
-        await tester.pumpWidget(app);
+  testWidgets('Navigate from Info page to Characters Page', (WidgetTester tester) async {
+    await tester.pumpWidget(app);
     await tester.pump();
     expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
     expect(find.textContaining(Strings.characters), findsOneWidget);
@@ -85,9 +82,8 @@ void main() {
     expect(find.textContaining('Bender Bending Rodriguez'), findsOneWidget);
   });
 
-  testWidgets('Navigate from Info page to Characters Page - Empty List',
-      (WidgetTester tester) async {
-        await tester.pumpWidget(emptyListApp);
+  testWidgets('Navigate from Info page to Characters Page - Empty List', (WidgetTester tester) async {
+    await tester.pumpWidget(emptyListApp);
     await tester.pump();
     expect(find.textContaining('Failed'), findsOneWidget);
     expect(find.textContaining(Strings.characters), findsOneWidget);
@@ -104,9 +100,8 @@ void main() {
   });
 
   // TODO add more Empty List ones from this one onwards.
-  testWidgets('Navigate Info => Characters => Biography Page',
-      (WidgetTester tester) async {
-        await tester.pumpWidget(app);
+  testWidgets('Navigate Info => Characters => Biography Page', (WidgetTester tester) async {
+    await tester.pumpWidget(app);
     await tester.pump();
     expect(find.textContaining('Philip J. Fry is'), findsOneWidget);
     expect(find.textContaining(Strings.characters), findsOneWidget);
@@ -150,8 +145,7 @@ void main() {
     const double landscapeWidth = portraitHeight;
     const double landscapeHeight = portraitWidth;
 
-    final binding = TestWidgetsFlutterBinding.ensureInitialized()
-        as TestWidgetsFlutterBinding;
+    final binding = TestWidgetsFlutterBinding.ensureInitialized();
 
     // await binding.setSurfaceSize(const Size(portraitWidth, portraitHeight));
 
@@ -174,8 +168,7 @@ void main() {
     expect(find.byType(QuizPage), findsOneWidget);
     expect(find.textContaining('0 correct'), findsOneWidget);
 
-    await tester.tap(find.byWidgetPredicate(
-        (widget) => widget is Radio && widget.value == Answer.two));
+    await tester.tap(find.byWidgetPredicate((widget) => widget is Radio && widget.value == Answer.two));
     await tester.pump();
 
     expect(find.textContaining('1 correct'), findsOneWidget);
